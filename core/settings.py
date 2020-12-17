@@ -30,8 +30,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Personal App
-    'app_account.apps.AppAccountConfig',
     'app_product.apps.AppProductConfig',
+    'app_account.apps.AppAccountConfig',
     'app_order.apps.AppOrderConfig',
     # Default Apps
     'django.contrib.admin',

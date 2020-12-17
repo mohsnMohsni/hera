@@ -55,6 +55,9 @@ class User(AbstractBaseUser, Permission):
         verbose_name = _('User')
         verbose_name_plural = _('Users')
 
+    def __str__(self):
+        return str(self.email)
+
     def clean(self):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
@@ -70,6 +73,9 @@ class Profile(models.Model):
     class Meta:
         verbose_name = _('Profile')
 
+    def __str__(self):
+        return str(self.user)
+
 
 class Shop(models.Model):
     name = models.CharField(_('Shop'), max_length=100)
@@ -80,6 +86,9 @@ class Shop(models.Model):
     class Meta:
         verbose_name = _('Shop')
         verbose_name_plural = _('Shops')
+
+    def __str__(self):
+        return self.name
 
 
 class Email(models.Model):
@@ -92,6 +101,9 @@ class Email(models.Model):
     class Meta:
         verbose_name = _('Email')
         verbose_name_plural = _('Emails')
+
+    def __str__(self):
+        return self.subject
 
     def get_email(self):
         return str(self.to)
@@ -110,6 +122,9 @@ class Address(models.Model):
         verbose_name = _('Address')
         verbose_name_plural = _('Addresses')
 
+    def __str__(self):
+        return str(self.user)
+
 
 class Notification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
@@ -121,12 +136,18 @@ class Notification(models.Model):
         verbose_name = _('Notification')
         verbose_name_plural = _('Notifications')
 
+    def __str__(self):
+        return str(self.user)
+
 
 class Like(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'),
-                                related_name='like', related_query_name='like')
-    products = models.ManyToManyField('Product', verbose_name=_('Products liked'),
-                                      related_name='products', related_query_name='products')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
+                             related_name='like', related_query_name='like')
+    products = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name=_('Products liked'),
+                                 related_name='likes', related_query_name='likes')
 
     class Meta:
         verbose_name = _('Like')
+
+    def __str__(self):
+        return str(self.user)
