@@ -122,11 +122,11 @@ class Notification(models.Model):
         verbose_name_plural = _('Notifications')
 
 
-# class Like(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'),
-#                                 related_name='like', related_query_name='like')
-#     products = models.ManyToManyField('Product', verbose_name=_('Products liked'),
-#                                       related_name='products', related_query_name='products')
-#
-#     class Meta:
-#         verbose_name = _('Like')
+class Like(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'),
+                                related_name='like', related_query_name='like')
+    products = models.ManyToManyField('Product', verbose_name=_('Products liked'),
+                                      related_name='products', related_query_name='products')
+
+    class Meta:
+        verbose_name = _('Like')
