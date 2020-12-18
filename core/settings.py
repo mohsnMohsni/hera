@@ -120,11 +120,14 @@ USE_TZ = True
 # Auth Config
 AUTH_USER_MODEL = 'app_account.User'
 # LOGIN_URL = 'account:login'
+# LOGIN_REDIRECT_URL = ''
+
 
 # Static Config
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'asset'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 # Media Config
 MEDIA_URL = '/media/'

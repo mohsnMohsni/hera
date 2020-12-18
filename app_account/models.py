@@ -138,16 +138,3 @@ class Notification(models.Model):
 
     def __str__(self):
         return str(self.user)
-
-
-class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
-                             related_name='like', related_query_name='like')
-    products = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name=_('Products liked'),
-                                 related_name='likes', related_query_name='likes')
-
-    class Meta:
-        verbose_name = _('Like')
-
-    def __str__(self):
-        return str(self.user)
