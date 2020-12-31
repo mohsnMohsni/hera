@@ -36,6 +36,9 @@ class User(AbstractBaseUser, Permission):
                               help_text=_('required valid email like example@gamil.com'))
     full_name = models.CharField(_('Name'), blank=True, max_length=100,
                                  help_text=_('enter your full name'))
+    phone = models.IntegerField(_('Phone'), blank=True, default=0)
+    avatar = models.ImageField(_('Avatar'), blank=True, upload_to='user/images')
+    is_seller = models.BooleanField(_('User status'), blank=True, default=False)
     is_staff = models.BooleanField(_('Staff status'), default=False,
                                    help_text=_(
                                        'Designates whether the user can log into this admin site.'
@@ -61,34 +64,6 @@ class User(AbstractBaseUser, Permission):
     def clean(self):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
-
-
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
-                             related_name='profile', related_query_name='profile')
-    phone = models.IntegerField(_('Phone'), blank=True, default=0)
-    avatar = models.ImageField(_('Avatar'), blank=True, upload_to='user/images')
-    is_seller = models.BooleanField(_('User status'), blank=True, default=False)
-
-    class Meta:
-        verbose_name = _('Profile')
-
-    def __str__(self):
-        return str(self.user)
-
-
-class Shop(models.Model):
-    name = models.CharField(_('Shop'), max_length=100)
-    slug = models.SlugField(_('Slug'), unique=True)
-    description = models.TextField(_('Description'))
-    image = models.ImageField(_('Picture'), upload_to='shop/images', blank=True)
-
-    class Meta:
-        verbose_name = _('Shop')
-        verbose_name_plural = _('Shops')
-
-    def __str__(self):
-        return self.name
 
 
 class Email(models.Model):
@@ -121,20 +96,6 @@ class Address(models.Model):
     class Meta:
         verbose_name = _('Address')
         verbose_name_plural = _('Addresses')
-
-    def __str__(self):
-        return str(self.user)
-
-
-class Notification(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
-                             related_name='notification', related_query_name='notification')
-    subject = models.CharField(_('Subject'), max_length=100)
-    body = models.TextField(_('Text body'))
-
-    class Meta:
-        verbose_name = _('Notification')
-        verbose_name_plural = _('Notifications')
 
     def __str__(self):
         return str(self.user)

@@ -1,16 +1,15 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
-from app_account.models import Shop
 
 User = get_user_model()
 
 
 class Product(models.Model):
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE, verbose_name=_('Brand'),
-                              related_name='brand', related_query_name='brand')
+                              related_name='product', related_query_name='product')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name=_('Category'),
-                                 related_name='category', related_query_name='category')
+                                 related_name='product', related_query_name='product')
     slug = models.SlugField(_('Slug'))
     name = models.CharField(_('Name'), max_length=150)
     image = models.ImageField(_('Image'), upload_to='product/images', blank=True, null=True)
@@ -81,23 +80,23 @@ class Image(models.Model):
         return str(self.product)
 
 
-class Off(models.Model):
-    product = models.ManyToManyField(Product, verbose_name=_('Product'),
-                                     related_name='product', related_query_name='product')
-    description = models.CharField(_('Description'), max_length=150)
-    percent = models.IntegerField(_('Percent'))
+class Shop(models.Model):
+    name = models.CharField(_('Shop'), max_length=100)
+    slug = models.SlugField(_('Slug'), unique=True)
+    description = models.TextField(_('Description'))
+    image = models.ImageField(_('Picture'), upload_to='shop/images', blank=True)
 
     class Meta:
-        verbose_name = _('Off')
-        verbose_name_plural = _('Offs')
+        verbose_name = _('Shop')
+        verbose_name_plural = _('Shops')
 
     def __str__(self):
-        return self.description
+        return self.name
 
 
 class ShopProduct(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, verbose_name=_('Shop'),
-                             related_name='product_shop', related_query_name='product_shop')
+                             related_name='shop_product', related_query_name='shop_product')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_('Product'),
                                 related_name='shop_product', related_query_name='shop_product')
     price = models.IntegerField(_('Price'))
@@ -129,7 +128,7 @@ class Comments(models.Model):
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
-                             related_name='like', related_query_name='like')
+                             related_name='likes', related_query_name='likes')
     products = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_('Products liked'),
                                  related_name='likes', related_query_name='likes')
 
