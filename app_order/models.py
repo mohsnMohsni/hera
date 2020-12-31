@@ -22,7 +22,8 @@ class Basket(models.Model):
 class BasketItem(models.Model):
     basket = models.ForeignKey(Basket, verbose_name=_('Basket'), on_delete=models.CASCADE,
                                related_name='basket_item', related_query_name='basket_item')
-    shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'), on_delete=models.CASCADE,
+    shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
+                                     on_delete=models.CASCADE,
                                      related_name='basket_item', related_query_name='basket_item')
 
     class Meta:
@@ -36,10 +37,9 @@ class BasketItem(models.Model):
 class Order(models.Model):
     products = models.ManyToManyField(Product, verbose_name=_('Products'),
                                       related_name='order', related_query_name='order')
-    cart = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name=_('Cart'),
-                             related_name='order', related_query_name='order')
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name=_('Cart'),
+                               related_name='order', related_query_name='order')
     create_at = models.DateTimeField(_('Create At'), auto_now_add=True)
-    update_at = models.DateTimeField(_('Update At'), auto_now=True)
     description = models.CharField(_('Description'), max_length=150)
 
     class Meta:
@@ -47,13 +47,14 @@ class Order(models.Model):
         verbose_name_plural = _('Orders')
 
     def __str__(self):
-        return str(self.cart)
+        return str(self.basket)
 
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=_('Order'), on_delete=models.CASCADE,
                               related_name='order_item', related_query_name='order_item')
-    shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'), on_delete=models.CASCADE,
+    shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
+                                     on_delete=models.CASCADE,
                                      related_name='order_item', related_query_name='order_item')
     count = models.IntegerField(_('Count'))
     price = models.IntegerField(_('Price'))

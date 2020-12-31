@@ -22,15 +22,17 @@ class AddressAdmin(admin.TabularInline):
 
 @admin.register(User)
 class UserAdmin(UserBaseAdmin):
-    list_display = ('email', 'is_staff', 'is_active')
     ordering = ('email',)
+    list_display = ('email', 'is_staff', 'is_active')
+    list_per_page = 10
+    search_fields = ('email',)
     add_fieldsets = (
         (None, {'fields': ('email', 'full_name', 'password1', 'password2')}),
     )
     fieldsets = (
         (None, {'fields': ('email', 'full_name', 'password')}),
         ('Personal Option', {'fields': ('avatar',)}),
-        ('Status', {'fields': ('is_staff', 'is_active', 'groups')})
+        ('Status', {'fields': ('is_staff', 'is_active', 'is_seller', 'groups')})
     )
     inlines = (
         EmailAdmin,

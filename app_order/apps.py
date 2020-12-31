@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class AppOrderConfig(AppConfig):
     name = 'app_order'
-    verbose_name = 'product'
+    verbose_name = 'order'
