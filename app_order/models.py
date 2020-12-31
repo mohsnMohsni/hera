@@ -37,7 +37,7 @@ class BasketItem(models.Model):
 class Order(models.Model):
     products = models.ManyToManyField(Product, verbose_name=_('Products'),
                                       related_name='order', related_query_name='order')
-    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name=_('Cart'),
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name=_('Basket'),
                                related_name='order', related_query_name='order')
     create_at = models.DateTimeField(_('Create At'), auto_now_add=True)
     description = models.CharField(_('Description'), max_length=150)

@@ -23,8 +23,9 @@ class AddressAdmin(admin.TabularInline):
 @admin.register(User)
 class UserAdmin(UserBaseAdmin):
     ordering = ('email',)
-    list_display = ('email', 'is_staff', 'is_active')
+    list_display = ('profile_picture', 'email', 'is_staff', 'is_active')
     list_per_page = 10
+    list_display_links = ('email',)
     search_fields = ('email',)
     add_fieldsets = (
         (None, {'fields': ('email', 'full_name', 'password1', 'password2')}),

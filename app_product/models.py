@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
+from django.utils.html import format_html
 
 User = get_user_model()
 
@@ -22,6 +23,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def product_picture(self):
+        if self.image:
+            return format_html(
+                f'<img src="{self.image.url}" width=60 height=50 style="border-radius:5px"/>'
+            )
+        else:
+            return '---'
 
 
 class ProductMeta(models.Model):
@@ -50,9 +59,18 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    def logo(self):
+        if self.image:
+            return format_html(
+                f'<img src="{self.image.url}" width=60 height=50 style="border-radius:50%"/>'
+            )
+        else:
+            return '---'
+
 
 class Category(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_('Parent'),
+                               blank=True, null=True,
                                related_name='children', related_query_name='children')
     name = models.CharField(_('Name'), max_length=100)
     slug = models.SlugField(_('Slug'))
@@ -65,6 +83,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def category_picture(self):
+        if self.image:
+            return format_html(
+                f'<img src="{self.image.url}" width=60 height=50 style="border-radius:50%"/>'
+            )
+        else:
+            return '---'
 
 
 class Image(models.Model):
@@ -79,6 +105,14 @@ class Image(models.Model):
     def __str__(self):
         return str(self.product)
 
+    def picture(self):
+        if self.image:
+            return format_html(
+                f'<img src="{self.image.url}" width=60 height=50 style="border-radius:50%"/>'
+            )
+        else:
+            return '---'
+
 
 class Shop(models.Model):
     name = models.CharField(_('Shop'), max_length=100)
@@ -92,6 +126,14 @@ class Shop(models.Model):
 
     def __str__(self):
         return self.name
+
+    def shop_picture(self):
+        if self.image:
+            return format_html(
+                f'<img src="{self.image.url}" width=60 height=50 style="border-radius:50%"/>'
+            )
+        else:
+            return '---'
 
 
 class ShopProduct(models.Model):
@@ -131,9 +173,11 @@ class Like(models.Model):
                              related_name='likes', related_query_name='likes')
     products = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_('Products liked'),
                                  related_name='likes', related_query_name='likes')
+    condition = models.BooleanField(_('Condition'), blank=True)
 
     class Meta:
         verbose_name = _('Like')
+        unique_together = [('user', 'condition')]
 
     def __str__(self):
         return str(self.user)

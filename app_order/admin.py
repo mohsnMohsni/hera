@@ -11,9 +11,7 @@ class BasketItemAdmin(admin.TabularInline):
 class BasketAdmin(admin.ModelAdmin):
     list_display = ('user',)
     list_per_page = 10
-    inlines = [
-        BasketItemAdmin,
-    ]
+    inlines = [BasketItemAdmin]
 
 
 class OrderItemAdmin(admin.TabularInline):
@@ -24,12 +22,10 @@ class OrderItemAdmin(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('create_at', 'update_at', 'description')
+    list_display = ('create_at', 'description')
     date_hierarchy = 'create_at'
     list_per_page = 10
-    inlines = [
-        OrderItemAdmin,
-    ]
+    inlines = [OrderItemAdmin]
 
 
 @admin.register(Payment)

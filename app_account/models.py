@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import PermissionsMixin
+from django.utils.html import format_html
 
 
 class UserManager(BaseUserManager):
@@ -65,6 +66,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     def clean(self):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
+
+    def profile_picture(self):
+        if self.avatar:
+            return format_html(
+                f'<img src="{self.avatar.url}" width=60 height=50 style="border-radius:50%"/>'
+            )
+        else:
+            return '---'
 
 
 class Email(models.Model):
