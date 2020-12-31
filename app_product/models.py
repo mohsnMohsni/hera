@@ -110,7 +110,7 @@ class ShopProduct(models.Model):
         return f'{str(self.shop)}-{str(self.product)}'
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_('Product'),
                                 related_name='comments', related_query_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),

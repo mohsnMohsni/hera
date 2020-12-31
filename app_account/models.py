@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import Permission
+from django.contrib.auth.models import PermissionsMixin
 
 
 class UserManager(BaseUserManager):
@@ -31,10 +31,10 @@ class UserManager(BaseUserManager):
         return self._create_user(email, full_name, password, **extra_fields)
 
 
-class User(AbstractBaseUser, Permission):
-    email = models.EmailField(_('Email'), blank=False, db_index=True, unique=True,
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(_('Email'), db_index=True, unique=True,
                               help_text=_('required valid email like example@gamil.com'))
-    full_name = models.CharField(_('Name'), blank=True, max_length=100,
+    full_name = models.CharField(_('Name'), max_length=100,
                                  help_text=_('enter your full name'))
     phone = models.IntegerField(_('Phone'), blank=True, default=0)
     avatar = models.ImageField(_('Avatar'), blank=True, upload_to='user/images')
@@ -53,6 +53,7 @@ class User(AbstractBaseUser, Permission):
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ('full_name',)
 
     class Meta:
         verbose_name = _('User')
@@ -98,4 +99,4 @@ class Address(models.Model):
         verbose_name_plural = _('Addresses')
 
     def __str__(self):
-        return str(self.user)
+        return self.city
