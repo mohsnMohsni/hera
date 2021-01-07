@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import SlideShowImage
 
-# Register your models here.
+
+@admin.register(SlideShowImage)
+class SlideShowAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slide_image')
+
+
