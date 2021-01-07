@@ -1,0 +1,59 @@
+body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.nav-link-hover {
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link-hover:hover {
+  border-bottom: 2px solid #ff5757;
+}
+
+.btn-outline-danger {
+  color: #ff5757;
+  border-color: #ff5757;
+}
+
+.text-danger {
+  color: #ff5757 !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.rounded {
+  border-radius: .70rem!important;
+}
+
+.jumbotron {
+  padding: 1.5rem 2rem;
+}
+
+.section-one-card {
+  background-size: cover;
+  border-radius: .9rem;
+}
+
+.bg-danger {
+  background-color: #EF394E !important; 
+}
+
+
+.cards-parent {
+  overflow: hidden !important;
+}
+
+.card {
+  min-width: 300px !important;
+}

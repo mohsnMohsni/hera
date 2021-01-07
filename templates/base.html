@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Title -->
+    <title>{% block title %} {% endblock title %}</title>
+
+    <!-- Style Links -->
+    <link rel="stylesheet" href="{% static 'source/bootstrap-css/style.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'custom/css/style.css' %}"/>
+</head>
+<body>
+
+<!-- Header -->
+{% include 'components/header.html' %}
+<!-- End Header -->
+
+<!-- Block Content -->
+{% block content %} {% endblock content %}
+<!-- EndBlock Content -->
+
+<!-- Footer -->
+{% include 'components/footer.html' %}
+<!-- End Footer -->
+
+<!-- JavaScripts Files -->
+<script src="{% static 'source/jquery.js' %}"></script>
+<script src="{% static 'source/bootstrap-js/bundle.js' %}"></script>
+<script src="{% static 'custom/js/script.js' %}"></script>
+<!-- End JavaScripts Files -->
+</body>
+
+</html>

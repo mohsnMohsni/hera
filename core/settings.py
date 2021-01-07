@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-from decouple import config
+from decouple import config, UndefinedValueError
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'app_product.apps.AppProductConfig',
     'app_account.apps.AppAccountConfig',
     'app_order.apps.AppOrderConfig',
+    'app_siteview.apps.AppSiteviewConfig'
 ]
 
 MIDDLEWARE = [
@@ -75,13 +77,26 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+try:
+    config('IS_LOCAL')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+except UndefinedValueError:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('NAME'),
+            'HOST': config('HOST'),
+            'PORT': config('PORT'),
+            'USER': config('USER'),
+            'PASSWORD': config('PASSWORD'),
+        }
+    }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -126,10 +141,16 @@ AUTH_USER_MODEL = 'app_account.User'
 
 # Static Config
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'asset'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'assets'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 
 # Media Config
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
+
+try:
+    config('IS_LOCAL')
+    pass
+except UndefinedValueError:
+    pass
