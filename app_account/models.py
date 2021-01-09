@@ -77,7 +77,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Email(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
+    user = models.ForeignKey("User", on_delete=models.CASCADE, verbose_name=_('User'),
                              related_name='email_sent', related_query_name='email_sent')
     subject = models.CharField(_('Subject'), max_length=120)
     to = models.EmailField(_('To'))
@@ -95,7 +95,7 @@ class Email(models.Model):
 
 
 class Address(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
+    user = models.ForeignKey("User", on_delete=models.CASCADE, verbose_name=_('User'),
                              related_name='address', related_query_name='address')
     city = models.CharField(_('City'), max_length=100)
     street = models.CharField(_('Street'), max_length=100)

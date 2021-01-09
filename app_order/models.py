@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
-from app_product.models import Product
 
 User = get_user_model()
 
@@ -20,7 +19,7 @@ class Basket(models.Model):
 
 
 class BasketItem(models.Model):
-    basket = models.ForeignKey(Basket, verbose_name=_('Basket'), on_delete=models.CASCADE,
+    basket = models.ForeignKey("Basket", verbose_name=_('Basket'), on_delete=models.CASCADE,
                                related_name='basket_item', related_query_name='basket_item')
     shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
                                      on_delete=models.CASCADE,
@@ -35,9 +34,9 @@ class BasketItem(models.Model):
 
 
 class Order(models.Model):
-    products = models.ManyToManyField(Product, verbose_name=_('Products'),
+    products = models.ManyToManyField("app_product.Product", verbose_name=_('Products'),
                                       related_name='order', related_query_name='order')
-    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name=_('Basket'),
+    basket = models.ForeignKey("Basket", on_delete=models.CASCADE, verbose_name=_('Basket'),
                                related_name='order', related_query_name='order')
     create_at = models.DateTimeField(_('Create At'), auto_now_add=True)
     description = models.CharField(_('Description'), max_length=150)
@@ -51,7 +50,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, verbose_name=_('Order'), on_delete=models.CASCADE,
+    order = models.ForeignKey("Order", verbose_name=_('Order'), on_delete=models.CASCADE,
                               related_name='order_item', related_query_name='order_item')
     shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
                                      on_delete=models.CASCADE,
@@ -70,7 +69,7 @@ class OrderItem(models.Model):
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
                              related_name='payment', related_query_name='payment')
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, verbose_name=_('Order'),
+    order = models.OneToOneField("Order", on_delete=models.CASCADE, verbose_name=_('Order'),
                                  related_name='payment', related_query_name='payment')
     amount = models.IntegerField(_('Amount'))
 
