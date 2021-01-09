@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config, UndefinedValueError
+from easy_thumbnails.conf import Settings as ThumbnailSettings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,6 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Personal App
+    # Personal Apps
     'app_product.apps.AppProductConfig',
     'app_account.apps.AppAccountConfig',
     'app_order.apps.AppOrderConfig',
-    'app_siteview.apps.AppSiteviewConfig'
+    'app_siteview.apps.AppSiteviewConfig',
+    # ThirdParty Apps
+    'easy_thumbnails',
+    'image_cropping',
 ]
 
 MIDDLEWARE = [
@@ -97,7 +100,6 @@ except UndefinedValueError:
         }
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -144,7 +146,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'assets'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-
 # Media Config
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -154,3 +155,9 @@ try:
     pass
 except UndefinedValueError:
     pass
+
+# Image Cropping Config
+THUMBNAIL_PROCESSORS = (
+                           'image_cropping.thumbnail_processors.crop_corners',
+                       ) + ThumbnailSettings.THUMBNAIL_PROCESSORS
+IMAGE_CROPPING_SIZE_WARNING = True

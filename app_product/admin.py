@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import (Product, ProductMeta, Brand, Category,
-                     Shop, ShopProduct, Image, Comment, Like)
+                     Shop, ShopProduct, Gallery, Comment, Like)
+from image_cropping import ImageCroppingMixin
 
 
 class ProductMetaAdmin(admin.TabularInline):
@@ -22,35 +23,35 @@ class LikeAdmin(admin.TabularInline):
     extra = 0
 
 
-class ImageAdmin(admin.TabularInline):
-    model = Image
+class GalleryAdmin(admin.TabularInline):
+    model = Gallery
     readonly_fields = ('picture',)
     extra = 0
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('brand', 'category', 'name', 'product_picture')
+class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('brand', 'category', 'name', 'picture')
     list_per_page = 10
     list_filter = ('brand',)
     search_fields = ('name', 'detail')
     inlines = [
         ProductMetaAdmin,
-        ImageAdmin,
+        GalleryAdmin,
         CommentAdmin,
         LikeAdmin
     ]
 
 
 @admin.register(Brand)
-class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'logo')
+class BrandAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('name', 'picture')
     list_per_page = 10
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'parent', 'category_picture')
+class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('name', 'slug', 'parent', 'picture')
     list_per_page = 10
     list_editable = ('parent',)
 
@@ -61,7 +62,7 @@ class ShopProductAdmin(admin.TabularInline):
 
 
 @admin.register(Shop)
-class ShopAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'shop_picture')
+class ShopAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('name', 'slug', 'picture')
     list_per_page = 10
     inlines = [ShopProductAdmin]

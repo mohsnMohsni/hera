@@ -3,6 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.html import format_html
 from datetime import datetime
 from pytz import utc
+from image_cropping import ImageRatioField
+from PIL import Image
 
 
 class SlideShowImage(models.Model):
@@ -11,6 +13,7 @@ class SlideShowImage(models.Model):
     action_text = models.CharField(_('Action Text'), max_length=150)
     action_url = models.URLField(_('Action Url'))
     image = models.ImageField(_('Background'), upload_to='slideShowPictures/')
+    cropping = ImageRatioField('image', '430x360', size_warning=True)
 
     class Meta:
         verbose_name = _('Slide Images')
@@ -25,6 +28,28 @@ class SlideShowImage(models.Model):
             f'<img src="{self.image.url}" width=80 height=50 "/>'
         )
 
+    def _crop_image(self):
+        """
+        Get cropping value then initial space from top, left, right, bottom,
+        and open file from path, crop it then resize it and at the end save it.
+        """
+        cropping_list = self.cropping.split(',')
+        cropping_list = list(map(int, cropping_list))
+        left, right = cropping_list[0], cropping_list[1]
+        top, bottom = cropping_list[2], cropping_list[3]
+        image = Image.open(self.image.path)
+        cropped_image = image.crop((left, right, top, bottom))
+        resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
+        return resized_image.save(self.image.path)
+
+    def save(self, *args, **kwargs):
+        """
+        Colling show_status() and check if cropping there is, calling crop_image()
+        """
+        if self.cropping:
+            self._crop_image()
+        return super(SlideShowImage, self).save(*args, **kwargs)
+
 
 # Custom Manager For OfferCards
 class OfferManager(models.Manager):
@@ -35,9 +60,10 @@ class OfferManager(models.Manager):
 class OfferCards(models.Model):
     description = models.CharField(_('Description'), max_length=200)
     end_time = models.DateTimeField(_('End At'))
-    image = models.ImageField(_('Offer Background'))
     show = models.BooleanField(_('Show Status'))
     update_at = models.DateTimeField(_('Update At'), auto_now=True)
+    image = models.ImageField(_('Offer Background'))
+    cropping = ImageRatioField('image', '430x360', size_warning=True)
 
     objects = OfferManager()
 
@@ -49,7 +75,27 @@ class OfferCards(models.Model):
         """ Return show status """
         return 'show: ' + str(self.show)
 
-    def save(self, *args, **kwargs):
+    def offer_background(self):
+        """ Return a html tag that have an image tag. """
+        return format_html(
+            f'<img src="{self.image.url}" width=80 height=50 "/>'
+        )
+
+    def _crop_image(self):
+        """
+        Get cropping value then initial space from top, left, right, bottom,
+        and open file from path, crop it then resize it and at the end save it.
+        """
+        cropping_list = self.cropping.split(',')
+        cropping_list = list(map(int, cropping_list))
+        left, right = cropping_list[0], cropping_list[1]
+        top, bottom = cropping_list[2], cropping_list[3]
+        image = Image.open(self.image.path)
+        cropped_image = image.crop((left, right, top, bottom))
+        resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
+        return resized_image.save(self.image.path)
+
+    def _show_status(self):
         """
         If show status wants be update, check how many show status there is
         then if there is more than 2, update they status to false except last one.
@@ -59,13 +105,15 @@ class OfferCards(models.Model):
             if show_cards.count() >= 2:
                 last_card = show_cards.first().end_time
                 show_cards.filter(end_time__lt=last_card).update(show=False)
-        return super(OfferCards, self).save(*args, **kwargs)
 
-    def offer_background(self):
-        """ Return a html tag that have an image tag. """
-        return format_html(
-            f'<img src="{self.image.url}" width=80 height=50 "/>'
-        )
+    def save(self, *args, **kwargs):
+        """
+        Colling show_status() and check if cropping there is, calling crop_image()
+        """
+        self._show_status()
+        if self.cropping:
+            self._crop_image()
+        return super(OfferCards, self).save(*args, **kwargs)
 
     def _have_time(self):
         """

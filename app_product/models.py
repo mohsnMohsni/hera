@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.utils.html import format_html
+from image_cropping import ImageRatioField
+from PIL import Image
+import abc
 
 User = get_user_model()
 
@@ -10,9 +13,37 @@ class AbstractDetail(models.Model):
     slug = models.SlugField(_('Slug'))
     name = models.CharField(_('Name'), max_length=150)
     detail = models.TextField(_('Detail'))
+    cropping = ImageRatioField('image', '430x360', size_warning=True)
+    image = models.ImageField(_('Image'))
 
     class Meta:
         abstract = True
+
+    def _crop_image(self):
+        """
+        Get cropping value then initial space from top, left, right, bottom,
+        and open file from path, crop it then resize it and at the end save it.
+        """
+        cropping_list = self.cropping.split(',')
+        cropping_list = list(map(int, cropping_list))
+        left, right = cropping_list[0], cropping_list[1]
+        top, bottom = cropping_list[2], cropping_list[3]
+        image = Image.open(self.image.path)
+        cropped_image = image.crop((left, right, top, bottom))
+        resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
+        return resized_image.save(self.image.path)
+
+    @abc.abstractmethod
+    def picture(self):
+        pass
+
+    @abc.abstractmethod
+    def __str__(self):
+        pass
+
+    @abc.abstractmethod
+    def save(self, *args, **kwargs):
+        pass
 
 
 class Product(AbstractDetail):
@@ -30,7 +61,7 @@ class Product(AbstractDetail):
     def __str__(self):
         return self.name
 
-    def product_picture(self):
+    def picture(self):
         """ Return a html tag that have an image tag. """
         if self.image:
             return format_html(
@@ -38,6 +69,14 @@ class Product(AbstractDetail):
             )
         else:
             return '---'
+
+    def save(self, *args, **kwargs):
+        """
+        Check if cropping there is, calling crop_image()
+        """
+        if self.cropping:
+            self._crop_image()
+        return super(Product, self).save(*args, **kwargs)
 
 
 class ProductMeta(models.Model):
@@ -65,7 +104,7 @@ class Brand(AbstractDetail):
     def __str__(self):
         return self.name
 
-    def logo(self):
+    def picture(self):
         """ Return a html tag that have an image tag. """
         if self.image:
             return format_html(
@@ -73,6 +112,14 @@ class Brand(AbstractDetail):
             )
         else:
             return '---'
+
+    def save(self, *args, **kwargs):
+        """
+        Check if cropping there is, calling crop_image()
+        """
+        if self.cropping:
+            self._crop_image()
+        return super(Brand, self).save(*args, **kwargs)
 
 
 class Category(AbstractDetail):
@@ -88,7 +135,7 @@ class Category(AbstractDetail):
     def __str__(self):
         return self.name
 
-    def category_picture(self):
+    def picture(self):
         """ Return a html tag that have an image tag. """
         if self.image:
             return format_html(
@@ -97,15 +144,23 @@ class Category(AbstractDetail):
         else:
             return '---'
 
+    def save(self, *args, **kwargs):
+        """
+        Check if cropping there is, calling crop_image()
+        """
+        if self.cropping:
+            self._crop_image()
+        return super(Category, self).save(*args, **kwargs)
 
-class Image(models.Model):
+
+class Gallery(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name=_('Product'),
                                 related_name='images', related_query_name='images')
     image = models.ImageField(_('Image'), upload_to='product/GalleryImage')
 
     class Meta:
-        verbose_name = _('Image')
-        verbose_name_plural = _('Images')
+        verbose_name = _('Gallery')
+        verbose_name_plural = _('Gallery')
 
     def __str__(self):
         return str(self.product)
@@ -133,7 +188,7 @@ class Shop(models.Model):
     def __str__(self):
         return self.name
 
-    def shop_picture(self):
+    def picture(self):
         """
         Return a html tag that have an image tag.
         """
