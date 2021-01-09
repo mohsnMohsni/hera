@@ -4,11 +4,11 @@ from image_cropping import ImageCroppingMixin
 
 
 @admin.register(SlideShowImage)
-class SlideShowAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slide_image')
+class SlideShowAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('title', 'picture')
 
 
 @admin.register(OfferCards)
 class OfferCardsAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    list_display = ('offer_background', 'description', 'have_time', 'show')
-    list_display_links = ('offer_background', 'description')
+    list_display = ('picture', 'description', 'have_time', 'show')
+    list_display_links = ('picture', 'description')

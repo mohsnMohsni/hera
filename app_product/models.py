@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.utils.html import format_html
 from image_cropping import ImageRatioField
 from PIL import Image
-import abc
 
 User = get_user_model()
 
@@ -32,18 +31,6 @@ class AbstractDetail(models.Model):
         cropped_image = image.crop((left, right, top, bottom))
         resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
         return resized_image.save(self.image.path)
-
-    @abc.abstractmethod
-    def picture(self):
-        pass
-
-    @abc.abstractmethod
-    def __str__(self):
-        pass
-
-    @abc.abstractmethod
-    def save(self, *args, **kwargs):
-        pass
 
 
 class Product(AbstractDetail):
@@ -74,7 +61,7 @@ class Product(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if self.cropping:
+        if Product.objects.filter(image=self.image).exists():
             self._crop_image()
         return super(Product, self).save(*args, **kwargs)
 
@@ -117,7 +104,7 @@ class Brand(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if self.cropping:
+        if Brand.objects.filter(image=self.image).exists():
             self._crop_image()
         return super(Brand, self).save(*args, **kwargs)
 
@@ -148,7 +135,7 @@ class Category(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if self.cropping:
+        if Category.objects.filter(image=self.image).exists():
             self._crop_image()
         return super(Category, self).save(*args, **kwargs)
 
@@ -175,10 +162,7 @@ class Gallery(models.Model):
             return '---'
 
 
-class Shop(models.Model):
-    name = models.CharField(_('Shop'), max_length=100)
-    slug = models.SlugField(_('Slug'), unique=True)
-    description = models.TextField(_('Description'))
+class Shop(AbstractDetail):
     image = models.ImageField(_('Picture'), upload_to='shop/images', blank=True)
 
     class Meta:
@@ -198,6 +182,14 @@ class Shop(models.Model):
             )
         else:
             return '---'
+
+    def save(self, *args, **kwargs):
+        """
+        Check if cropping there is, calling crop_image()
+        """
+        if Shop.objects.filter(image=self.image).exists():
+            self._crop_image()
+        return super(Shop, self).save(*args, **kwargs)
 
 
 class ShopProduct(models.Model):
