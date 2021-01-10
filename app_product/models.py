@@ -14,6 +14,8 @@ class AbstractDetail(models.Model):
     detail = models.TextField(_('Detail'))
     cropping = ImageRatioField('image', '430x360', size_warning=True)
     image = models.ImageField(_('Image'))
+    create_at = models.DateTimeField(_('Create Date'), auto_now_add=True)
+    update_at = models.DateTimeField(_('Update Date'), auto_now=True)
 
     class Meta:
         abstract = True
