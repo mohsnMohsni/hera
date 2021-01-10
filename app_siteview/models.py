@@ -10,6 +10,9 @@ from PIL import Image
 class AbstractPanel(models.Model):
     image = models.ImageField(_('Abstract Image'))
     cropping = ImageRatioField('image', '430x360', size_warning=True)
+    action_text = models.CharField(_('Action Text'), max_length=150)
+    action_url = models.URLField(_('Action Url'))
+    description = models.CharField(_('Description'), max_length=200)
 
     class Meta:
         abstract = True
@@ -31,9 +34,6 @@ class AbstractPanel(models.Model):
 
 class SlideShowImage(AbstractPanel):
     title = models.CharField(_('Title'), max_length=150)
-    description = models.TextField(_('Description'))
-    action_text = models.CharField(_('Action Text'), max_length=150)
-    action_url = models.URLField(_('Action Url'))
     image = models.ImageField(_('Background'), upload_to='slideShowPictures/images')
     cropping = ImageRatioField('image', '530x360', size_warning=True)
 
@@ -66,7 +66,6 @@ class OfferManager(models.Manager):
 
 
 class OfferCards(AbstractPanel):
-    description = models.CharField(_('Description'), max_length=200)
     end_time = models.DateTimeField(_('End At'))
     show = models.BooleanField(_('Show Status'))
     update_at = models.DateTimeField(_('Update At'), auto_now=True)

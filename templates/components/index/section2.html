@@ -1,24 +1,27 @@
-<section class="bg-danger row m-0 py-3 px-2">
-    <div class="col-md-3 d-flex justify-content-center align-items-center flex-column">
-        <div class="text-light display-4">Best Shops</div>
-        <span class="text-light w-75">There is The best shop which have most popular products.</span>
-    </div>
-    <div class="col-12 col-md-9 cards-parent">
-        <div class="card-group">
-            {% for shop in best_shops %}
-                <div class="card mx-1">
-                    <img src="{{ shop.image.url }}" style="height: 400px"
-                         class="card-img-top" alt=""/>
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title">{{ shop.name }}</h5>
-                        <p class="card-text">{{ shop.description|truncatechars:50 }}</p>
-                        <p class="card-text">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </p>
-                    </div>
-                </div>
-            {% endfor %}
-
+{% if best_shops %}
+    <section class="bg-danger row m-0 py-3 px-2">
+        <div class="col-md-3 d-flex justify-content-center align-items-center flex-column">
+            <div class="text-light display-4">Best Shops</div>
+            <span class="text-light w-75">There is The best shop which have most popular products.</span>
         </div>
-    </div>
-</section>
+        <div class="col-12 col-md-9 cards-parent">
+            <div class="card-group">
+                {% for shop in best_shops %}
+                    <div class="card card-hover mx-1">
+                        <a href="" class="stretched-link" type=""></a>
+                        <img src="{{ shop.image.url }}" style="height: 400px"
+                             class="card-img-top" alt=""/>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title">{{ shop.name }}</h5>
+                            <p class="card-text">{{ shop.description|truncatechars:50 }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">{{ shop.detail }}</small>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endif %}

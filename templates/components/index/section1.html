@@ -3,16 +3,17 @@
         <div>
             <div class="card" style="border-radius: 0.9rem !important; height: 200px">
                 <div class="card-body section-one-card" style="
-                  background-image: url('https://i.picsum.photos/id/283/200/300.jpg?blur=2&hmac=u8rEODoA_aoOFIQShq-xU0u7lszu2jTHZiulEVPV3Hc');
-                ">
+                        background-image: url('{{ offer_cards.first.image.url }}')">
                     <blockquote class="blockquote mb-0">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Integer posuere erat a ante.
-                        </p>
+                        <p>{{ offer_cards.first.description|truncatechars:70 }}</p>
+                        <div class="my-3">
+                            <a href="{{ offer_cards.last.action_url }}" class="action-btn ">
+                                {{ offer_cards.last.action_text|truncatechars:30 }}
+                            </a>
+                        </div>
                         <footer class="blockquote-footer">
-                            Someone famous in
-                            <cite title="Source Title">Source Title</cite>
+                            End Time:
+                            <cite title="Source Title">{{ offer_cards.first.end_time }}</cite>
                         </footer>
                     </blockquote>
                 </div>
@@ -20,18 +21,20 @@
         </div>
         <div class="my-2 my-md-0">
             <div>
-                <div class="card" style="border-radius: 0.9rem !important; height: 200px">
-                    <div class="card-body section-one-card" style="
-                    background-image: url('https://i.picsum.photos/id/744/200/300.jpg?blur=5&hmac=fYN-4fLCXCO-AS25AyyHE4sHKvuj9-W6zeXyoPrtGbQ');
-                  ">
+                <div class="card"
+                     style="border-radius: 0.9rem !important; height: 200px">
+                    <div class="card-body section-one-card"
+                         style="background-image: url('{{ offer_cards.last.image.url }}')">
                         <blockquote class="blockquote mb-0">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Integer posuere erat a ante.
-                            </p>
+                            <p>{{ offer_cards.last.description|truncatechars:70 }}</p>
+                            <div class="my-3">
+                                <a href="{{ offer_cards.last.action_url }}" class="action-btn ">
+                                    {{ offer_cards.last.action_text|truncatechars:30 }}
+                                </a>
+                            </div>
                             <footer class="blockquote-footer">
-                                Someone famous in
-                                <cite title="Source Title">Source Title</cite>
+                                End Time:
+                                <cite title="Source Title">{{ offer_cards.last.end_time }}</cite>
                             </footer>
                         </blockquote>
                     </div>
@@ -39,7 +42,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    {% if slide_images %}
+        <div class="col-md-8">
         <div id="carouselExampleControls" class="carousel slide">
             <div class="carousel-inner">
                 {% for slide in slide_images %}
@@ -48,7 +52,9 @@
                             <div class="slide-show" style="background-image: url('{{ slide.image.url }}')">
                                 <div>{{ slide.title }}</div>
                                 <div>{{ slide.description }}</div>
-                                <a href="{{ slide.action_url }}">{{ slide.action_text }}</a>
+                                <a href="{{ slide.action_url }}" class="action-btn">
+                                    {{ slide.action_text }}
+                                </a>
                             </div>
                         </div>
                     {% else %}
@@ -56,7 +62,9 @@
                             <div class="slide-show" style="background-image: url('{{ slide.image.url }}')">
                                 <div>{{ slide.title }}</div>
                                 <div>{{ slide.description }}</div>
-                                <a href="{{ slide.action_url }}">{{ slide.action_text }}</a>
+                                <a href="{{ slide.action_url }}" class="action-btn">
+                                    {{ slide.action_text }}
+                                </a>
                             </div>
                         </div>
                     {% endif %}
@@ -72,4 +80,5 @@
             </a>
         </div>
     </div>
+    {% endif %}
 </section>
