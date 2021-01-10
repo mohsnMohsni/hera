@@ -112,3 +112,29 @@ ul {
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.1);
 }
+
+.product-detail {
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.product-detailbox {
+    height: 400px;
+    padding: 40px;
+    position: relative;
+    left: -20px;
+}
+
+.product-detailbox > div {
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+
+.product-image {
+    height: 350px;
+    position: relative;
+    left: 20px;
+    z-index: 3;
+}

@@ -2,7 +2,7 @@ from django.views.generic import DetailView
 from .models import Category, Product
 
 
-class CategoryList(DetailView):
+class CategoryDetail(DetailView):
     model = Category
     template_name = 'main/category.html'
 
@@ -11,3 +11,8 @@ class CategoryList(DetailView):
         products = Product.objects.prefetch_related('shop_product').filter(category=context.get('category'))[:8]
         context['products'] = products
         return context
+
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'main/product.html'

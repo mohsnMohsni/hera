@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Product | {{ product.name }} {% endblock title %}
+{% block content %}
+    <section class="d-flex justify-content-center align-items-center jumbotron m-0">
+        <div class="w-75 d-flex row align-items-center">
+            <div class="col-md-6 product-image">
+                <img src="{{ product.image.url }}" alt="" width="100%" height="350px">
+            </div>
+            <div class="bg-secondary text-white col-md-6 product-detailbox">
+                <div>
+                    <div class="product-detail py-2">
+                        Name: {{ product.name }}
+                    </div>
+                    <div class="product-detail py-2">
+                        Brand: {{ product.brand }}
+                    </div>
+                    <div class="product-detail py-2">
+                        Category: {{ product.category }}
+                    </div>
+                    <div class="product-detail py-2">
+                        Shop: {{ product.shop_product.shop }}NOne
+                    </div>
+                    <div class="product-detail py-2">
+                        Detail: {{ product.detail }}
+                    </div>
+                    <div class="product-detail py-2">
+                        Price: {{ product.shop_product.price }}NOne
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
