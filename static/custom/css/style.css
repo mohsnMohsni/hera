@@ -10,6 +10,10 @@ ul {
     list-style: none;
 }
 
+.footer-detail {
+    background-color: #343A40;
+}
+
 .nav-link-hover {
     border-bottom: 2px solid transparent;
 }
@@ -137,4 +141,8 @@ ul {
     position: relative;
     left: 20px;
     z-index: 3;
+}
+
+.product-container {
+    height: 65vh;
 }
