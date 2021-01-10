@@ -108,4 +108,7 @@ ul {
     0 -7px 20px rgba(0, 0, 0, 0.4);
 }
 
-
+.angel-background {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+}

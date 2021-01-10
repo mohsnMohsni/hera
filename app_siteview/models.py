@@ -10,7 +10,7 @@ from PIL import Image
 class AbstractPanel(models.Model):
     image = models.ImageField(_('Abstract Image'))
     cropping = ImageRatioField('image', '430x360', size_warning=True)
-    action_text = models.CharField(_('Action Text'), max_length=150)
+    action_text = models.CharField(_('Action Text'), max_length=70)
     action_url = models.URLField(_('Action Url'))
     description = models.CharField(_('Description'), max_length=200)
 
@@ -33,7 +33,7 @@ class AbstractPanel(models.Model):
 
 
 class SlideShowImage(AbstractPanel):
-    title = models.CharField(_('Title'), max_length=150)
+    title = models.CharField(_('Title'), max_length=100)
     image = models.ImageField(_('Background'), upload_to='slideShowPictures/images')
     cropping = ImageRatioField('image', '530x360', size_warning=True)
 
@@ -93,7 +93,8 @@ class OfferCards(AbstractPanel):
         If show status wants be update, check how many show status there is
         then if there is more than 2, update they status to false except last one.
         """
-        if self.show is True:
+        is_same = OfferCards.objects.filter(pk=self.pk, show=self.show).exists()
+        if self.show is True and not is_same:
             show_cards = OfferCards.objects.filter(show=True).order_by('update_at')
             if show_cards.count() >= 2:
                 last_card = show_cards.last().id
