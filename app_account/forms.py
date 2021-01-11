@@ -24,3 +24,10 @@ class SignUpForm(forms.ModelForm):
             'password': forms.PasswordInput(attrs={'class': 'w-100 auth-input'}),
             'full_name': forms.TextInput(attrs={'class': 'w-100 auth-input'}),
         }
+
+
+class ChangePasswordForm(forms.Form):
+    password = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
+        attrs={'class': 'w-100 auth-input'}))
+    password2 = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
+        attrs={'class': 'w-100 auth-input'}))

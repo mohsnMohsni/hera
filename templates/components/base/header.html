@@ -48,6 +48,10 @@
                     <a href="#" class="nav-link nav-link-hover">{{ user.full_name|title }}</a>
                     <span class="nav-link mx-3 mx-lg-0">/</span>
                     <a href="{% url 'account:logout' %}" class="nav-link nav-link-hover">Sign Out</a>
+                    <span class="nav-link mx-3 mx-lg-0">/</span>
+                    <a href="{% url 'account:change_password' user.id %}" class="nav-link nav-link-hover">
+                        Change Password
+                    </a>
                 {% else %}
                     <a href="{% url 'account:register' %}" class="nav-link nav-link-hover">Sign Up</a>
                     <span class="nav-link mx-3 mx-lg-0">/</span>

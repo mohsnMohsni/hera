@@ -4,7 +4,7 @@
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'auth/main.css' %}"> {% endblock extra_css %}
 {% block content %}
-    <main class="login-main d-flex justify-content-center align-items-center">
+    <main class="auth-main d-flex justify-content-center align-items-center">
         <div class="w-50">
 
             <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
@@ -14,13 +14,13 @@
                 <div class="d-flex align-items-center flex-column">
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.username }}
-                        <span class="input-placeholder">Email</span>
+                        <label for="id_email" class="input-placeholder">Email</label>
                         <span class="input-border"></span>
                     </div>
 
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password }}
-                        <span class="input-placeholder">Password</span>
+                        <label for="id_password" class="input-placeholder">Password</label>
                         <span class="input-border"></span>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
             <ul class="text-muted d-flex align-items-center flex-column">
                 <li>
                     <span>Forgot</span>
-                    <a href="{% url 'account:change_password' %}" class="text-decoration-none">Username / Password?</a>
+                    <a href="#" class="text-decoration-none">Username / Password?</a>
                 </li>
                 <li>
                     <span>Don’t have an account?</span>

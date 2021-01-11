@@ -1,5 +1,9 @@
-.login-main {
+.auth-main {
     min-height: 70vh;
+}
+
+.auth-display {
+    font-size: 2rem;
 }
 
 .auth-input {

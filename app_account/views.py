@@ -1,8 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import reverse, redirect, render
-from django.contrib.sites.shortcuts import get_current_site
-from django.views.generic import TemplateView, CreateView
-from .forms import SignInForm, SignUpForm
+from django.views.generic import CreateView, FormView
+from .forms import SignInForm, SignUpForm, ChangePasswordForm
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -11,6 +10,7 @@ from .tokens import account_activation_token
 from django.contrib.auth import login
 from .models import User
 from django.http import HttpResponse
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -47,14 +47,6 @@ class SignUpView(CreateView):
         return render(self.request, 'auth/email-confirm/email_response.html')
 
 
-class SignOutView(LogoutView):
-    template_name = 'auth/logout.html'
-
-
-class ChangePasswordView(TemplateView):
-    template_name = 'auth/change_password.html'
-
-
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -68,3 +60,21 @@ def activate(request, uidb64, token):
         return redirect('blog:home')
     else:
         return HttpResponse(_('Activation link is invalid!'))
+
+
+class SignOutView(LogoutView):
+    template_name = 'auth/logout.html'
+
+
+class ChangePasswordView(FormView):
+    form_class = ChangePasswordForm
+    template_name = 'auth/change_password.html'
+
+    def form_valid(self, form):
+        try:
+            user = User.objects.get(pk=self.kwargs.get('pk'))
+        except User.DoesNotExist:
+            return HttpResponse(status=404)
+        user.set_password(form.cleaned_data.get('password'))
+        user.save()
+        return redirect('siteview:home')

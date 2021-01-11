@@ -4,7 +4,7 @@
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'auth/main.css' %}"> {% endblock extra_css %}
 {% block content %}
-    <main class="login-main d-flex justify-content-center align-items-center">
+    <main class="auth-main d-flex justify-content-center align-items-center">
         <div class="w-50">
 
             <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
@@ -19,22 +19,22 @@
                 <div class="d-flex align-items-center flex-column">
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.email }}
-                        <span class="input-placeholder">Email</span>
+                        <label for="id_email" class="input-placeholder">Email</label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.full_name }}
-                        <span class="input-placeholder">Name</span>
+                        <label for="id_full_name" class="input-placeholder">Name</label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password }}
-                        <span class="input-placeholder">Password</span>
+                        <label for="id_password" class="input-placeholder">Password</label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password2 }}
-                        <span class="input-placeholder">Confirm Password</span>
+                        <label for="id_password2" class="input-placeholder">Confirm Password</label>
                         <span class="input-border"></span>
                     </div>
                 </div>
