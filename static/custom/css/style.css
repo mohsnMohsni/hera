@@ -146,3 +146,23 @@ ul {
 .product-container {
     height: 65vh;
 }
+
+.basket-item {
+    border: 2px solid black;
+}
+
+.basket-summery {
+    border: 1px solid gray;
+}
+
+.basket-line {
+    width: 100%;
+    height: 3px;
+    border-radius: 50px;
+    background-color: #ff0202;
+    margin-bottom: 10px;
+}
+
+.basket-main {
+    min-height: 70vh;
+}

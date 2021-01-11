@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from .models import Basket
+from django.views.generic import DetailView, TemplateView
 
-# Create your views here.
+
+class BasketDetail(TemplateView):
+    # model = Basket
+    template_name = 'order/basket.html'
