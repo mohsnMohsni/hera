@@ -13,3 +13,7 @@ class HomeView(TemplateView):
         context['offer_cards'] = OfferCards.objects.is_confirm()
         context['category_list'] = Category.objects.filter(parent=None)
         return context
+
+
+class SearchView(TemplateView):
+    template_name = 'main/search.html'
