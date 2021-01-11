@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_siteview.urls')),
     path('shop/', include('app_product.urls')),
-    # path('account/', include('app_account.urls')),
+    path('auth/', include('app_account.urls')),
     path('order/', include('app_order.urls')),
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
