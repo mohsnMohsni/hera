@@ -12,8 +12,8 @@
             <form class="my-2" method="post" action="{% url 'account:register' %}">
                 {% csrf_token %}
                 {% if form.errors %}
-                    <div class="alert-danger">
-                    {{ form.errors }}
+                    <div class="alert alert-danger">
+                        {{ form.errors|title }}
                     </div>
                 {% endif %}
                 <div class="d-flex align-items-center flex-column">

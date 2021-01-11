@@ -11,6 +11,11 @@
 
             <form class="my-2" method="post">
                 {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.errors|title }}
+                    </div>
+                {% endif %}
                 <div class="d-flex align-items-center flex-column">
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.username }}

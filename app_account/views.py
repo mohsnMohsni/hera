@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import reverse, redirect, render
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, RedirectView
 from .forms import SignInForm, SignUpForm, ChangePasswordForm
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
@@ -47,19 +47,21 @@ class SignUpView(CreateView):
         return render(self.request, 'auth/email-confirm/email_response.html')
 
 
-def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        return redirect('blog:home')
-    else:
-        return HttpResponse(_('Activation link is invalid!'))
+class ActiveEmail(RedirectView):
+    def get(self, request, *args, **kwargs):
+        try:
+            uid = force_text(urlsafe_base64_decode(self.kwargs.get('uidb64')))
+            user = User.objects.get(pk=uid)
+        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+        activation_token = account_activation_token.check_token(user, self.kwargs.get('token'))
+        if user is not None and activation_token:
+            user.is_active = True
+            user.save()
+            login(request, user)
+            return redirect('siteview:home')
+        else:
+            return HttpResponse(_('Activation link is invalid!'))
 
 
 class SignOutView(LogoutView):
@@ -75,6 +77,7 @@ class ChangePasswordView(FormView):
             user = User.objects.get(pk=self.kwargs.get('pk'))
         except User.DoesNotExist:
             return HttpResponse(status=404)
-        user.set_password(form.cleaned_data.get('password'))
+        password = self.request.POST.get('password2')
+        user.set_password()
         user.save()
         return redirect('siteview:home')
