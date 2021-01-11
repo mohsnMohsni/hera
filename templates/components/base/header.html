@@ -47,11 +47,11 @@
                 {% if user.is_authenticated %}
                     <a href="#" class="nav-link nav-link-hover">{{ user.full_name|title }}</a>
                     <span class="nav-link mx-3 mx-lg-0">/</span>
-                    <a href="{% url 'account:logout' %}" class="nav-link nav-link-hover">Logout</a>
+                    <a href="{% url 'account:logout' %}" class="nav-link nav-link-hover">Sign Out</a>
                 {% else %}
-                    <a href="{% url 'account:register' %}" class="nav-link nav-link-hover">Register</a>
+                    <a href="{% url 'account:register' %}" class="nav-link nav-link-hover">Sign Up</a>
                     <span class="nav-link mx-3 mx-lg-0">/</span>
-                    <a href="{% url 'account:login' %}" class="nav-link nav-link-hover">Login</a>
+                    <a href="{% url 'account:login' %}" class="nav-link nav-link-hover">Sign In</a>
                 {% endif %}
                 <a class="nav-link border-left ml-2 pl-2" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"

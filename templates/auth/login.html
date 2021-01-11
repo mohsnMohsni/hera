@@ -32,11 +32,11 @@
             <ul class="text-muted d-flex align-items-center flex-column">
                 <li>
                     <span>Forgot</span>
-                    <a href="#" class="text-decoration-none">Username / Password?</a>
+                    <a href="{% url 'account:change_password' %}" class="text-decoration-none">Username / Password?</a>
                 </li>
                 <li>
                     <span>Don’t have an account?</span>
-                    <a href="#" class="text-decoration-none">Sign up</a>
+                    <a href="{% url 'account:register' %}" class="text-decoration-none">Sign up</a>
                 </li>
             </ul>
 

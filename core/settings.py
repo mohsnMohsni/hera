@@ -137,8 +137,6 @@ USE_TZ = True
 
 # Auth Config
 AUTH_USER_MODEL = 'app_account.User'
-# LOGIN_URL = 'account:login'
-# LOGIN_REDIRECT_URL = ''
 
 
 # Static Config
@@ -150,9 +148,15 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Email Config
 try:
     config('IS_LOCAL')
-    pass
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = config('EMAIL_HOST', cast=str)
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = config('EMAIL_PORT', cast=int)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 except UndefinedValueError:
     pass
 

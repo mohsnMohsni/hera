@@ -1,0 +1,11 @@
+<h1>{{ domain }} | SHOP</h1>
+
+Hello, {{ user.full_name }}
+
+Now you can click on this link for active your account:
+
+Current Link: <a>http://{{ domain }}{% url 'account:active' uidb64=uid token=token %}</a>
+
+Be successful.
+
+

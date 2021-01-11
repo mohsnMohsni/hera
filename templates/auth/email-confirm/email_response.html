@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}sending email is successful{% endblock title %}
+
+{% block content %}
+
+    <main>
+        <main style="height: 70vh;" class="d-flex justify-content-center align-items-center">
+            <div class="text-muted font-weight-bold display-4">
+                Email sent successful.
+                <div>
+                    <a href="{% url 'siteview:home' %}" class="btn btn-danger">
+                        Back to home
+                    </a>
+                </div>
+            </div>
+        </main>
+    </main>
+
+{% endblock content %}

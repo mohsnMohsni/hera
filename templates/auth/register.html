@@ -1,40 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Login {% endblock title %}
+{% block title %} Sign Up {% endblock title %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'auth/main.css' %}"> {% endblock extra_css %}
 {% block content %}
     <main class="login-main d-flex justify-content-center align-items-center">
         <div class="w-50">
+
             <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
-            <form class="my-2">
+
+            <form class="my-2" method="post" action="{% url 'account:register' %}">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert-danger">
+                    {{ form.errors }}
+                    </div>
+                {% endif %}
                 <div class="d-flex align-items-center flex-column">
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
-                        <input type="email" name="email" class="w-100 auth-input" required>
+                        {{ form.email }}
                         <span class="input-placeholder">Email</span>
                         <span class="input-border"></span>
                     </div>
-
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
-                        <input type="password" name="pass" class="w-100 auth-input" required>
+                        {{ form.full_name }}
+                        <span class="input-placeholder">Name</span>
+                        <span class="input-border"></span>
+                    </div>
+                    <div class="my-3 d-flex justify-content-center w-50 position-relative">
+                        {{ form.password }}
                         <span class="input-placeholder">Password</span>
+                        <span class="input-border"></span>
+                    </div>
+                    <div class="my-3 d-flex justify-content-center w-50 position-relative">
+                        {{ form.password2 }}
+                        <span class="input-placeholder">Confirm Password</span>
                         <span class="input-border"></span>
                     </div>
                 </div>
                 <div class="my-3 d-flex justify-content-center">
-                    <button class="btn btn-success rounded-pill w-50">Login</button>
+                    <button class="btn btn-success rounded-pill w-50">Sing Up</button>
                 </div>
             </form>
+
             <ul class="text-muted d-flex align-items-center flex-column">
                 <li>
-                    <span>Forgot</span>
-                    <a href="#" class="text-decoration-none">Username / Password?</a>
-                </li>
-                <li>
-                    <span>Don’t have an account?</span>
-                    <a href="#" class="text-decoration-none">Sign up</a>
+                    <span>Do you have an account?</span>
+                    <a href="{% url 'account:login' %}" class="text-decoration-none">Sign In</a>
                 </li>
             </ul>
+
         </div>
     </main>
 {% endblock content %}
