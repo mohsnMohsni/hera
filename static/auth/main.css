@@ -21,6 +21,7 @@
 .auth-input:focus + .input-placeholder,
 .auth-input:valid + .input-placeholder {
     transform: translateY(-130%);
+    font-size: 0.8em;
 }
 
 .input-border {

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Logout {% endblock title %}
+{% block content %}
+    <main style="height: 70vh;" class="d-flex justify-content-center align-items-center">
+        <div class="text-muted font-weight-bold display-4">
+            Sign out have been successful.
+            <div>
+                <a href="{% url 'siteview:home' %}" class="btn btn-danger">
+                    Back to home
+                </a>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
