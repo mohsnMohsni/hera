@@ -1,0 +1,8 @@
+IS_LOCAL=sample
+SECRET_KEY=sample
+DEBUG=sample
+EMAIL_HOST=sample
+EMAIL_PORT=sample
+EMAIL_HOST_USER=sample
+EMAIL_HOST_PASSWORD=sample
+

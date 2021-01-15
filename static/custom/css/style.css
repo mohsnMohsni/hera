@@ -1,3 +1,4 @@
+/* ================================================ Base */
 body,
 html,
 * {
@@ -10,30 +11,13 @@ ul {
     list-style: none;
 }
 
-.footer-detail {
-    background-color: #343A40;
-}
-
-.nav-link-hover {
-    border-bottom: 2px solid transparent;
-}
-
-.nav-link-hover:hover {
-    border-bottom: 2px solid #ff5757;
+.text-danger {
+    color: #ff5757 !important;
 }
 
 .btn-outline-danger {
     color: #ff5757;
     border-color: #ff5757;
-}
-
-.text-danger {
-    color: #ff5757 !important;
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: 900;
 }
 
 .rounded {
@@ -44,14 +28,43 @@ ul {
     padding: 1.5rem 2rem;
 }
 
+.bg-danger {
+    background-color: #EF394E !important;
+}
+
+/* ============================================== Header */
+.shop-basket {
+    fill: #95a5a6;
+}
+
+svg:hover .shop-basket {
+    fill: #ff0202;
+}
+
+.nav-link-hover:hover {
+    border-bottom: 2px solid #ff5757;
+}
+
+.nav-link-hover {
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+/* ============================================== Footer */
+.footer-detail {
+    background-color: #343A40;
+}
+
 .section-one-card {
     background-size: cover;
     border-radius: .9rem;
 }
 
-.bg-danger {
-    background-color: #EF394E !important;
-}
+/* ============================================ Sections */
 
 .slide-show {
     display: flex;

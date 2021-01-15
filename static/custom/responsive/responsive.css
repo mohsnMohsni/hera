@@ -1,0 +1,16 @@
+@media screen and (max-width: 768px){
+    .header-search {
+        justify-content: center !important;
+    }
+    .navbar-brand {
+        text-align: center !important;
+    }
+    .navbar-nav {
+        justify-content: center !important;
+    }
+}
+@media screen and (max-width: 418px){
+    .navbar-nav {
+        font-size: .8em;
+    }
+}
