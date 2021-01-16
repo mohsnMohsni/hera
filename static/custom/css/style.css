@@ -59,12 +59,20 @@ svg:hover .shop-basket {
     background-color: #343A40;
 }
 
+.footer-item {
+    font-size: 0.8em;
+}
+
+/* ============================================ Sections */
+
 .section-one-card {
     background-size: cover;
     border-radius: .9rem;
 }
 
-/* ============================================ Sections */
+.action-text {
+    font-size: .8em;
+}
 
 .slide-show {
     display: flex;

@@ -12,7 +12,7 @@ class AbstractPanel(models.Model):
     cropping = ImageRatioField('image', '430x360', size_warning=True)
     action_text = models.CharField(_('Action Text'), max_length=35)
     action_url = models.URLField(_('Action Url'))
-    description = models.CharField(_('Description'), max_length=120)
+    description = models.CharField(_('Description'), max_length=150)
 
     class Meta:
         abstract = True
