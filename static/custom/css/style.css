@@ -140,13 +140,13 @@ svg:hover .shop-basket {
 
 .product-detail {
     display: flex;
+    color: black;
     justify-content: center;
-    background: rgba(255, 0, 0, 0.5);
+    background: rgb(255,193,7);
 }
 
 .product-detailbox {
     height: 400px;
-    padding: 40px;
     position: relative;
     left: -20px;
 }
@@ -165,7 +165,7 @@ svg:hover .shop-basket {
 }
 
 .product-container {
-    height: 65vh;
+    min-height: 65vh;
 }
 
 .basket-item {
