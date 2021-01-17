@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar  navbar-light row m-0">
+    <nav class="navbar navbar-light row m-0 px-1 px-md-3">
         <div class="col-md-7">
             <span class="navbar-brand text-danger w-100">Shop</span>
         </div>
@@ -51,7 +51,7 @@
                 </a>
             {% else %}
                 <a href="{% url 'account:register' %}" class="nav-link nav-link-hover">Sign Up</a>
-                <span class="nav-link mx-3 mx-lg-0">/</span>
+                <span class="nav-link mx-3">/</span>
                 <a href="{% url 'account:login' %}" class="nav-link nav-link-hover">Sign In</a>
             {% endif %}
             <a class="nav-link border-left ml-2 pl-2" href="#">

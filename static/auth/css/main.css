@@ -2,6 +2,10 @@
     min-height: 70vh;
 }
 
+.auth-container {
+    width: 50%;
+}
+
 .auth-display {
     font-size: 2rem;
 }

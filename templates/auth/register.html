@@ -2,10 +2,12 @@
 {% load static %}
 {% block title %} Sign Up {% endblock title %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'auth/main.css' %}"> {% endblock extra_css %}
+    <link rel="stylesheet" href="{% static 'auth/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'auth/responsive/responsive.css' %}">
+{% endblock extra_css %}
 {% block content %}
     <main class="auth-main d-flex justify-content-center align-items-center">
-        <div class="w-50">
+        <div class="auth-container">
 
             <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
 
