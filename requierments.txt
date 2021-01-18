@@ -1,10 +1,12 @@
 asgiref==3.3.1
 Django==3.1.4
 django-appconf==1.0.4
+django-filter==2.4.0
 django-image-cropping==1.5.0
+djangorestframework==3.12.2
 easy-thumbnails==2.7.1
+Markdown==3.3.3
 Pillow==8.0.1
-pkg-resources==0.0.0
 python-decouple==3.3
 pytz==2020.5
 six==1.15.0

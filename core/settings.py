@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # ThirdParty Apps
     'easy_thumbnails',
     'image_cropping',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +139,6 @@ USE_TZ = True
 # Auth Config
 AUTH_USER_MODEL = 'app_account.User'
 
-
 # Static Config
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'assets'
@@ -165,3 +165,12 @@ THUMBNAIL_PROCESSORS = (
                            'image_cropping.thumbnail_processors.crop_corners',
                        ) + ThumbnailSettings.THUMBNAIL_PROCESSORS
 IMAGE_CROPPING_SIZE_WARNING = True
+
+# Rest Framework Config
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
