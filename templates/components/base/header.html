@@ -3,8 +3,10 @@
         <div class="col-md-7">
             <span class="navbar-brand text-danger w-100">Shop</span>
         </div>
-        <form class="form-inline p-0 col-10 col-md-5 d-flex justify-content-end header-search">
-            <input class="form-control mr-2 w-50" type="search" placeholder="Search key" aria-label="Search"/>
+        <form class="form-inline p-0 col-10 col-md-5 d-flex justify-content-end header-search"
+              method="get" action="{% url 'product:search' %}">
+            <input class="form-control mr-2 w-50" type="search"
+                   placeholder="Search key" aria-label="Search" name="search"/>
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
                 Search
             </button>

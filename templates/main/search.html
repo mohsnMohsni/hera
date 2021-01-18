@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
-{% block title %} Category | {{ category.name }} {% endblock title %}
+{% block title %} Search | {{ search_key }} {% endblock title %}
 {% block content %}
     <main>
         <div class="jumbotron m-0" style="min-height: 70vh;">
             <div class="text-center">
-                <span class="h6">Category:</span> <span class="badge badge-danger">{{ category.name|title }}</span>
+                <span class="h6">Search Result For:</span>
+                <span class="badge badge-danger">{{ search_key }}</span>
             </div>
             <hr>
             <div class="card-group d-flex justify-content-around align-content-between flex-wrap">
-                {% for product in products %}
+                {% for product in product_list %}
                     <div class="card text-white bg-dark my-2" style="max-width: 18rem;">
                         <div class="card-header">
                             <img src="{{ product.image.url }}" alt="" width="100%" height="300px">
@@ -27,12 +28,47 @@
                             </div>
                         </div>
                     </div>
+
                 {% empty %}
                     <div class="d-flex justify-content-center align-items-center text-muted display-3"
                          style="height: 50vh;">
                         There is No product yet.
                     </div>
                 {% endfor %}
+            </div>
+            <!-- Paginate -->
+            <div class="d-flex justify-content-center mt-5 mb-2">
+                {% if page_obj.has_next or page_obj.has_previous %}
+                    <span>
+                {% if page_obj.has_previous %}
+                    <a href="?search={{ search_key }}&page=1"
+                       class="badge badge-secondary">
+                        first
+                    </a>
+                    -
+                    <a href="?search={{ search_key }}&page={{ page_obj.previous_page_number }}"
+                       class="badge badge-danger">
+                        previous
+                    </a>
+                {% endif %}
+
+                        <span class="text-muted">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?search={{ search_key }}&page={{ page_obj.next_page_number }}"
+                               class="badge badge-danger">
+                            next
+                        </a>
+                            -
+                            <a href="?search={{ search_key }}&page={{ page_obj.paginator.num_pages }}"
+                               class="badge badge-secondary">
+                            last
+                        </a>
+                        {% endif %}
+            </span>
+                {% endif %}
             </div>
         </div>
     </main>
