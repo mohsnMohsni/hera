@@ -32,7 +32,8 @@ class GalleryAdmin(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('brand', 'category', 'name', 'picture')
-    list_per_page = 10
+    prepopulated_fields = {'slug': ('name',)}
+    list_per_page = 8
     list_filter = ('brand',)
     search_fields = ('name', 'detail')
     inlines = [
@@ -46,13 +47,14 @@ class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
 @admin.register(Brand)
 class BrandAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('name', 'picture')
-    list_per_page = 10
+    list_per_page = 8
 
 
 @admin.register(Category)
 class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('name', 'slug', 'parent', 'picture')
-    list_per_page = 10
+    prepopulated_fields = {'slug': ('name',)}
+    list_per_page = 8
     list_editable = ('parent',)
 
 
@@ -64,5 +66,6 @@ class ShopProductAdmin(admin.TabularInline):
 @admin.register(Shop)
 class ShopAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('name', 'slug', 'picture')
-    list_per_page = 10
+    prepopulated_fields = {'slug': ('name',)}
+    list_per_page = 8
     inlines = [ShopProductAdmin]

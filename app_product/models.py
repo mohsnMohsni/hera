@@ -141,6 +141,10 @@ class Category(AbstractDetail):
             self._crop_image()
         return super(Category, self).save(*args, **kwargs)
 
+    @property
+    def get_children(self):
+        return self.children.all()
+
 
 class Gallery(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name=_('Product'),
