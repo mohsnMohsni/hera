@@ -1,18 +1,25 @@
 from django.db.models import Q
 from django.views.generic import DetailView, ListView
 from .models import Category, Product
+from django.shortcuts import get_object_or_404
 
 
-class CategoryDetail(DetailView):
+class CategoryDetail(ListView):
     model = Category
+    paginate_by = 8
+    slug_url_kwarg = 'slug'
     template_name = 'main/category.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
-        products = Product.objects.prefetch_related(
-            'shop_product'
-        ).filter(category=context.get('category'))[:8]
-        context['products'] = products
+        slug = self.kwargs.get(self.slug_url_kwarg)
+        category = get_object_or_404(self.model, slug=slug)
+        context['category'] = category
+        context['products'] = Product.objects.filter(
+            Q(category=category) |
+            Q(category__parent=category) |
+            Q(category__parent__parent=category)
+        )[:8]
         return context
 
 

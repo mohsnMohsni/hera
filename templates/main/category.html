@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Category | {{ category.name }} {% endblock title %}
+{% block title %} Category | {{ category.name|title }} {% endblock title %}
 {% block content %}
     <main>
         <div class="jumbotron m-0" style="min-height: 70vh;">
@@ -34,6 +34,8 @@
                     </div>
                 {% endfor %}
             </div>
+            <!-- Paginate -->
+            {% include 'components/main/pagination.html' %}
         </div>
     </main>
 {% endblock content %}
