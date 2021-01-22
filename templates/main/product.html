@@ -18,16 +18,31 @@
                         Category: {{ product.category }}
                     </div>
                     <div class="product-detail py-2">
-                        Shop: {{ product.shop_product.shop }}NOne
+                        Shop: {{ product.get_shop_products.first.shop }}
                     </div>
                     <div class="product-detail py-2">
                         Detail: {{ product.detail }}
                     </div>
                     <div class="product-detail py-2">
-                        Price: {{ product.shop_product.price }}NOne
+                        Price: {{ product.get_shop_products.first.price }}$
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="d-flex justify-content-center align-items-center jumbotron m-0 border">
+        <div class="w-75">
+            <ul class="list-group">
+                {% for shop_product in product.get_shop_products|slice:"1:" %}
+                    <li class="list-group-item my-1">
+                        Cras justo odio
+                    </li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item ">Vestibulum at eros</li>
+                {% endfor %}
+            </ul>
         </div>
     </section>
 {% endblock content %}

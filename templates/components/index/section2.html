@@ -1,27 +1,71 @@
-{% if best_shops %}
-    <section class="bg-danger row m-0 py-3 px-2">
-        <div class="col-md-3 d-flex justify-content-center align-items-center flex-column">
-            <div class="text-light display-4">Best Shops</div>
-            <span class="text-light w-75">There is The best shop which have most popular products.</span>
-        </div>
-        <div class="col-12 col-md-9 cards-parent my-2 my-md-0">
-            <div class="card-group">
-                {% for shop in best_shops %}
-                    <div class="card card-hover mx-1">
-                        <a href="" class="stretched-link" type=""></a>
-                        <img src="{{ shop.image.url }}" style="height: 400px"
-                             class="card-img-top" alt=""/>
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">{{ shop.name }}</h5>
-                            <p class="card-text">{{ shop.description|truncatechars:50 }}</p>
-                            <p class="card-text">
-                                <small class="text-muted">{{ shop.detail }}</small>
-                            </p>
-                        </div>
-                    </div>
-                {% endfor %}
-
+{% load static %}
+<section class="popular-deals section bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Trending</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.
+                    </p>
+                </div>
             </div>
         </div>
-    </section>
-{% endif %}
+        <div class="row">
+            <!-- offer 01 -->
+            <div class="col-lg-12">
+                <div class="trending-ads-slide">
+
+                    {% for slide in slides %}
+                        <div class="col-sm-12 col-lg-4">
+                            <!-- product card -->
+                            <div class="product-item bg-light">
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <a href="single.html">
+                                            <img class="card-img-top img-fluid" style="height: 240px !important;"
+                                                 src="{{ slide.image.url }}"
+                                                 alt="Card image cap">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="single.html">{{ slide.title|title|truncatechars:25 }}</a>
+                                        </h4>
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <a href="single.html">
+                                                    <i class="fa fa-folder-open-o"></i>Electronics
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#">
+                                                    <i class="fa fa-calendar"></i>26th December
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            Explicabo, aliquam!
+                                        </p>
+                                        <div class="product-ratings">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

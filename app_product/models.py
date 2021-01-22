@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.html import format_html
 from image_cropping import ImageRatioField
 from PIL import Image
+from .utils import make_flat_list
 
 User = get_user_model()
 
@@ -49,6 +50,10 @@ class Product(AbstractDetail):
 
     def __str__(self):
         return self.name
+
+    @property
+    def get_shop_products(self):
+        return self.shop_product.filter(quantity__gt=0).order_by('quantity')
 
     def picture(self):
         """ Return a html tag that have an image tag. """
@@ -143,7 +148,25 @@ class Category(AbstractDetail):
 
     @property
     def get_children(self):
-        return self.children.all()
+        object_list = list()
+        current_parent = self.children.all()
+        while current_parent.exists():
+            object_list.append(current_parent)
+            id_list = current_parent.values_list('id', flat=True)
+            current_parent = Category.objects.filter(parent_id__in=id_list)
+        output = list()
+        make_flat_list(object_list, output)
+        return output
+
+    @property
+    def get_products(self):
+        children_list = self.get_children
+        products_list = list()
+        for child in children_list:
+            products_list.append(child.product.all())
+        output = list()
+        make_flat_list(products_list, output)
+        return output
 
 
 class Gallery(models.Model):

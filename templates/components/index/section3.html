@@ -1,20 +1,50 @@
-<section class="p-2 p-md-4">
-    <div class="row row-cols-1 row-cols-md-3">
-        {% for category in category_list %}
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <img src="{{ category.image.url }}" height="300"
-                         class="card-img-top" alt=""/>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ category.name }}</h5>
-                        <p class="card-text">{{ category.detail }}</p>
-                        <div class="my-2">
-                            <a href="{% url 'product:category' category.slug %}"
-                               class="action-btn">see more</a>
+<section class=" section">
+    <!-- Container Start -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section title -->
+                <div class="section-title">
+                    <h2>All Categories</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
+                </div>
+                <div class="row">
+                    <!-- Category list -->
+                    {% for category in categories %}
+                        <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                            <div class="category-block">
+                                <div class="header">
+                                    <i class="fa fa-laptop icon-bg-1"></i>
+                                    <h4>{{ category.name|title }}</h4>
+                                </div>
+                                <ul class="category-list">
+                                    <li>
+                                        <a href="{% url 'product:category' category.slug %}">
+                                            Products <span>{{ category.get_products|length }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'product:category' category.slug %}">
+                                            Subcategory <span>{{ category.get_children|length }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'product:category' category.slug %}">
+                                            Buyers <span>{{ category.product.all.count }}</span>
+                                        </a></li>
+                                    <li>
+                                        <a href="{% url 'product:category' category.slug %}">
+                                            Detail <span>{{ category.detail }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
+    <!-- Container End -->
 </section>
