@@ -162,6 +162,7 @@ class Category(AbstractDetail):
     def get_products(self):
         children_list = self.get_children
         products_list = list()
+        products_list.append(self.product.all())
         for child in children_list:
             products_list.append(child.product.all())
         output = list()

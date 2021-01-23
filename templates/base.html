@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Classimax</title>
+    <title>Classimax | {% block title %} {% endblock title %}</title>
 
     <!-- FAVICON -->
     <link href="img/favicon.png" rel="shortcut icon">
@@ -26,7 +26,7 @@
     <link href="{% static 'plugins/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
-
+    {% block extra_css %} {% endblock extra_css %}
 </head>
 
 <body class="body-wrapper">

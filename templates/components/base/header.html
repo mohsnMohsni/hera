@@ -15,7 +15,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto main-nav ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="{% url 'siteview:home' %}">Home</a>
                             </li>
                             <li class="nav-item dropdown dropdown-slide">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i
@@ -64,15 +64,19 @@
                                 </div>
                             </li>
                         </ul>
-                        <ul class="navbar-nav ml-auto mt-10">
-                            <li class="nav-item">
-                                <a class="nav-link login-button" href="login.html">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                        class="fa fa-plus-circle"></i> Add Listing</a>
-                            </li>
-                        </ul>
+                        {% if user.is_authenticated %}
+                            {{ user.full_name|capfirst }}
+                        {% else %}
+                            <ul class="navbar-nav ml-auto mt-10">
+                                <li class="nav-item">
+                                    <a class="nav-link login-button" href="{% url 'account:login' %}">Sign In</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white add-button" href="{% url 'account:register' %}"><i
+                                            class="fa fa-plus-circle"></i> Sing Up</a>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </div>
                 </nav>
             </div>
