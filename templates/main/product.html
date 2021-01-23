@@ -1,48 +1,86 @@
 {% extends 'base.html' %}
-{% block title %} Product | {{ product.name }} {% endblock title %}
+{% block title %} Product-{{ product.name }} {% endblock title %}
 {% block content %}
-    <section class="d-flex justify-content-center align-items-center jumbotron m-0">
-        <div class="w-75 d-flex row align-items-center product-container">
-            <div class="col-lg-6 product-image my-2">
-                <img src="{{ product.image.url }}" alt="" width="100%" height="350px">
-            </div>
-            <div class="col-lg-6 bg-dark text-white product-detailbox my-2 p-3 p-lg-5">
-                <div>
-                    <div class="product-detail py-2">
-                        Name: {{ product.name }}
+    <main>
+        <!--===================================
+        =            Store Section            =
+        ====================================-->
+        {% include 'components/utils/search-bar.html' %}
+
+        <!--===================================
+        =            Store Section            =
+        ====================================-->
+        <section class="section bg-gray">
+            <!-- Container Start -->
+            <div class="container">
+                <div class="row">
+                    <!-- main -->
+                    <div class="col-md-8">
+                        <div class="product-details">
+                            <h1 class="product-title">{{ product.brand|title }} {{ product.name|title }}</h1>
+                            <div class="product-meta">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-user-o"></i> By
+                                        <a href="">Andrew</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-folder-open-o"></i> Category
+                                        <a href="{% url 'product:category' product.category.slug %}">
+                                            {{ product.category|title }}
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-location-arrow"></i> Location
+                                        <a href="">Dhaka Bangladesh</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- product slider -->
+                            <div class="product-slider">
+                                <div class="product-slider-item my-4" data-image="{{ product.image.url }}">
+                                    <img class="img-fluid w-100" src="{{ product.image.url }}"
+                                         alt="product-img" style="height: 400px !important;">
+                                </div>
+                                {% for gallery in product.images.all %}
+                                    <div class="product-slider-item my-4" data-image="{{ gallery.image.url }}">
+                                        <img class="img-fluid w-100" src="{{ gallery.image.url }}"
+                                             alt="product-img" style="height: 400px !important;">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="content mt-5 pt-5">
+                                <ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                                           href="#pills-home" role="tab" aria-controls="pills-home"
+                                           aria-selected="true">Product Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                           href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                           aria-selected="false">Specifications</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
+                                           href="#pills-contact" role="tab" aria-controls="pills-contact"
+                                           aria-selected="false">Reviews</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    {% include 'components/product/detail.html' %}
+                                    {% include 'components/product/specifications.html' %}
+                                    {% include 'components/product/reviews.html' %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-detail py-2">
-                        Brand: {{ product.brand }}
-                    </div>
-                    <div class="product-detail py-2">
-                        Category: {{ product.category }}
-                    </div>
-                    <div class="product-detail py-2">
-                        Shop: {{ product.get_shop_products.first.shop }}
-                    </div>
-                    <div class="product-detail py-2">
-                        Detail: {{ product.detail }}
-                    </div>
-                    <div class="product-detail py-2">
-                        Price: {{ product.get_shop_products.first.price }}$
-                    </div>
+                    <!-- sidebar -->
+                    {% include 'components/product/sidebar.html' %}
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="d-flex justify-content-center align-items-center jumbotron m-0 border">
-        <div class="w-75">
-            <ul class="list-group">
-                {% for shop_product in product.get_shop_products|slice:"1:" %}
-                    <li class="list-group-item my-1">
-                        Cras justo odio
-                    </li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item ">Vestibulum at eros</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
+            <!-- Container End -->
+        </section>
+    </main>
 {% endblock content %}

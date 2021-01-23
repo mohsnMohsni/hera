@@ -1,0 +1,63 @@
+<div class="col-md-4">
+    <div class="sidebar">
+        <div class="widget price text-center">
+            <h4>Price</h4>
+            <p>${{ product.get_shop_products.first.price }}</p>
+        </div>
+        <!-- User Profile widget -->
+        <div class="widget user text-center">
+            <img class="rounded-circle img-fluid mb-5 px-5" style="width: 200px !important; height: 100px !important;"
+                 src="{{ product.get_shop_products.first.shop.image.url }}" alt="">
+            <h4><a href="">{{ product.get_shop_products.first.shop.name|title }}</a></h4>
+            <p class="member-time">{{ product.get_shop_products.first.shop.create_at.date }}</p>
+            <a href="">See other products</a>
+            <ul class="list-inline mt-20">
+                <li class="list-inline-item">
+                    <a href=""
+                       class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href=""
+                       class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Map Widget -->
+        <div class="widget map">
+            <div class="map">
+                <div id="map_canvas" data-latitude="51.507351" data-longitude="-0.127758"></div>
+            </div>
+        </div>
+        <!-- Rate Widget -->
+        <div class="widget rate">
+            <!-- Heading -->
+            <h5 class="widget-header text-center">What would you rate
+                <br>
+                this product</h5>
+            <!-- Rate -->
+            <div class="starrr"></div>
+        </div>
+        <!-- Safety tips widget -->
+        <div class="widget disclaimer">
+            <h5 class="widget-header">Safety Tips</h5>
+            <ul>
+                <li>Meet seller at a public place</li>
+                <li>Check the item before you buy</li>
+                <li>Pay only after collecting the item</li>
+                <li>Pay only after collecting the item</li>
+            </ul>
+        </div>
+        <!-- Coupon Widget -->
+        <div class="widget coupon text-center">
+            <!-- Coupon description -->
+            <p>Have a great product to post ? Share it with
+                your fellow users.
+            </p>
+            <!-- Submii button -->
+            <a href="" class="btn btn-transparent-white">Submit Listing</a>
+        </div>
+
+    </div>
+</div>

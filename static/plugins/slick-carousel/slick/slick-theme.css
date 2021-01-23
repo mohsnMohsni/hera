@@ -202,3 +202,8 @@
     opacity: .75;
     color: black;
 }
+
+.slick-dots li img {
+    width: 100Px !important;
+    height: 100px !important;
+}

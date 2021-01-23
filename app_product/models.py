@@ -243,6 +243,8 @@ class Comment(models.Model):
                                 related_name='comments', related_query_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
                              related_name='comments', related_query_name='comments')
+    create_at = models.DateTimeField(_('Create Date'), auto_now_add=True)
+    update_at = models.DateTimeField(_('Update Date'), auto_now=True)
     text = models.TextField(_('Text'))
     rate = models.IntegerField(_('Rate'))
 

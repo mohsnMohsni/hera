@@ -1,0 +1,63 @@
+<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+     aria-labelledby="pills-contact-tab">
+    <h3 class="tab-title">Product Review</h3>
+    <div class="product-review">
+        {% for comment in product.comments.all %}
+            <div class="media">
+                <!-- Avater -->
+                <img src="images/user/user-thumb.jpg" alt="avater">
+                <div class="media-body">
+                    <!-- Ratings -->
+                    <div class="ratings">
+                        <ul class="list-inline">
+                            {% for rate_number in comment.rate.range %}
+                                <li class="list-inline-item">
+                                    <i class="fa fa-star"></i>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="name">
+                        <h5>{{ comment.user.full_name|title }}</h5>
+                    </div>
+                    <div class="date">
+                        <p>{{ comment.create_at.date }}</p>
+                    </div>
+                    <div class="review-comment">
+                        <p>
+                            {{ comment.text }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="review-submission">
+            <h3 class="tab-title">Submit your review</h3>
+            <!-- Rate -->
+            <div class="rate">
+                <div class="starrr"></div>
+            </div>
+            <div class="review-submit">
+                <form action="#" class="row">
+                    <div class="col-lg-6">
+                        <input type="text" name="name" id="name"
+                               class="form-control" placeholder="Name">
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="email" name="email" id="email"
+                               class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-12">
+                    <textarea name="review" id="review" rows="10"
+                              class="form-control"
+                              placeholder="Message"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-main">Sumbit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
