@@ -6,9 +6,8 @@ User = get_user_model()
 
 
 class Basket(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'),
-                             related_name='basket', related_query_name='basket')
-    send_time = models.DateTimeField(_('Send time'))
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'),
+                                related_name='basket', related_query_name='basket')
 
     class Meta:
         verbose_name = _('Basket')
@@ -16,6 +15,29 @@ class Basket(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    @property
+    def total_price(self):
+        return Basket.objects.filter(user=self.user).aggregate(
+            models.Sum('basket_item__shop_product__price')
+        ).get('basket_item__shop_product__price__sum')
+
+
+class BasketItemManager(models.Manager):
+    def all_unique(self):
+        """
+        Get all basket item and their shop_product's id,
+        then if shop_product.id exists in list return it and pop it's id from shop_product.id list
+        """
+        all_query = self.get_queryset()
+        shop_product_id = list(set(all_query.values_list('shop_product', flat=True)))
+        unique_list = list()
+        for item in all_query:
+            if item.shop_product.id in shop_product_id:
+                unique_list.append(item)
+                i = shop_product_id.index(item.shop_product.id)
+                shop_product_id.pop(i)
+        return unique_list
 
 
 class BasketItem(models.Model):
@@ -25,12 +47,20 @@ class BasketItem(models.Model):
                                      on_delete=models.CASCADE,
                                      related_name='basket_item', related_query_name='basket_item')
 
+    objects = BasketItemManager()
+
     class Meta:
         verbose_name = _('Basket Item')
         verbose_name_plural = _('Basket Items')
 
     def __str__(self):
         return str(self.basket)
+
+    @property
+    def count_same(self):
+        return BasketItem.objects.filter(
+            shop_product=self.shop_product, basket__user=self.basket.user
+        ).count()
 
 
 class Order(models.Model):
