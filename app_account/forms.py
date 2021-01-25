@@ -6,7 +6,7 @@ from .validators import password_validator, name_validator
 
 class SignInForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'w-100 auth-input'
+        'class': 'w-100 auth-input', 'autofocus':''
     }))
     password = forms.CharField(strip=False, widget=forms.PasswordInput(attrs={
         'class': 'w-100 auth-input'
@@ -21,7 +21,7 @@ class SignUpForm(forms.ModelForm):
         model = User
         fields = ('email', 'full_name', 'password')
         widgets = {
-            'email': forms.TextInput(attrs={'class': 'w-100 auth-input'}),
+            'email': forms.TextInput(attrs={'class': 'w-100 auth-input', 'autofocus':''}),
             'password': forms.PasswordInput(attrs={'class': 'w-100 auth-input'}),
             'full_name': forms.TextInput(attrs={'class': 'w-100 auth-input'}),
         }
@@ -40,7 +40,7 @@ class SignUpForm(forms.ModelForm):
 
 class ChangePasswordForm(forms.Form):
     password = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
-        attrs={'class': 'w-100 auth-input'}))
+        attrs={'class': 'w-100 auth-input', 'autofocus':''}))
     password2 = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
         attrs={'class': 'w-100 auth-input'}))
 
