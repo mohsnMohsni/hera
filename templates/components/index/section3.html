@@ -14,7 +14,7 @@
                         <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                             <div class="category-block">
                                 <div class="header">
-                                    <i class="fa fa-laptop icon-bg-1"></i>
+                                    <i class="fa fa-folder icon-bg-{{ forloop.counter }}"></i>
                                     <h4>{{ category.name|title }}</h4>
                                 </div>
                                 <ul class="category-list">
@@ -34,7 +34,7 @@
                                         </a></li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Detail <span>{{ category.detail }}</span>
+                                            Detail <span>{{ category.detail|truncatechars:15 }}</span>
                                         </a>
                                     </li>
                                 </ul>

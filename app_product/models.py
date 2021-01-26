@@ -17,6 +17,7 @@ class AbstractDetail(models.Model):
     image = models.ImageField(_('Image'))
     create_at = models.DateTimeField(_('Create Date'), auto_now_add=True)
     update_at = models.DateTimeField(_('Update Date'), auto_now=True)
+    crop_it = models.BooleanField(_('Crop It'), default=False)
 
     class Meta:
         abstract = True
@@ -41,7 +42,8 @@ class Product(AbstractDetail):
                               related_name='product', related_query_name='product')
     category = models.ForeignKey("Category", on_delete=models.CASCADE, verbose_name=_('Category'),
                                  related_name='product', related_query_name='product')
-    image = models.ImageField(_('Image'), upload_to='product/images', blank=True, null=True)
+    image = models.ImageField(_('Image'), upload_to='product/images', blank=True, null=True,
+                              default='default/default_upload.jpg')
 
     class Meta:
         verbose_name = _('Product')
@@ -68,8 +70,9 @@ class Product(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if Product.objects.filter(image=self.image).exists():
+        if Product.objects.filter(image=self.image).exists() and self.crop_it is True:
             self._crop_image()
+            self.crop_it = False
         return super(Product, self).save(*args, **kwargs)
 
 
@@ -89,7 +92,8 @@ class ProductMeta(models.Model):
 
 class Brand(AbstractDetail):
     slug = None
-    image = models.ImageField(_('Image'), upload_to='brand/images', blank=True)
+    image = models.ImageField(_('Image'), upload_to='brand/images', blank=True,
+                              default='default/default_upload.jpg')
 
     class Meta:
         verbose_name = _('Brand')
@@ -111,8 +115,9 @@ class Brand(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if Brand.objects.filter(image=self.image).exists():
+        if Brand.objects.filter(image=self.image).exists() and self.crop_it is True:
             self._crop_image()
+            self.crop_it = False
         return super(Brand, self).save(*args, **kwargs)
 
 
@@ -120,7 +125,8 @@ class Category(AbstractDetail):
     parent = models.ForeignKey("self", on_delete=models.CASCADE, verbose_name=_('Parent'),
                                blank=True, null=True,
                                related_name='children', related_query_name='children')
-    image = models.ImageField(_('Image'), upload_to='category/images', blank=True)
+    image = models.ImageField(_('Image'), upload_to='category/images', blank=True,
+                              default='default/default_upload.jpg')
 
     class Meta:
         verbose_name = _('Category')
@@ -142,8 +148,9 @@ class Category(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if Category.objects.filter(image=self.image).exists():
+        if Category.objects.filter(image=self.image).exists() and self.crop_it is True:
             self._crop_image()
+            self.crop_it = False
         return super(Category, self).save(*args, **kwargs)
 
     @property
@@ -193,7 +200,8 @@ class Gallery(models.Model):
 
 
 class Shop(AbstractDetail):
-    image = models.ImageField(_('Picture'), upload_to='shop/images', blank=True)
+    image = models.ImageField(_('Picture'), upload_to='shop/images', blank=True,
+                              default='default/default_upload.jpg')
 
     class Meta:
         verbose_name = _('Shop')
@@ -217,8 +225,9 @@ class Shop(AbstractDetail):
         """
         Check if cropping there is, calling crop_image()
         """
-        if Shop.objects.filter(image=self.image).exists():
+        if Shop.objects.filter(image=self.image).exists() and self.crop_it is True:
             self._crop_image()
+            self.crop_it = False
         return super(Shop, self).save(*args, **kwargs)
 
 

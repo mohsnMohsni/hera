@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Basket, BasketItem, Order, OrderItem, Payment
+from .models import Cart, CartItem, Order, OrderItem, Payment
 
 
 class BasketItemAdmin(admin.TabularInline):
-    model = BasketItem
+    model = CartItem
     extra = 0
 
 
-@admin.register(Basket)
+@admin.register(Cart)
 class BasketAdmin(admin.ModelAdmin):
     list_display = ('user',)
     list_per_page = 10

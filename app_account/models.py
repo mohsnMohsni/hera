@@ -38,7 +38,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(_('Name'), max_length=100,
                                  help_text=_('enter your full name'))
     phone = models.IntegerField(_('Phone'), blank=True, default=0)
-    avatar = models.ImageField(_('Avatar'), blank=True, upload_to='user/images')
+    avatar = models.ImageField(_('Avatar'), blank=True, upload_to='user/images',
+                               default='default/default_profile.png')
     is_seller = models.BooleanField(_('User status'), blank=True, default=False)
     is_staff = models.BooleanField(_('Staff status'), default=False,
                                    help_text=_(

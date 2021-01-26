@@ -54,6 +54,7 @@ class BrandAdmin(ImageCroppingMixin, admin.ModelAdmin):
 class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('name', 'slug', 'parent', 'picture')
     prepopulated_fields = {'slug': ('name',)}
+    list_filter = ('parent',)
     list_per_page = 8
     list_editable = ('parent',)
 
