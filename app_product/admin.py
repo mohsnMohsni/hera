@@ -6,26 +6,22 @@ from image_cropping import ImageCroppingMixin
 
 class ProductMetaAdmin(admin.TabularInline):
     model = ProductMeta
-    readonly_fields = ('label', 'value')
     extra = 0
 
 
 class CommentAdmin(admin.TabularInline):
     model = Comment
-    readonly_fields = ('user', 'rate')
     exclude = ('text',)
     extra = 0
 
 
 class LikeAdmin(admin.TabularInline):
     model = Like
-    readonly_fields = ('user', 'condition')
     extra = 0
 
 
 class GalleryAdmin(admin.TabularInline):
     model = Gallery
-    readonly_fields = ('picture',)
     extra = 0
 
 

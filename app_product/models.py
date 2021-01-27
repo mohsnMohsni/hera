@@ -212,7 +212,7 @@ class Shop(AbstractDetail):
 
     def picture(self):
         """
-        Return a html tag that have an image tag.
+        Return a html tag that have an image.
         """
         if self.image:
             return format_html(
@@ -263,6 +263,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def save(self, *args, **kwargs):
+        if self.rate > 5:
+            self.rate = 5
+        elif self.rate < 0:
+            self.rate = 0
+        return super(Comment, self).save(*args, **kwargs)
 
 
 class Like(models.Model):

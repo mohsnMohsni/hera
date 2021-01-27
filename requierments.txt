@@ -5,6 +5,7 @@ Django==3.1.4
 django-appconf==1.0.4
 django-filter==2.4.0
 django-image-cropping==1.5.0
+django-mathfilters==1.0.0
 djangorestframework==3.12.2
 easy-thumbnails==2.7.1
 Markdown==3.3.3
