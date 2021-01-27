@@ -2716,3 +2716,9 @@ form textarea {
 .cart-icon:hover {
     color: #ff3030 !important;
 }
+
+.product-side-option {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5672F9;
+}

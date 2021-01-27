@@ -2,19 +2,18 @@ function setValNull() {
     $("#review").val('');
 }
 
-function getValue() {
-    const productSlug = $('#product-slug').val();
+function getCommentValue() {
+    const productId = $('#product-slug').val();
     const userId = $('#user-id').val();
     const review = $('#review').val();
     const starrr = $('.starrr')[0];
     const star = starrr.getElementsByClassName('fa-star').length;
-    return JSON.stringify({product: productSlug, user: userId, text: review, rate: star});
-
+    return JSON.stringify({product: productId, user: userId, text: review, rate: star});
 }
 
 function sendCommentPromise() {
     return new Promise((resolve, reject) => {
-        let data = getValue()
+        let data = getCommentValue()
         $.ajax({
             type: "POST",
             url: "/shop/add_comment/",
@@ -71,6 +70,48 @@ function sendCommentResponse() {
         .then((response) => {
             addComment(response);
             setValNull();
+        }).catch((error) => {
+        alert(error)
+    })
+}
+
+function getLikeValue() {
+    const productId = $('#product-slug').val();
+    const userId = $('#user-id').val();
+    return JSON.stringify({product: productId, user: userId});
+}
+
+function sendLikePromise() {
+    return new Promise((resolve, reject) => {
+        let data = getLikeValue()
+        $.ajax({
+            type: "POST",
+            url: "/shop/like_product/",
+            data: data,
+            success: function (response) {
+                resolve(response);
+            },
+            fail: function (err) {
+                reject(err);
+            },
+        });
+    });
+}
+
+function setLikeValue(status) {
+    let likeProduct = document.getElementById('like-product');
+    likeProduct.innerHTML = "";
+    if (status === 'True') {
+        likeProduct.innerHTML = '<i class="fa fa-heart"></i>';
+    } else if (status === 'False') {
+        likeProduct.innerHTML = '<i class="fa fa-heart alt-color"></i>';
+    }
+}
+
+function sendLikeResponse() {
+    sendLikePromise()
+        .then((response) => {
+            setLikeValue(response);
         }).catch((error) => {
         alert(error)
     })

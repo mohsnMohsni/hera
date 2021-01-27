@@ -281,7 +281,12 @@ class Like(models.Model):
 
     class Meta:
         verbose_name = _('Like')
-        unique_together = [('user', 'condition')]
+        unique_together = [('user', 'products')]
 
     def __str__(self):
         return str(self.user)
+
+    @property
+    def user_is_liked(self):
+        q = Like.objects.filter(user=self.user, condition=True).values_list('products_id', flat=True)
+        return q

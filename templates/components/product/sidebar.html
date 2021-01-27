@@ -1,3 +1,4 @@
+{% load static %}
 <div class="col-md-4">
     <div class="sidebar">
         <div class="widget price text-center">
@@ -27,7 +28,31 @@
                 <li>Pay only after collecting the item</li>
             </ul>
         </div>
-
+        <!-- Rate Widget -->
+        <div class="widget rate">
+            <div class="d-flex justify-content-center">
+                <span class="py-2 px-5 border product-side-option" id="like-product" onclick="sendLikeResponse()">
+                    {% if product.id in product.likes.all.first.user_is_liked %}
+                        <i class="fa fa-heart"></i>
+                    {% else %}
+                        <i class="fa fa-heart alt-color"></i>
+                    {% endif %}
+                </span>
+                <span class="py-2 px-5 border product-side-option">
+                    <i class="fa fa-share-alt"></i>
+                </span>
+            </div>
+        </div>
+        <!-- Safety tips widget -->
+        <!-- Coupon Widget -->
+        <div class="widget coupon text-center">
+            <a href="#" class="btn btn-transparent-white">
+                Add To Cart
+                <span class="px-2">
+                    <img src="{% static 'images/cart.png' %}" alt="" style="height: 2rem; width: auto">
+                </span>
+            </a>
+        </div>
 
     </div>
 </div>
