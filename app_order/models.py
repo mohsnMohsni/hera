@@ -19,8 +19,8 @@ class Cart(models.Model):
     @property
     def total_price(self):
         return Cart.objects.filter(user=self.user).aggregate(
-            models.Sum('basket_item__shop_product__price')
-        ).get('basket_item__shop_product__price__sum')
+            models.Sum('cart_item__shop_product__price')
+        ).get('cart_item__shop_product__price__sum')
 
 
 class CartItemManager(models.Manager):

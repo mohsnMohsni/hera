@@ -8,6 +8,10 @@
                         {{ category|capfirst }} <span>{{ category.get_products|length }}</span>
                     </a>
                 </li>
+            {% empty %}
+                <li class="text-muted">
+                    <span>There is no subcategory.</span>
+                </li>
             {% endfor %}
         </ul>
     </div>
@@ -20,6 +24,10 @@
                     <a href={% url 'product:category' child.slug %}>
                         {{ child|capfirst }} <span>{{ child.get_products|length }}</span>
                     </a>
+                </li>
+            {% empty %}
+                <li class="text-muted">
+                    <span>There is no subcategory.</span>
                 </li>
             {% endfor %}
         </ul>
@@ -44,34 +52,6 @@
             <div class="d-flex justify-content-between mt-2">
                 <span class="value">$10 - $5000</span>
             </div>
-        </div>
-    </div>
-
-    <div class="widget product-shorting">
-        <h4 class="widget-header">By Condition</h4>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Brand New
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Almost New
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Gently New
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Havely New
-            </label>
         </div>
     </div>
 

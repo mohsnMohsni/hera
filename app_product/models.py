@@ -5,6 +5,7 @@ from django.utils.html import format_html
 from image_cropping import ImageRatioField
 from PIL import Image
 from .utils import make_flat_list
+import math
 
 User = get_user_model()
 
@@ -55,7 +56,14 @@ class Product(AbstractDetail):
 
     @property
     def get_shop_products(self):
+        """
+        Get all shop_products that have this product.
+        """
         return self.shop_product.filter(quantity__gt=0).order_by('quantity')
+
+    @property
+    def rate_avg(self):
+        return math.ceil(self.comments.all().aggregate(models.Avg('rate'))['rate__avg'])
 
     def picture(self):
         """ Return a html tag that have an image tag. """
