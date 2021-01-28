@@ -6,6 +6,10 @@ from django.utils.html import format_html
 
 
 class UserManager(BaseUserManager):
+    """
+    Custom manager for user model that create normal user and super user by get
+    full_name, email, password.
+    """
     def _create_user(self, email, full_name, password, **extra_fields):
         if not email:
             raise ValueError('The given username must be set')
@@ -65,10 +69,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         return str(self.email)
 
     def clean(self):
+        """
+        Make clean the email and make all same pattern.
+        """
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
 
     def profile_picture(self):
+        """
+        Return a html img tag that contain user avatar.
+        """
         if self.avatar:
             return format_html(
                 f'<img src="{self.avatar.url}" width=60 height=50 style="border-radius:50%"/>'

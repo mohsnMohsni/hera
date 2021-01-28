@@ -5,6 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class EmailAdmin(admin.TabularInline):
+    """
+    Tabular inline admin for manage Email model, then add to User admin
+    """
     model = Email
     verbose_name = _('Email')
     verbose_name_plural = _('Emails')
@@ -13,6 +16,9 @@ class EmailAdmin(admin.TabularInline):
 
 
 class AddressAdmin(admin.TabularInline):
+    """
+    Tabular inline admin for manage Address model, then add to User admin
+    """
     model = Address
     verbose_name = _('Address')
     verbose_name_plural = _('Addresses')
@@ -22,6 +28,9 @@ class AddressAdmin(admin.TabularInline):
 
 @admin.register(User)
 class UserAdmin(UserBaseAdmin):
+    """
+    User admin, which to use for mange User data
+    """
     ordering = ('email',)
     list_display = ('profile_picture', 'email', 'is_staff', 'is_active')
     list_per_page = 10

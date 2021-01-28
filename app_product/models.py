@@ -63,6 +63,9 @@ class Product(AbstractDetail):
 
     @property
     def rate_avg(self):
+        """
+        Get average of all rate's in comments.
+        """
         return math.ceil(self.comments.all().aggregate(models.Avg('rate'))['rate__avg'])
 
     def picture(self):
@@ -163,6 +166,11 @@ class Category(AbstractDetail):
 
     @property
     def get_children(self):
+        """
+        Get all children that related to this parent.
+        Get all children id and check if there are exists get their children
+        at the end make flat list and return it.
+        """
         object_list = list()
         current_parent = self.children.all()
         while current_parent.exists():
@@ -175,6 +183,10 @@ class Category(AbstractDetail):
 
     @property
     def get_products(self):
+        """
+        Get all products that's are related to this category
+        or their related to this children
+        """
         children_list = self.get_children
         products_list = list()
         products_list.append(self.product.all())
@@ -198,7 +210,9 @@ class Gallery(models.Model):
         return str(self.product)
 
     def picture(self):
-        """ Return a html tag that have an image tag. """
+        """
+        Return a html tag that have an image tag.
+         """
         if self.image:
             return format_html(
                 f'<img src="{self.image.url}" width=60 height=50 style="border-radius:50%"/>'
@@ -220,7 +234,7 @@ class Shop(AbstractDetail):
 
     def picture(self):
         """
-        Return a html tag that have an image.
+        Return a html tag that have an image tag.
         """
         if self.image:
             return format_html(
@@ -273,6 +287,10 @@ class Comment(models.Model):
         return str(self.user)
 
     def save(self, *args, **kwargs):
+        """
+        Check if rate is more than five, set it to 5
+        or rate is less than zero, set it to 0.
+        """
         if self.rate > 5:
             self.rate = 5
         elif self.rate < 0:
@@ -296,5 +314,8 @@ class Like(models.Model):
 
     @property
     def user_is_liked(self):
+        """
+        Get all product id, which liked by this user.
+        """
         q = Like.objects.filter(user=self.user, condition=True).values_list('products_id', flat=True)
         return q

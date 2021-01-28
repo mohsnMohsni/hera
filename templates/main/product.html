@@ -4,18 +4,16 @@
 {% block content %}
     <main>
         <!--===================================
-        =            Store Section            =
+        =           Search Section            =
         ====================================-->
         {% include 'components/utils/search-bar.html' %}
 
         <!--===================================
-        =            Store Section            =
+        =            Main Section             =
         ====================================-->
         <section class="section bg-gray">
-            <!-- Container Start -->
             <div class="container">
                 <div class="row">
-                    <!-- main -->
                     <div class="col-md-8">
                         <div class="product-details">
                             <h1 class="product-title">{{ product.brand|title }}, {{ product.name|title }}</h1>
@@ -66,8 +64,17 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
+                                    <!--===================================
+                                    =            Detail Section           =
+                                    ====================================-->
                                     {% include 'components/product/detail.html' %}
+                                    <!--===================================
+                                    =        Specification Section        =
+                                    ====================================-->
                                     {% include 'components/product/specifications.html' %}
+                                    <!--===================================
+                                    =           Reviews Section           =
+                                    ====================================-->
                                     {% include 'components/product/reviews.html' %}
                                 </div>
                             </div>
@@ -75,7 +82,6 @@
                     </div>
                     <!-- sidebar -->
                     {% include 'components/product/sidebar.html' %}
-                    <!-- Coupon Widget -->
                 </div>
                 {% if product.shop_product.all.count > 1 %}
                     <div class="mt-5 mb-2 border-bottom text-center text-capitalize h4 p-1 text-muted"

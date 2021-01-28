@@ -10,6 +10,11 @@ User = get_user_model()
 
 @csrf_exempt
 def add_comment(request):
+    """
+    Check method is post and if it is true,
+    get data from request.body and serialize it then check it is valid,
+    at the end save comment and return status=201
+    """
     if request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = CommentSerializer(data=data)
@@ -21,6 +26,12 @@ def add_comment(request):
 
 @csrf_exempt
 def like_product(request):
+    """
+    Check method is post and if it is true,
+    get data from request.body then get product and user,
+    if user like it change the current status if not create new and
+    set status True.
+    """
     if request.method == 'POST':
         data = JSONParser().parse(request)
         product = Product.objects.get(id=data.get('product'))

@@ -18,6 +18,10 @@ class Cart(models.Model):
 
     @property
     def total_price(self):
+        """
+        Return total price off all products add to this cart
+        and that's related to User have been send request.
+        """
         return Cart.objects.filter(user=self.user).aggregate(
             models.Sum('cart_item__shop_product__price')
         ).get('cart_item__shop_product__price__sum')
@@ -58,6 +62,10 @@ class CartItem(models.Model):
 
     @property
     def count_same(self):
+        """
+        Return quantity of this item, which there is in the cart
+        that's related to user have been send request.
+        """
         return CartItem.objects.filter(
             shop_product=self.shop_product, basket__user=self.basket.user
         ).count()

@@ -18,8 +18,8 @@ class SlideShowImage(models.Model):
     end_time = models.DateTimeField(_('End At'))
 
     class Meta:
-        verbose_name = _('Slide Images')
-        verbose_name_plural = _('Slide Images')
+        verbose_name = _('Slide Show')
+        verbose_name_plural = _('Slide Shows')
 
     def __str__(self):
         return self.title

@@ -28,6 +28,10 @@ class SignUpView(CreateView):
     template_name = 'auth/register.html'
 
     def form_valid(self, form):
+        """
+        If form is valid, hash password and save user then send mail to
+        user.email field that user had enter to validate email and active user
+        """
         obj = form.save(commit=False)
         obj.set_password(obj.password)
         obj.save()
@@ -48,6 +52,11 @@ class SignUpView(CreateView):
 
 
 class ActiveEmail(RedirectView):
+    """
+    A link has been sent to user with valid token and if user click on it
+    this function run and get token from url and check it,
+    if it is valid make True the user.is_active field and make active the user.
+    """
     def get(self, request, *args, **kwargs):
         try:
             uid = force_text(urlsafe_base64_decode(self.kwargs.get('uidb64')))
@@ -73,11 +82,14 @@ class ChangePasswordView(FormView):
     template_name = 'auth/change_password.html'
 
     def form_valid(self, form):
+        """
+        If form is valid get user and set new password,
+        at the end redirect to home.
+        """
         try:
             user = User.objects.get(pk=self.kwargs.get('pk'))
         except User.DoesNotExist:
             return HttpResponse(status=404)
-        password = self.request.POST.get('password2')
         user.set_password()
         user.save()
         return redirect('siteview:home')

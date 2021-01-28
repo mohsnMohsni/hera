@@ -12,6 +12,9 @@ class CategoryDetail(ListView):
     template_name = 'main/category.html'
 
     def get_queryset(self):
+        """
+        Get slug and then get category by slug, then get all products and return its.
+        """
         slug = self.kwargs.get(self.slug_url_kwarg)
         category = get_object_or_404(Category, slug=slug)
         self.kwargs['category'] = category
