@@ -12,7 +12,3 @@ class HomeView(TemplateView):
         context['best_shops'] = Shop.objects.all()[:3]
         context['categories'] = Category.objects.filter(parent=None)
         return context
-
-
-class SearchView(TemplateView):
-    template_name = 'main/search.html'
