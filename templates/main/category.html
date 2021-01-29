@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% load mathfilters %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
+{% endblock extra_css %}
+
 {% block title %} Category-{{ category.name|title }} {% endblock title %}
+
 {% block content %}
     <main>
         <!--============================
@@ -102,3 +111,7 @@
         </section>
     </main>
 {% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'custom/js/utils-ajax.js' %}"></script>
+{% endblock extra_js %}

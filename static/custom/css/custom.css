@@ -1,0 +1,14 @@
+#response-visual {
+    padding: 20px;
+    left: -10px;
+    width: 100%;
+    background-color: white;
+    max-height: 70vh;
+    overflow: auto;
+    color: #5672F9;
+    position: absolute;
+    transition: all 4s ease;
+    z-index: 5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    display: none;
+}

@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %} Home {% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
     <main>
@@ -25,3 +31,7 @@
         {% include 'components/index/section4.html' %}
     </main>
 {% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'custom/js/utils-ajax.js' %}"></script>
+{% endblock extra_js %}

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Product-{{ product.name }} {% endblock title %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
+{% endblock extra_css %}
 {% block content %}
     <main>
         <!--===================================
@@ -112,5 +115,6 @@
     </main>
 {% endblock content %}
 {% block extra_js %}
-    <script src="{% static 'custom/js/ajax-api.js' %}"></script>
+    <script src="{% static 'custom/js/product-ajax.js' %}"></script>
+    <script src="{% static 'custom/js/utils-ajax.js' %}"></script>
 {% endblock extra_js %}

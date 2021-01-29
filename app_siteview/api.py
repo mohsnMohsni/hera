@@ -14,7 +14,7 @@ def search(request):
     If values is empty return empty list.
     """
     if request.method == 'POST':
-        product_value = request.POST.get('product')
+        product_value = request.POST.get('product_value', '')
         if product_value != "":
             products = Product.objects.filter(
                 Q(name__icontains=product_value) | Q(category__name__icontains=product_value) |
@@ -23,7 +23,7 @@ def search(request):
         else:
             products = []
         products = ProductSearchSerializer(products, many=True)
-        category_value = request.POST.get('product')
+        category_value = request.POST.get('category_value', '')
         if category_value != "":
             categories = Category.objects.filter(
                 Q(name__icontains=category_value) | Q(slug__icontains=category_value) |
