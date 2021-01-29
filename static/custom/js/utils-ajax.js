@@ -34,7 +34,6 @@ function searchPromise() {
 function searchResponse() {
     searchPromise()
         .then((response) => {
-            console.log(response);
             searchResponseVisual(response)
         })
         .catch((error) => {

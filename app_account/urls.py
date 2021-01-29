@@ -8,5 +8,5 @@ urlpatterns = [
     path('logout/', SignOutView.as_view(), name='logout'),
     path('register/', SignUpView.as_view(), name='register'),
     path('active_email/<uidb64>/<token>/', ActiveEmail.as_view(), name='active'),
-    path('change_password/<int:pk>/', ChangePasswordView.as_view(), name='change_password')
+    path('change_password/', ChangePasswordView.as_view(), name='change_password')
 ]

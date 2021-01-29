@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'image_cropping',
     'rest_framework',
     'mathfilters',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,7 @@ USE_TZ = True
 
 
 # Auth Config
+LOGIN_URL = 'account:login'
 AUTH_USER_MODEL = 'app_account.User'
 
 # Static Config

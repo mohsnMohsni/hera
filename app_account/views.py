@@ -1,17 +1,18 @@
-from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import reverse, redirect, render
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import CreateView, FormView, RedirectView
 from .forms import SignInForm, SignUpForm, ChangePasswordForm
-from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.core.mail import EmailMessage
-from .tokens import account_activation_token
-from django.contrib.auth import login
-from .models import User
-from django.http import HttpResponse
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import reverse, redirect, render
+from django.template.loader import render_to_string
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+from django.contrib.auth import login
+from django.http import HttpResponse
+from .models import User
 
 
 class SignInView(LoginView):
@@ -77,7 +78,7 @@ class SignOutView(LogoutView):
     template_name = 'auth/logout.html'
 
 
-class ChangePasswordView(FormView):
+class ChangePasswordView(LoginRequiredMixin, FormView):
     form_class = ChangePasswordForm
     template_name = 'auth/change_password.html'
 
@@ -86,10 +87,8 @@ class ChangePasswordView(FormView):
         If form is valid get user and set new password,
         at the end redirect to home.
         """
-        try:
-            user = User.objects.get(pk=self.kwargs.get('pk'))
-        except User.DoesNotExist:
-            return HttpResponse(status=404)
-        user.set_password()
+        user = self.request.user
+        password = form.cleaned_data.get('password')
+        user.set_password(password)
         user.save()
         return redirect('siteview:home')

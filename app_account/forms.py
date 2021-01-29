@@ -1,7 +1,7 @@
-from django import forms
+from .validators import password_validator, name_validator, user_password_validator
 from django.contrib.auth.forms import AuthenticationForm
+from django import forms
 from .models import User
-from .validators import password_validator, name_validator
 
 
 class SignInForm(AuthenticationForm):
@@ -59,14 +59,27 @@ class ChangePasswordForm(forms.Form):
     Form that related to ChangePassword view and user model.
     Get two field to set new password
     """
-    password = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
+    user_email = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'hidden': ''}))
+    current_password = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
         attrs={'class': 'w-100 auth-input', 'autofocus': ''}))
+    password = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
+        attrs={'class': 'w-100 auth-input'}))
     password2 = forms.CharField(max_length=100, required=True, widget=forms.PasswordInput(
         attrs={'class': 'w-100 auth-input'}))
 
+    def clean_current_password(self):
+        """
+        Get user email and current_password from form
+        and validate it.
+        """
+        user_email = self.cleaned_data.get('user_email')
+        current_password = self.cleaned_data.get('current_password')
+        user_password_validator(user_email, current_password)
+        return current_password
+
     def clean_password2(self):
         """
-        This method for validate the passwords by user password_validator function.
+        validate the passwords by user password_validator function.
         If not valid return an ValidationError.
         """
         password = self.cleaned_data.get('password')
