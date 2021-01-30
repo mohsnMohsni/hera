@@ -1,3 +1,8 @@
+document.getElementById('add-to-cart').addEventListener(
+    "click", function (e) {
+        e.preventDefault();
+    });
+
 function setValNull() {
     $("#review").val('');
 }

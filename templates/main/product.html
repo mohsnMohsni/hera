@@ -24,7 +24,7 @@
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <i class="fa fa-user-o"></i> By
-                                        <a href="">{{ product.shop_product.all.first.shop.name|title }}</a>
+                                        <a href="">{{ shop_product.shop.name|title }}</a>
                                     </li>
                                     <li class="list-inline-item">
                                         <i class="fa fa-folder-open-o"></i> Category
@@ -34,7 +34,6 @@
                                     </li>
                                 </ul>
                             </div>
-
                             <!-- product slider -->
                             <div class="product-slider">
                                 <div class="product-slider-item my-4" data-image="{{ product.image.url }}">
@@ -97,15 +96,20 @@
                                 <p class="font-weight-bold m-0 border-right pr-5 text-info h6">Shop Name</p>
                                 <p class="font-weight-bold m-0 border-left pl-5 text-info h6">Price</p>
                             </li>
-                            {% for shop_product in product.shop_product.all|slice:"1:" %}
-                                <li class="d-flex justify-content-between align-items-center border-bottom p-2 ">
-                                    <p class="font-weight-bold m-0" style="font-size: 18px;">
-                                        {{ shop_product.shop.name|title }}
-                                    </p>
-                                    <a href="" class="btn btn-outline-dark">
-                                        ${{ shop_product.price|title }}
-                                    </a>
-                                </li>
+                            {% for shopProduct in product.shop_product.all%}
+                                {% if shopProduct.id != shop_product.id %}
+                                    <li class="d-flex justify-content-between align-items-center border-bottom p-2 ">
+                                        <p class="font-weight-bold m-0" style="font-size: 18px;">
+                                            {{ shopProduct.shop.name|title }}
+                                        </p>
+                                        <a href="
+                                    {% url 'product:product' slug=product.slug  shop_product_id=shopProduct.id %}
+                                            "
+                                           class="btn btn-outline-dark">
+                                            ${{ shopProduct.price|title }}
+                                        </a>
+                                    </li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </div>

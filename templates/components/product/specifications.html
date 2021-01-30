@@ -5,7 +5,7 @@
         <tbody>
         <tr>
             <td>Seller Price</td>
-            <td>${{ product.get_shop_products.first.price }}</td>
+            <td>${{ shop_product.price }}</td>
         </tr>
         <tr>
             <td>Added</td>
@@ -18,7 +18,7 @@
         <tr>
             <td>State</td>
             <td>
-                {% if product.get_shop_products.exists %}
+                {% if shop_product.quantity > 0 %}
                     Exists
                 {% else %}
                     Not Exists

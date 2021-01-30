@@ -75,7 +75,14 @@ class CartItem(models.Model):
         """
         return CartItem.objects.filter(
             shop_product=self.shop_product, cart__user=self.cart.user
-        ).count()
+        )
+
+    @property
+    def same_product_id(self):
+        """
+        Return same product's id
+        """
+        return list(self.count_same.values_list('id', flat=True))
 
 
 class Order(models.Model):

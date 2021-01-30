@@ -1,10 +1,10 @@
-from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
-from django.utils.html import format_html
 from image_cropping import ImageRatioField
-from PIL import Image
+from django.utils.html import format_html
 from .utils import make_flat_list
+from django.db import models
+from PIL import Image
 import math
 
 User = get_user_model()
@@ -57,7 +57,7 @@ class Product(AbstractDetail):
     @property
     def get_shop_products(self):
         """
-        Get all shop_products that have this product.
+        Get all shop_products that related to this product.
         """
         return self.shop_product.filter(quantity__gt=0).order_by('quantity')
 

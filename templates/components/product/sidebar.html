@@ -3,14 +3,14 @@
     <div class="sidebar">
         <div class="widget price text-center">
             <h4>Price</h4>
-            <p>${{ product.get_shop_products.first.price }}</p>
+            <p>${{ shop_product.price }}</p>
         </div>
         <!-- User Profile widget -->
         <div class="widget user text-center">
             <img class="rounded-circle img-fluid mb-5 px-5" style="width: 200px !important; height: 100px !important;"
-                 src="{{ product.get_shop_products.first.shop.image.url }}" alt="">
-            <h4><a href="">{{ product.get_shop_products.first.shop.name|title }}</a></h4>
-            <p class="member-time">{{ product.get_shop_products.first.shop.create_at.date }}</p>
+                 src="{{ shop_product.shop.image.url }}" alt="">
+            <h4><a href="">{{ shop_product.shop.name|title }}</a></h4>
+            <p class="member-time">{{ shop_product.shop.create_at.date }}</p>
             <ul class="list-inline mt-20">
                 <li class="list-inline-item">
                     <a href=""
@@ -44,8 +44,8 @@
             </div>
         </div>
         <div class="widget coupon text-center">
-            <input type="text" hidden value="{{ product.shop_product.all.first.id }}" id="shopProduct-id">
-            <a href="#" class="btn btn-transparent-white" onclick="addToCartAjax()">
+            <input type="text" hidden value="{{ shop_product.id }}" id="shopProduct-id">
+            <a href="" class="btn btn-transparent-white" onclick="addToCartAjax()" id="add-to-cart">
                 Add To Cart
                 <span class="px-2">
                     <img src="{% static 'images/cart.png' %}" alt="" style="height: 2rem; width: auto">

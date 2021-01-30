@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block title %} Cart-{{ user.full_name|title }} {% endblock title %}
+
 {% block content %}
     <main>
         <!--==================================
@@ -103,7 +107,7 @@
                                     </thead>
                                     <tbody>
                                     {% for item in cart.cart_item.all_unique %}
-                                        <tr>
+                                        <tr id="item-container{{ forloop.counter }}">
                                             <td class="product-thumb">
                                                 <img width="80px" height="auto"
                                                      src="{{ item.shop_product.product.image.url }}"
@@ -111,17 +115,18 @@
                                             </td>
                                             <td class="product-details">
                                                 <h3 class="title">{{ item.shop_product.product.name|title }}</h3>
-                                                <span class="add-id">
+                                            <span class="add-id">
                                                 <strong>Brand:</strong> {{ item.shop_product.product.brand|title }}
                                             </span>
-                                                <span>
+                                            <span>
                                                 <strong>Posted on: </strong><time>Jun 27, 2017</time>
                                             </span>
-                                                <span class="status active">
+                                            <span class="status active">
                                                 <strong>Price</strong>${{ item.shop_product.price }}
                                             </span>
-                                                <span class="location">
-                                                <strong>Quantity</strong>{{ item.count_same }}
+                                            <span class="location" id="item-quantity{{ forloop.counter }}">
+                                                <strong>Quantity</strong>
+                                                {{ item.count_same.count }}
                                             </span>
                                             </td>
                                             <td class="product-category">
@@ -135,22 +140,26 @@
                                                         <li class="list-inline-item">
                                                             <a data-toggle="tooltip" data-placement="top" title="View"
                                                                class="view"
-                                                               href="{% url 'product:product' item.shop_product.product.slug %}">
+                                                               href="
+                        {% url 'product:product' slug=item.shop_product.product.slug shop_product_id=item.shop_product.id %}
+                                                                    ">
                                                                 <i class="fa fa-eye"></i>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
                                                             <a data-toggle="tooltip" data-placement="top" title="Delete"
-                                                               class="delete" href="">
+                                                               class="delete" href="#id-list{{ forloop.counter }}"
+                                                               onclick="getPk({{ forloop.counter }})">
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
+                                                            <input id="id-list{{ forloop.counter }}"
+                                                                   value="{{ item.same_product_id }}" hidden>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </td>
                                         </tr>
                                     {% endfor %}
-
                                     </tbody>
                                 </table>
                             {% else %}
@@ -165,3 +174,6 @@
         </section>
     </main>
 {% endblock content %}
+{% block extra_js %}
+    <script src="{% static 'custom/js/cart-ajax.js' %}"></script>
+{% endblock extra_js %}

@@ -35,4 +35,6 @@ class ProductDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
+        pk = self.kwargs.get('shop_product_id')
+        context['shop_product'] = context['product'].shop_product.filter(pk=pk).first()
         return context
