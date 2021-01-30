@@ -116,3 +116,15 @@ function sendLikeResponse() {
         alert(error)
     })
 }
+
+function addToCartAjax() {
+    let id = $('#shopProduct-id').val();
+    $.ajax({
+        type: 'POST',
+        url: '/cart/',
+        data: {id},
+        success: function (response) {
+            getCartProductCount();
+        },
+    })
+}

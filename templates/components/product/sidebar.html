@@ -44,7 +44,8 @@
             </div>
         </div>
         <div class="widget coupon text-center">
-            <a href="#" class="btn btn-transparent-white">
+            <input type="text" hidden value="{{ product.shop_product.all.first.id }}" id="shopProduct-id">
+            <a href="#" class="btn btn-transparent-white" onclick="addToCartAjax()">
                 Add To Cart
                 <span class="px-2">
                     <img src="{% static 'images/cart.png' %}" alt="" style="height: 2rem; width: auto">

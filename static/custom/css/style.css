@@ -2722,3 +2722,10 @@ form textarea {
     cursor: pointer;
     color: #5672F9;
 }
+
+.badge-style {
+    font-size: .4em;
+    position: relative;
+    left: -5px;
+    top: 8px;
+}

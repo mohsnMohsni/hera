@@ -66,7 +66,9 @@ class Product(AbstractDetail):
         """
         Get average of all rate's in comments.
         """
-        return math.ceil(self.comments.all().aggregate(models.Avg('rate'))['rate__avg'])
+        if self.comments.all().count():
+            return math.ceil(self.comments.all().aggregate(models.Avg('rate'))['rate__avg'])
+        return 0
 
     def picture(self):
         """ Return a html tag that have an image tag. """
@@ -264,6 +266,7 @@ class ShopProduct(models.Model):
     class Meta:
         verbose_name = _('Shop Product')
         verbose_name_plural = _('Shop Products')
+        unique_together = [('shop', 'product')]
 
     def __str__(self):
         return f'{str(self.shop)}-{str(self.product)}'

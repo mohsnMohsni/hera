@@ -17,6 +17,13 @@ class Cart(models.Model):
         return str(self.user)
 
     @property
+    def products_count(self):
+        """
+        Count products there is in cart.
+        """
+        return self.cart_item.all().count()
+
+    @property
     def total_price(self):
         """
         Return total price off all products add to this cart
@@ -45,8 +52,8 @@ class CartItemManager(models.Manager):
 
 
 class CartItem(models.Model):
-    basket = models.ForeignKey("Cart", verbose_name=_('Cart'), on_delete=models.CASCADE,
-                               related_name='cart_item', related_query_name='cart_item')
+    cart = models.ForeignKey("Cart", verbose_name=_('Cart'), on_delete=models.CASCADE,
+                             related_name='cart_item', related_query_name='cart_item')
     shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
                                      on_delete=models.CASCADE,
                                      related_name='cart_item', related_query_name='cart_item')
@@ -58,7 +65,7 @@ class CartItem(models.Model):
         verbose_name_plural = _('Cart Items')
 
     def __str__(self):
-        return str(self.basket)
+        return str(self.cart)
 
     @property
     def count_same(self):
@@ -67,15 +74,15 @@ class CartItem(models.Model):
         that's related to user have been send request.
         """
         return CartItem.objects.filter(
-            shop_product=self.shop_product, basket__user=self.basket.user
+            shop_product=self.shop_product, cart__user=self.cart.user
         ).count()
 
 
 class Order(models.Model):
     products = models.ManyToManyField("app_product.Product", verbose_name=_('Products'),
                                       related_name='order', related_query_name='order')
-    basket = models.ForeignKey("Cart", on_delete=models.CASCADE, verbose_name=_('Cart'),
-                               related_name='order', related_query_name='order')
+    cart = models.ForeignKey("Cart", on_delete=models.CASCADE, verbose_name=_('Cart'),
+                             related_name='order', related_query_name='order')
     create_at = models.DateTimeField(_('Create At'), auto_now_add=True)
     description = models.CharField(_('Description'), max_length=150)
 
@@ -84,7 +91,7 @@ class Order(models.Model):
         verbose_name_plural = _('Orders')
 
     def __str__(self):
-        return str(self.basket)
+        return str(self.cart)
 
 
 class OrderItem(models.Model):
