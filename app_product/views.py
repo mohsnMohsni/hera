@@ -1,6 +1,5 @@
-from pprint import pprint
+from .models import Category, Product, ShopProduct, Shop
 from django.views.generic import DetailView, ListView
-from .models import Category, Product
 from django.shortcuts import get_object_or_404
 
 
@@ -25,7 +24,6 @@ class ProductList(ListView):
         context['children'] = category.get_children
         context['category'] = category
         context['all_category'] = Category.objects.filter(parent=None)
-        pprint(context)
         return context
 
 
@@ -37,4 +35,20 @@ class ProductDetail(DetailView):
         context = super().get_context_data()
         pk = self.kwargs.get('shop_product_id')
         context['shop_product'] = context['product'].shop_product.filter(pk=pk).first()
+        return context
+
+
+class ShopProductList(ListView):
+    model = ShopProduct
+    template_name = 'main/shop.html'
+    paginate_by = 4
+
+    def get_queryset(self):
+        shop = get_object_or_404(Shop, slug=self.kwargs.get('slug'))
+        self.kwargs['shop'] = shop
+        return ShopProduct.objects.filter(shop=shop)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=None, **kwargs)
+        context['shop'] = self.kwargs.get('shop')
         return context

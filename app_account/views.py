@@ -12,6 +12,7 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth import login
 from django.http import HttpResponse
+from app_order.models import Cart
 from .models import User
 
 
@@ -36,6 +37,7 @@ class SignUpView(CreateView):
         obj = form.save(commit=False)
         obj.set_password(obj.password)
         obj.save()
+        Cart.objects.create(user=obj)
         current_site = get_current_site(self.request)
         mail_subject = _('Active your shop account.')
         message = render_to_string('auth/email-confirm/active_email.html', {
