@@ -11,7 +11,6 @@ class EmailAdmin(admin.TabularInline):
     model = Email
     verbose_name = _('Email')
     verbose_name_plural = _('Emails')
-    readonly_fields = ('subject', 'to', 'body')
     extra = 0
 
 

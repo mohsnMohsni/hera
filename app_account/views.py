@@ -1,6 +1,6 @@
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import CreateView, FormView, RedirectView, TemplateView
-from .forms import SignInForm, SignUpForm, ChangePasswordForm
+from .forms import SignInForm, SignUpForm, ChangePasswordForm, AddAddressForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -17,7 +17,7 @@ from .models import User
 
 
 class SignInView(LoginView):
-    template_name = 'auth/login.html'
+    template_name = 'account/auth/login.html'
     form_class = SignInForm
     redirect_authenticated_user = True
 
@@ -27,7 +27,7 @@ class SignInView(LoginView):
 
 class SignUpView(CreateView):
     form_class = SignUpForm
-    template_name = 'auth/register.html'
+    template_name = 'account/auth/register.html'
 
     def form_valid(self, form):
         """
@@ -40,7 +40,7 @@ class SignUpView(CreateView):
         Cart.objects.create(user=obj)
         current_site = get_current_site(self.request)
         mail_subject = _('Active your shop account.')
-        message = render_to_string('auth/email-confirm/active_email.html', {
+        message = render_to_string('account/auth/email-confirm/active_email.html', {
             'user': obj,
             'domain': current_site.domain,
             'uid': urlsafe_base64_encode(force_bytes(obj.pk)),
@@ -51,7 +51,7 @@ class SignUpView(CreateView):
             mail_subject, message, to=[to_email]
         )
         email.send()
-        return render(self.request, 'auth/email-confirm/email_response.html')
+        return render(self.request, 'account/auth/email-confirm/email_response.html')
 
 
 class ActiveEmail(RedirectView):
@@ -78,12 +78,12 @@ class ActiveEmail(RedirectView):
 
 
 class SignOutView(LogoutView):
-    template_name = 'auth/logout.html'
+    template_name = 'account/auth/logout.html'
 
 
 class ChangePasswordView(LoginRequiredMixin, FormView):
     form_class = ChangePasswordForm
-    template_name = 'auth/change_password.html'
+    template_name = 'account/auth/change_password.html'
 
     def form_valid(self, form):
         """
@@ -98,10 +98,24 @@ class ChangePasswordView(LoginRequiredMixin, FormView):
 
 
 class UserProfile(TemplateView):
-    template_name = 'auth/user-profile.html'
+    template_name = 'account/user-profile.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['address'] = self.request.user.address.all()
         context['order_list'] = self.request.user.cart.order.all()
         return context
+
+
+class AddAddress(LoginRequiredMixin, FormView):
+    form_class = AddAddressForm
+    template_name = 'account/add-address.html'
+
+    def form_valid(self, form):
+        valid_form = form.save(commit=False)
+        valid_form.user = self.request.user
+        valid_form.save()
+        return super().form_valid(valid_form)
+
+    def get_success_url(self):
+        return reverse('account:user_profile')

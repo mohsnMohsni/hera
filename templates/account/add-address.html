@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Address {% endblock title %}
+
+{% block content %}
+    <div class="widget change-password">
+        <h3 class="widget-header user">Add Address</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="current-password">City</label>
+                {{ form.city }}
+            </div>
+            <div class="form-group">
+                <label for="new-password">Street</label>
+                {{ form.street }}
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Alley</label>
+                {{ form.alley }}
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Home Number</label>
+                {{ form.no }}
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Postal Code</label>
+                {{ form.postal_code }}
+            </div>
+            <button class="btn btn-transparent">Submit Address</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,7 +1,7 @@
 from .validators import password_validator, name_validator, user_password_validator
 from django.contrib.auth.forms import AuthenticationForm
+from .models import User, Address
 from django import forms
-from .models import User
 
 
 class SignInForm(AuthenticationForm):
@@ -86,3 +86,16 @@ class ChangePasswordForm(forms.Form):
         password2 = self.cleaned_data.get('password2')
         password_validator(password, password2)
         return password2
+
+
+class AddAddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        exclude = ('user',)
+        widgets = {
+            'city': forms.TextInput(attrs={'class': 'form-control', 'autofocus': ''}),
+            'street': forms.TextInput(attrs={'class': 'form-control'}),
+            'alley': forms.TextInput(attrs={'class': 'form-control'}),
+            'no': forms.NumberInput(attrs={'class': 'form-control'}),
+            'postal_code': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
