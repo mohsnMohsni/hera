@@ -13,4 +13,4 @@ class CartDetail(DetailView):
         return queryset.get()
 
     def get_queryset(self):
-        return Cart.objects.filter(user=self.request.user)
+        return super().get_queryset().filter(user=self.request.user)

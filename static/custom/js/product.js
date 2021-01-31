@@ -21,7 +21,7 @@ function sendCommentPromise() {
         let data = getCommentValue()
         $.ajax({
             type: "POST",
-            url: "/shop/add_comment/",
+            url: "/shop/api/add_comment/",
             data: data,
             success: function (response) {
                 resolve(response);
@@ -91,7 +91,7 @@ function sendLikePromise() {
         let data = getLikeValue()
         $.ajax({
             type: "POST",
-            url: "/shop/like_product/",
+            url: "/shop/api/like_product/",
             data: data,
             success: function (response) {
                 resolve(response);
@@ -107,9 +107,9 @@ function setLikeValue(status) {
     let likeProduct = document.getElementById('like-product');
     likeProduct.innerHTML = "";
     if (status === 'True') {
-        likeProduct.innerHTML = '<i class="fa fa-heart"></i>';
+        likeProduct.innerHTML = '<i class="fa fa-bookmark"></i>';
     } else if (status === 'False') {
-        likeProduct.innerHTML = '<i class="fa fa-heart alt-color"></i>';
+        likeProduct.innerHTML = '<i class="fa fa-bookmark-o alt-color"></i>';
     }
 }
 

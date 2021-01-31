@@ -19,7 +19,7 @@
                                     <a class="nav-link login-button" href="{% url 'account:logout' %}">Sign Out</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="#">
+                                    <a class="nav-link text-white add-button" href="{% url 'account:user_profile' %}">
                                         <i class="fa fa-user"></i> {{ user.full_name|title }}</a>
                                 </li>
                                 <li class="nav-item">

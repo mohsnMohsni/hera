@@ -1,5 +1,5 @@
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views.generic import CreateView, FormView, RedirectView
+from django.views.generic import CreateView, FormView, RedirectView, TemplateView
 from .forms import SignInForm, SignUpForm, ChangePasswordForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
@@ -60,6 +60,7 @@ class ActiveEmail(RedirectView):
     this function run and get token from url and check it,
     if it is valid make True the user.is_active field and make active the user.
     """
+
     def get(self, request, *args, **kwargs):
         try:
             uid = force_text(urlsafe_base64_decode(self.kwargs.get('uidb64')))
@@ -94,3 +95,13 @@ class ChangePasswordView(LoginRequiredMixin, FormView):
         user.set_password(password)
         user.save()
         return redirect('siteview:home')
+
+
+class UserProfile(TemplateView):
+    template_name = 'auth/user-profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['address'] = self.request.user.address.all()
+        context['order_list'] = self.request.user.cart.order.all()
+        return context

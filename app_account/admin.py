@@ -22,7 +22,6 @@ class AddressAdmin(admin.TabularInline):
     model = Address
     verbose_name = _('Address')
     verbose_name_plural = _('Addresses')
-    readonly_fields = ('city', 'postal_code', 'street', 'alley', 'no')
     extra = 0
 
 

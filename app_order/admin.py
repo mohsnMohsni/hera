@@ -25,7 +25,6 @@ class OrderItemAdmin(admin.TabularInline):
     Tabular inline admin for manage OrderItem model, then add to Order Admin
     """
     model = OrderItem
-    readonly_fields = ('shop_product', 'count', 'price')
     extra = 0
 
 

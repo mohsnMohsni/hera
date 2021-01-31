@@ -100,6 +100,16 @@ class Order(models.Model):
     def __str__(self):
         return str(self.cart)
 
+    @property
+    def total_price(self):
+        """
+        Return total price off all products add to this cart
+        and that's related to User have been send request.
+        """
+        return Order.objects.filter(cart=self.cart).aggregate(
+            models.Sum('order_item__shop_product__price')
+        ).get('order_item__shop_product__price__sum')
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey("Order", verbose_name=_('Order'), on_delete=models.CASCADE,

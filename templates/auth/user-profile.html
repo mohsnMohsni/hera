@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ user.full_name|title }} {% endblock title %}
+
+{% block content %}
+    <!--==================================
+    =            User Profile            =
+    ===================================-->
+    <section class="user-profile section">
+        <div class="container">
+            <div class="row">
+                {% include 'components/profile/sidebar.html' %}
+                <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+                    <div class="mb-2">
+                        <div class="border-bottom my-4 py-2 text-center">Orders</div>
+                        {% for order in order_list %}
+                            <div class="col-lg-4 col-md-6 mx-sm-auto">
+                                <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
+                                    <div class="package-content-heading border-bottom">
+                                        <i class="fa fa-check"></i>
+                                        <h5>{{ order.create_at }}</h5>
+                                        <h4 class="py-3"><span>${{ order.total_price }}</span></h4>
+                                    </div>
+                                    <ul>
+                                        {% for order_item in order.order_item.all %}
+                                            <li class="my-4">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                                {{ order_item.shop_product.product.name|title }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <div class="border-bottom my-3 pb-2 text-center">Address</div>
+                        <div class="row d-flex justify-content-center">
+                            {% for addrs in address %}
+                                <div class="card border-info mb-3 mx-2 col-md-3" style="max-width: 18rem;">
+                                    <div class="card-header bg-transparent border-primary">
+                                        {{ addrs.city|capfirst }}
+                                    </div>
+                                    <div class="card-body text-success">
+                                        <h5 class="card-title">{{ addrs.street|capfirst }}</h5>
+                                        <p class="card-text">
+                                            {{ addrs.city|capfirst }}, {{ addrs.street|capfirst }},
+                                            {{ addrs.alley|capfirst }}, {{ addrs.no|capfirst }}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-primary">
+                                        Postal Code: {{ addrs.postal_code }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
