@@ -43,7 +43,7 @@ class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
     Product admin, which to use for mange Product data,
     and inherited from ImageCroppingMixin to add crop image Feature
     """
-    list_display = ('brand', 'category', 'name', 'picture')
+    list_display = ('brand', 'category', 'name', 'like_count', 'picture')
     prepopulated_fields = {'slug': ('name',)}
     list_per_page = 8
     list_filter = ('brand',)

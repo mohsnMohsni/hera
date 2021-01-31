@@ -5,15 +5,14 @@
             <h4>Price</h4>
             <p>${{ shop_product.price }}</p>
         </div>
-        <!-- User Profile widget -->
         <div class="widget user text-center">
             <img class="rounded-circle img-fluid mb-5 px-5" style="width: 200px !important; height: 100px !important;"
                  src="{{ shop_product.shop.image.url }}" alt="">
-            <h4><a href="">{{ shop_product.shop.name|title }}</a></h4>
+            <h4>{{ shop_product.shop.name|title }}</h4>
             <p class="member-time">{{ shop_product.shop.create_at.date }}</p>
             <ul class="list-inline mt-20">
                 <li class="list-inline-item">
-                    <a href=""
+                    <a href="{% url 'product:shop_product_list' slug=shop_product.shop.slug %}"
                        class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">See Other Products
                     </a>
                 </li>
@@ -33,9 +32,9 @@
             <div class="d-flex justify-content-center">
                 <span class="py-2 px-5 border product-side-option" id="like-product" onclick="sendLikeResponse()">
                     {% if product.id in product.likes.all.first.user_is_liked %}
-                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-bookmark"></i>
                     {% else %}
-                        <i class="fa fa-heart alt-color"></i>
+                        <i class="fa fa-bookmark-o alt-color"></i>
                     {% endif %}
                 </span>
                 <span class="py-2 px-5 border product-side-option">

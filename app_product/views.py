@@ -41,7 +41,7 @@ class ProductDetail(DetailView):
 class ShopProductList(ListView):
     model = ShopProduct
     template_name = 'main/shop.html'
-    paginate_by = 4
+    paginate_by = 8
 
     def get_queryset(self):
         shop = get_object_or_404(Shop, slug=self.kwargs.get('slug'))

@@ -1,8 +1,8 @@
-from .serializers import CommentSerializer, LikeSerializer
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import get_user_model
 from rest_framework.parsers import JSONParser
+from .serializers import CommentSerializer
 from .models import Product, Like
 
 User = get_user_model()

@@ -56,7 +56,6 @@
             </div>
             <div class="review-submit">
                 <div class="row">
-                    {% csrf_token %}
                     <div class="col-12">
                         <input type="text" id="product-slug" value="{{ product.pk }}" hidden>
                         <input type="text" id="user-id" value="{{ user.pk }}" hidden>

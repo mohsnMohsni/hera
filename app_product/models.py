@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
 from image_cropping import ImageRatioField
 from django.utils.html import format_html
+from django.utils import timezone
 from .utils import make_flat_list
 from django.db import models
 from PIL import Image
@@ -60,6 +61,10 @@ class Product(AbstractDetail):
         Get all shop_products that related to this product.
         """
         return self.shop_product.filter(quantity__gt=0).order_by('quantity')
+
+    @property
+    def like_count(self):
+        return self.likes.filter(condition=True).count()
 
     @property
     def rate_avg(self):
@@ -253,6 +258,21 @@ class Shop(AbstractDetail):
             self._crop_image()
             self.crop_it = False
         return super(Shop, self).save(*args, **kwargs)
+
+    @property
+    def bookmark_count(self):
+        return self.shop_product.all().aggregate(
+            models.Sum('product__likes__condition')
+        )['product__likes__condition__sum']
+
+    @property
+    def happy_customers(self):
+        return self.shop_product.filter(product__comments__rate__gte=3).count()
+
+    @property
+    def start_date_per_day(self):
+        q = self.create_at - timezone.now()
+        return abs(q.days)
 
 
 class ShopProduct(models.Model):
