@@ -32,12 +32,13 @@
         </ul>
     </div>
     <div class="widget filter">
-        <h4 class="widget-header">Show Produts</h4>
-        <select>
-            <option>Popularity</option>
-            <option value="1">Top rated</option>
-            <option value="2">Lowest Price</option>
-            <option value="4">Highest Price</option>
+        <h4 class="widget-header">Filter By</h4>
+        <form action="" id="filter-form"></form>
+        <select onchange="submitForm()" form="filter-form" name="filter">
+            <option>Nothing</option>
+            <option value="top_rated">Top rated</option>
+            <option value="lowest_price">Lowest Price</option>
+            <option value="highest_price">Highest Price</option>
         </select>
     </div>
     <div class="widget price-range w-100">

@@ -1,12 +1,11 @@
-from django.db.models.query import QuerySet
-
-
-def make_flat_list(query_list, output):
+def filter_product(filter_value, products_list):
     """
-    Get list and output variable, then make list flat and it to output
+    Check filter Value and then filter by key in filter value.
     """
-    for i in query_list:
-        if type(i) == list or type(i) == QuerySet:
-            make_flat_list(i, output)
-        else:
-            output.append(i)
+    if filter_value == 'top_rated':
+        products_list = sorted(products_list, key=lambda a: a.rate_avg, reverse=Truef)
+    elif filter_value == 'lowest_price':
+        products_list = products_list.order_by('shop_product__price')
+    elif filter_value == 'highest_price':
+        products_list = products_list.order_by('-shop_product__price')
+    return products_list

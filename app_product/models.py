@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from image_cropping import ImageRatioField
 from django.utils.html import format_html
 from django.utils import timezone
-from .utils import make_flat_list
+from .utils import filter_product
 from django.db import models
 from PIL import Image
 import math
@@ -174,34 +174,22 @@ class Category(AbstractDetail):
     @property
     def get_children(self):
         """
-        Get all children that related to this parent.
-        Get all children id and check if there are exists get their children
-        at the end make flat list and return it.
+        Get all children that Parent is this category.
         """
-        object_list = list()
-        current_parent = self.children.all()
-        while current_parent.exists():
-            object_list.append(current_parent)
-            id_list = current_parent.values_list('id', flat=True)
-            current_parent = Category.objects.filter(parent_id__in=id_list)
-        output = list()
-        make_flat_list(object_list, output)
-        return output
+        return Category.objects.filter(models.Q(parent=self) | models.Q(parent__parent=self) |
+                                       models.Q(parent__parent__parent__exact=self))
 
-    @property
-    def get_products(self):
+    def get_products(self, filter_value):
         """
         Get all products that's are related to this category
         or their related to this children
         """
-        children_list = self.get_children
-        products_list = list()
-        products_list.append(self.product.all())
-        for child in children_list:
-            products_list.append(child.product.all())
-        output = list()
-        make_flat_list(products_list, output)
-        return output
+        product_list = Product.objects.filter(models.Q(category=self) | models.Q(category__parent=self) |
+                                              models.Q(category__parent__parent=self))
+        if filter_value in ('top_rated', 'lowest_price', 'highest_price'):
+            print(filter_value)
+            product_list = filter_product(filter_value, product_list)
+        return product_list
 
 
 class Gallery(models.Model):

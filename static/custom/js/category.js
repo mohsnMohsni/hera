@@ -16,3 +16,6 @@ function priceRangeFilter() {
     }
 }
 
+function submitForm() {
+    document.getElementById('filter-form').submit();
+}

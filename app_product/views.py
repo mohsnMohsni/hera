@@ -10,19 +10,17 @@ class ProductList(ListView):
     template_name = 'main/category.html'
 
     def get_queryset(self):
-        """
-        Get slug and then get category by slug, then get all products and return its.
-        """
         slug = self.kwargs.get(self.slug_url_kwarg)
+        filter_value = self.request.GET.get('filter', 'Nothing')
         category = get_object_or_404(Category, slug=slug)
         self.kwargs['category'] = category
-        return category.get_products
+        return category.get_products(filter_value)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
         category = self.kwargs.get('category')
-        context['children'] = category.get_children
         context['category'] = category
+        context['children'] = category.get_children
         context['all_category'] = Category.objects.filter(parent=None)
         return context
 
