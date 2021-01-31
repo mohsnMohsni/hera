@@ -4,7 +4,7 @@ from django.views.generic import DetailView
 
 class CartDetail(DetailView):
     model = Cart
-    template_name = 'order/basket.html'
+    template_name = 'order/cart.html'
     context_object_name = 'cart'
 
     def get_object(self, queryset=None):

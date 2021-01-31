@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 
 class ProductList(ListView):
     model = Product
-    paginate_by = 9
+    paginate_by = 12
     slug_url_kwarg = 'slug'
     template_name = 'main/category.html'
 
