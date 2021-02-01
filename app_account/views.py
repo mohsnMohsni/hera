@@ -1,6 +1,6 @@
+from .forms import SignInForm, SignUpForm, ChangePasswordForm, AddAddressForm, EditProfileForm
+from django.views.generic import CreateView, FormView, RedirectView, TemplateView, UpdateView
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views.generic import CreateView, FormView, RedirectView, TemplateView
-from .forms import SignInForm, SignUpForm, ChangePasswordForm, AddAddressForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -116,6 +116,23 @@ class AddAddress(LoginRequiredMixin, FormView):
         valid_form.user = self.request.user
         valid_form.save()
         return super().form_valid(valid_form)
+
+    def get_success_url(self):
+        return reverse('account:user_profile')
+
+
+class EditProfile(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = EditProfileForm
+    template_name = 'account/edit-profile.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        return queryset.get()
+
+    def get_queryset(self):
+        return super().get_queryset().filter(id=self.request.user.id)
 
     def get_success_url(self):
         return reverse('account:user_profile')

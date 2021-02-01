@@ -99,3 +99,15 @@ class AddAddressForm(forms.ModelForm):
             'no': forms.NumberInput(attrs={'class': 'form-control'}),
             'postal_code': forms.NumberInput(attrs={'class': 'form-control'}),
         }
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email', 'full_name', 'phone', 'avatar')
+        widgets = {
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'full_name': forms.TextInput(attrs={'class': 'form-control', 'autofocus': ''}),
+            'phone': forms.NumberInput(attrs={'class': 'form-control'}),
+            'avatar': forms.FileInput(attrs={'class': 'form-control-file mt-2 pt-1'}),
+        }
