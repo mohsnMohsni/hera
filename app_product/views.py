@@ -1,6 +1,8 @@
+from django.views.generic import DetailView, ListView, CreateView
 from .models import Category, Product, ShopProduct, Shop
-from django.views.generic import DetailView, ListView
 from django.shortcuts import get_object_or_404
+from django.shortcuts import reverse
+from .forms import AddShopForm
 
 
 class ProductList(ListView):
@@ -50,3 +52,16 @@ class ShopProductList(ListView):
         context = super().get_context_data(object_list=None, **kwargs)
         context['shop'] = self.kwargs.get('shop')
         return context
+
+
+class AddShopView(CreateView):
+    model = Shop
+    template_name = 'main/forms/add_shop.html'
+    form_class = AddShopForm
+
+    def form_valid(self, form):
+        self.kwargs['slug'] = form.cleaned_data.get('slug')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('product:shop_product_list', kwargs={'slug': self.kwargs.get('slug')})

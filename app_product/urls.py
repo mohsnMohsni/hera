@@ -1,4 +1,4 @@
-from .views import ProductList, ProductDetail, ShopProductList
+from .views import ProductList, ProductDetail, ShopProductList, AddShopView
 from .api import add_comment, like_product
 from django.urls import path
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('product/<slug:slug>/<int:shop_product_id>/', ProductDetail.as_view(), name='product'),
     path('api/add_comment/', add_comment, name='add_comment'),
     path('api/like_product/', like_product, name='like_product'),
+    path('add/new_shop/', AddShopView.as_view(), name='add_shop'),
 ]

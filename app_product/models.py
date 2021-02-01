@@ -249,9 +249,13 @@ class Shop(AbstractDetail):
 
     @property
     def bookmark_count(self):
-        return self.shop_product.all().aggregate(
+        num = self.shop_product.all().aggregate(
             models.Sum('product__likes__condition')
-        )['product__likes__condition__sum']
+        ).get('product__likes__condition__sum')
+        if num is not None:
+            return num
+        else:
+            return 0
 
     @property
     def happy_customers(self):
