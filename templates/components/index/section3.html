@@ -17,7 +17,7 @@
                                 <ul class="category-list">
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Products <span>{{ category.get_products|length }}</span>
+                                            Products <span>{{ category.get_products.count }}</span>
                                         </a>
                                     </li>
                                     <li>

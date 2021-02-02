@@ -179,7 +179,7 @@ class Category(AbstractDetail):
         return Category.objects.filter(models.Q(parent=self) | models.Q(parent__parent=self) |
                                        models.Q(parent__parent__parent__exact=self))
 
-    def get_products(self, filter_value):
+    def get_products(self, filter_value=None):
         """
         Get all products that's are related to this category
         or their related to this children
@@ -187,9 +187,9 @@ class Category(AbstractDetail):
         product_list = Product.objects.filter(models.Q(category=self) | models.Q(category__parent=self) |
                                               models.Q(category__parent__parent=self))
         if filter_value in ('top_rated', 'lowest_price', 'highest_price'):
-            print(filter_value)
             product_list = filter_product(filter_value, product_list)
         return product_list
+
 
 
 class Gallery(models.Model):
@@ -256,6 +256,8 @@ class Shop(AbstractDetail):
         ).get('product__likes__condition__sum')
         if num is not None:
             return num
+        elif num is True:
+            return 1
         else:
             return 0
 

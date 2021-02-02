@@ -7,7 +7,7 @@
             {% for comment in product.comments.all %}
                 <div class="media">
                     <!-- Avater -->
-                    <img src="{{ user.avatar.url }}" alt="avatar"
+                    <img src="{{ comment.user.avatar.url }}" alt="avatar"
                          style="height: 70px !important; width: 70px !important;">
                     <div class="media-body">
                         <!-- Ratings -->

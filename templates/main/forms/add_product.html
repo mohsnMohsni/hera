@@ -15,20 +15,55 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="id_full_name">Slug</label>
-                {{ form.slug }}
-            </div>
-            <div class="form-group">
-                <label for="id_email">Name</label>
-                {{ form.name }}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="id_phone">slug</label>
+                        {{ form.slug }}
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="id_phone">name</label>
+                        {{ form.name }}
+                    </div>
+                </div>
             </div>
             <div class="form-group choose-file d-inline-flex">
                 <i class="fa fa-file-image-o text-center px-3"></i>
                 {{ form.image }}
             </div>
             <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="id_phone">Price</label>
+                        {{ form.price }}
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="id_phone">Quantity</label>
+                        {{ form.quantity }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="id_phone">Brand</label>
+                        {{ form.brand }}
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="id_phone">Category</label>
+                        {{ form.category }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="id_phone">Detail</label>
                 {{ form.detail }}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Extra Fields</label>
+                <div class="row">
+                    <div class="col-sm-6">{{ form.label }}</div>
+                    <div class="col-sm-6">{{ form.value }}</div>
+                </div>
             </div>
             <button class="btn btn-transparent">Save My Changes</button>
         </form>

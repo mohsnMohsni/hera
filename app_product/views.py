@@ -1,8 +1,8 @@
 from django.views.generic import DetailView, ListView, CreateView
 from .models import Category, Product, ShopProduct, Shop
+from .forms import AddShopForm, ShopProductForm, ProductMetaForm
 from django.shortcuts import get_object_or_404
 from django.shortcuts import reverse
-from .forms import AddShopForm
 
 
 class ProductList(ListView):
@@ -30,6 +30,10 @@ class ProductList(ListView):
 class ProductDetail(DetailView):
     model = Product
     template_name = 'main/product.html'
+
+    def get_queryset(self):
+        shop_product_id = self.kwargs.get('shop_product_id')
+        return super().get_queryset().filter(shop_product__id=shop_product_id)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -68,3 +72,23 @@ class AddShopView(CreateView):
 
     def get_success_url(self):
         return reverse('product:shop_product_list', kwargs={'slug': self.kwargs.get('slug')})
+
+
+class AddShopProductView(CreateView):
+    model = Product
+    form_class = ShopProductForm
+    template_name = 'main/forms/add_product.html'
+
+    def form_valid(self, form):
+        self.kwargs['slug'] = form.cleaned_data.get('slug')
+        price = form.cleaned_data.pop('price')
+        quantity = form.cleaned_data.pop('quantity')
+        product = form.save()
+        shop_product = ShopProduct.objects.create(product=product, shop=self.request.user.shop,
+                                                  price=price, quantity=quantity)
+        self.kwargs['shop_product_id'] = shop_product.id
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('product:product', kwargs={'slug': self.kwargs.get('slug'),
+                                                  'shop_product_id': self.kwargs.get('shop_product_id')})

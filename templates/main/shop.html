@@ -42,8 +42,15 @@
     =================================-->
     {% include 'components/shop/product_list.html' %}
 
+    {% if shop.user == user %}
+        <!--================================
+        =          Call to action          =
+        =================================-->
+        {% include 'components/shop/call-to-action.html' %}
+    {% endif %}
+
     <!--================================
-    =           Product List           =
+    =         Summery of activate        =
     =================================-->
     {% include 'components/shop/summery_of_shop.html' %}
 
