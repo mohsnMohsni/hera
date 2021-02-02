@@ -61,7 +61,10 @@ class AddShopView(CreateView):
 
     def form_valid(self, form):
         self.kwargs['slug'] = form.cleaned_data.get('slug')
-        return super().form_valid(form)
+        valid_form = form.save(commit=False)
+        valid_form.user = self.request.user
+        self.request.user.is_seller = True
+        return super().form_valid(valid_form)
 
     def get_success_url(self):
         return reverse('product:shop_product_list', kwargs={'slug': self.kwargs.get('slug')})

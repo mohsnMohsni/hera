@@ -217,6 +217,8 @@ class Gallery(models.Model):
 
 
 class Shop(AbstractDetail):
+    user = models.OneToOneField("app_account.User", on_delete=models.CASCADE, verbose_name=_('Owner'),
+                                related_name='shop', related_query_name='shop', blank=True)
     image = models.ImageField(_('Picture'), upload_to='shop/images', blank=True,
                               default='default/default_upload.jpg')
 

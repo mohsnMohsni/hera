@@ -44,8 +44,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.IntegerField(_('Phone'), blank=True, default=0)
     avatar = models.ImageField(_('Avatar'), blank=True, upload_to='user/images',
                                default='default/default_profile.png')
-    is_seller = models.BooleanField(_('User status'), blank=True, default=False)
-    is_staff = models.BooleanField(_('Staff status'), default=False,
+    is_seller = models.BooleanField(_('Is Seller'), blank=True, default=False)
+    is_staff = models.BooleanField(_('Is Staff'), default=False,
                                    help_text=_(
                                        'Designates whether the user can log into this admin site.'
                                    ))
