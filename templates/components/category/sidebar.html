@@ -5,7 +5,7 @@
             {% for category in all_category %}
                 <li>
                     <a href="{% url 'product:category' category.slug %}">
-                        {{ category|capfirst }} <span>{{ category.get_products|length }}</span>
+                        {{ category|capfirst }} <span>{{ category.get_products.count }}</span>
                     </a>
                 </li>
             {% empty %}
@@ -21,7 +21,7 @@
             {% for child in category.get_children %}
                 <li>
                     <a href={% url 'product:category' child.slug %}>
-                        {{ child|capfirst }} <span>{{ child.get_products|length }}</span>
+                        {{ child|capfirst }} <span>{{ child.get_products.count }}</span>
                     </a>
                 </li>
             {% empty %}

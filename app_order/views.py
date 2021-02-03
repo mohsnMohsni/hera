@@ -1,12 +1,12 @@
-from django.views.generic import DetailView, RedirectView
-from django.shortcuts import redirect
+from django.views.generic import DetailView
 from .models import Cart, Order, OrderItem
+from django.shortcuts import redirect
 
 
 class CartDetail(DetailView):
     model = Cart
-    template_name = 'order/cart.html'
     context_object_name = 'cart'
+    template_name = 'order/cart.html'
 
     def get_object(self, queryset=None):
         if queryset is None:

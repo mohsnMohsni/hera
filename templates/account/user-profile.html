@@ -22,12 +22,14 @@
                                         <div class="package-content-heading border-bottom">
                                             <i class="fa fa-check"></i>
                                             <h5>{{ order.create_at }}</h5>
-                                            <h4 class="py-3"><span>${{ order.total_price }}</span></h4>
+                                            <h4 class="py-3">
+                                                <span>${{ order.total_price }}</span>
+                                            </h4>
                                         </div>
                                         <ul>
                                             {% for order_item in order.order_item.all %}
                                                 <li class="my-4">
-                                                    <a href="{% url 'product:product' slug=order_item.shop_product.product.slug shop_product_id=order_item.shop_product.id %}">
+                                                    <a href="{% url 'product:product' order_item.shop_product.product.slug order_item.shop_product.id %}">
                                                         <i class="fa fa-barcode"></i>
                                                         <span class="border-bottom text-info px-1">
                                                             Count: {{ order_item.count }}
@@ -54,7 +56,7 @@
                         <div class="row d-flex justify-content-center">
                             {% for addrs in address %}
                                 <div class="card border-info mb-3 mx-2 col-md-3" style="max-width: 18rem;">
-                                    <div class="card-header bg-transparent border-primary">
+                                    <div class="card-header bg-transparent border-info">
                                         {{ addrs.city|capfirst }}
                                     </div>
                                     <div class="card-body text-success">
@@ -64,8 +66,9 @@
                                             {{ addrs.alley|capfirst }}, {{ addrs.no|capfirst }}
                                         </p>
                                     </div>
-                                    <div class="card-footer bg-transparent border-primary">
-                                        Postal Code: {{ addrs.postal_code }}
+                                    <div class="card-footer bg-transparent border-info">
+                                        Postal Code:
+                                        <span class="text-muted"> {{ addrs.postal_code }}</span>
                                     </div>
                                 </div>
                             {% endfor %}

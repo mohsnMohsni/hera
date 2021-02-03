@@ -2,14 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!-- SITE TITTLE -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Classimax | {% block title %} {% endblock title %}</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap-slider.css' %}">
     <!-- Font Awesome -->
@@ -27,9 +24,10 @@
 
 <body class="body-wrapper">
 
-<!-- Header -->
+<!--============================
+=           Header             =
+=============================-->
 {% include 'components/base/header.html' %}
-<!-- End Header -->
 
 <!--============================
 =           Content            =
@@ -57,8 +55,6 @@
 <script src="{% static 'plugins/fancybox/jquery.fancybox.pack.js' %}"></script>
 <script src="{% static 'plugins/smoothscroll/SmoothScroll.min.js' %}"></script>
 <!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="{% static 'plugins/google-map/gmap.js' %}"></script>
 <script src="{% static 'custom/js/script.js' %}"></script>
 <script src="{% static 'custom/js/header.js' %}"></script>
 {% block extra_js %}{% endblock extra_js %}

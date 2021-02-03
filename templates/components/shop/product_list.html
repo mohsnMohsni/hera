@@ -13,12 +13,16 @@
                              alt="Card image cap" style="height: 160px;">
                         <div class="card-body bg-gray text-center">
                             <h5 class="card-title">
-                                <a href="{% url 'product:product' slug=shopproduct.product.slug shop_product_id=shopproduct.id %}">
+                                <a href="{% url 'product:product' shopproduct.product.slug shopproduct.id %}">
                                     {{ shopproduct.product.name|title }}
                                 </a>
                             </h5>
-                            <p class="card-text">{{ shopproduct.product.detail|truncatechars:20|capfirst }}</p>
-                            <p class="card-text">${{ shopproduct.price }}</p>
+                            <p class="card-text">
+                                {{ shopproduct.product.detail|truncatechars:20|capfirst }}
+                            </p>
+                            <p class="card-text">
+                                ${{ shopproduct.price }}
+                            </p>
                         </div>
                     </div>
                 </div>

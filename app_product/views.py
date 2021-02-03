@@ -8,18 +8,16 @@ from django.shortcuts import reverse
 class ProductList(ListView):
     model = Product
     paginate_by = 12
-    slug_url_kwarg = 'slug'
     template_name = 'main/category.html'
 
     def get_queryset(self):
-        slug = self.kwargs.get(self.slug_url_kwarg)
         filter_value = self.request.GET.get('filter', 'Nothing')
-        category = get_object_or_404(Category, slug=slug)
+        category = get_object_or_404(Category, slug=self.kwargs.get('slug'))
         self.kwargs['category'] = category
         return category.get_products(filter_value)
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         category = self.kwargs.get('category')
         context['category'] = category
         context['children'] = category.get_children
@@ -44,24 +42,24 @@ class ProductDetail(DetailView):
 
 class ShopProductList(ListView):
     model = ShopProduct
-    template_name = 'main/shop.html'
     paginate_by = 8
+    template_name = 'main/shop.html'
 
     def get_queryset(self):
         shop = get_object_or_404(Shop, slug=self.kwargs.get('slug'))
         self.kwargs['shop'] = shop
-        return ShopProduct.objects.filter(shop=shop)
+        return super().get_queryset().filter(shop=shop)
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(object_list=None, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['shop'] = self.kwargs.get('shop')
         return context
 
 
 class AddShopView(CreateView):
     model = Shop
-    template_name = 'main/forms/shop_form.html'
     form_class = ShopForm
+    template_name = 'main/forms/shop_form.html'
 
     def form_valid(self, form):
         self.kwargs['slug'] = form.cleaned_data.get('slug')

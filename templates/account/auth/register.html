@@ -8,9 +8,7 @@
 {% block content %}
     <main class="auth-main d-flex justify-content-center align-items-center">
         <div class="auth-container">
-
             <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
-
             <form class="my-2" method="post" action="{% url 'account:register' %}">
                 {% csrf_token %}
                 {% if form.errors %}
@@ -44,14 +42,12 @@
                     <button class="btn btn-success rounded-pill w-50">Sing Up</button>
                 </div>
             </form>
-
             <ul class="text-muted d-flex align-items-center flex-column">
                 <li>
                     <span>Do you have an account?</span>
                     <a href="{% url 'account:login' %}" class="text-decoration-none">Sign In</a>
                 </li>
             </ul>
-
         </div>
     </main>
 {% endblock content %}

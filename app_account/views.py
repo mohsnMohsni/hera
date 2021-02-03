@@ -17,9 +17,9 @@ from .models import User
 
 
 class SignInView(LoginView):
-    template_name = 'account/auth/login.html'
     form_class = SignInForm
     redirect_authenticated_user = True
+    template_name = 'account/auth/login.html'
 
     def get_success_url(self):
         return reverse('siteview:home')

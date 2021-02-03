@@ -8,9 +8,7 @@
 {% block content %}
     <main class="auth-main d-flex justify-content-center align-items-center">
         <div class="auth-container">
-
             <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
-
             <form class="my-2" method="post">
                 {% csrf_token %}
                 {% if form.errors %}
@@ -24,7 +22,6 @@
                         <label for="id_email" class="input-placeholder">Email</label>
                         <span class="input-border"></span>
                     </div>
-
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password }}
                         <label for="id_password" class="input-placeholder">Password</label>
@@ -35,18 +32,12 @@
                     <button class="btn btn-success rounded-pill w-50">Login</button>
                 </div>
             </form>
-
             <ul class="text-muted d-flex align-items-center flex-column">
-                <li>
-                    <span>Forgot</span>
-                    <a href="#" class="text-decoration-none">Username / Password?</a>
-                </li>
                 <li>
                     <span>Don’t have an account?</span>
                     <a href="{% url 'account:register' %}" class="text-decoration-none">Sign up</a>
                 </li>
             </ul>
-
         </div>
     </main>
 {% endblock content %}

@@ -23,12 +23,16 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="product-details">
-                            <h1 class="product-title">{{ product.brand|title }}, {{ product.name|title }}</h1>
+                            <h1 class="product-title">
+                                {{ product.brand|title }}, {{ product.name|title }}
+                            </h1>
                             <div class="product-meta">
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <i class="fa fa-user-o"></i> By
-                                        <a href="">{{ shop_product.shop.name|title }}</a>
+                                        <a href="{% url 'product:shop_product_list' shop_product.shop.slug %}">
+                                            {{ shop_product.shop.name|title }}
+                                        </a>
                                     </li>
                                     <li class="list-inline-item">
                                         <i class="fa fa-folder-open-o"></i> Category
@@ -56,17 +60,23 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
                                            href="#pills-home" role="tab" aria-controls="pills-home"
-                                           aria-selected="true">Product Details</a>
+                                           aria-selected="true">
+                                            Product Details
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
                                            href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                           aria-selected="false">Specifications</a>
+                                           aria-selected="false">
+                                            Specifications
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
                                            href="#pills-contact" role="tab" aria-controls="pills-contact"
-                                           aria-selected="false">Reviews</a>
+                                           aria-selected="false">
+                                            Reviews
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
@@ -97,8 +107,12 @@
                     <div class="widget">
                         <ul>
                             <li class="d-flex justify-content-between align-items-center p-3 pl-0 pr-5">
-                                <p class="font-weight-bold m-0 border-right pr-5 text-info h6">Shop Name</p>
-                                <p class="font-weight-bold m-0 border-left pl-5 text-info h6">Price</p>
+                                <p class="font-weight-bold m-0 border-right pr-5 text-info h6">
+                                    Shop Name
+                                </p>
+                                <p class="font-weight-bold m-0 border-left pl-5 text-info h6">
+                                    Price
+                                </p>
                             </li>
                             {% for shopProduct in product.shop_product.all %}
                                 {% if shopProduct.id != shop_product.id %}
@@ -122,6 +136,7 @@
         </section>
     </main>
 {% endblock content %}
+
 {% block extra_js %}
     <script src="{% static 'custom/js/product.js' %}"></script>
     <script src="{% static 'custom/js/utils.js' %}"></script>

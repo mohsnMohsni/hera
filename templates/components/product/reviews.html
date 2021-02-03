@@ -6,11 +6,9 @@
         <div id="list-inline">
             {% for comment in product.comments.all %}
                 <div class="media">
-                    <!-- Avater -->
                     <img src="{{ comment.user.avatar.url }}" alt="avatar"
                          style="height: 70px !important; width: 70px !important;">
                     <div class="media-body">
-                        <!-- Ratings -->
                         <div class="ratings">
                             <ul class="list-inline">
                                 {% for _ in "starr"|slice:comment.rate %}

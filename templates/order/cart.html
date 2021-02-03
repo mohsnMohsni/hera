@@ -12,88 +12,8 @@
         <section class="dashboard section">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
-                        <div class="sidebar">
-                            <!-- User Widget -->
-                            <div class="widget user-dashboard-profile">
-                                <div class="profile-thumb">
-                                    <img src="{{ user.avatar.url }}" alt="" class="rounded-circle"
-                                         style="height: 150px !important; width: 150px !important;">
-                                </div>
-                                <h5 class="text-center">{{ user.full_name|title }}</h5>
-                                <p>Joined February 06, 2017</p>
-                                <a href="#" class="btn btn-main-sm">Edit Profile</a>
-                            </div>
-                            <!-- Dashboard Links -->
-                            <div class="widget user-dashboard-menu">
-                                <ul>
-                                    <li class="active">
-                                        <a><i class="fa fa-user"></i> My Basket</a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <i class="fa fa-dollar"></i>
-                                            Total Price
-                                            <span class="font-weight-bold" style="font-size: .8em">
-                                                ${{ cart.total_price }}
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <i class="fa fa-shopping-cart"></i>
-                                            Products Quantity
-                                            <span style="font-size: .8em">
-                                                {{ cart.cart_item.all.count }}
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <i class="fa fa-paypal"></i>
-                                            Method
-                                            <span style="font-size: .8em">
-                                                PayPall
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="modal" data-target="#deleteaccount"
-                                           class="btn btn-outline-info">
-                                            <i class="fa fa-arrow-up"></i>Submit Order
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Payment popup modal start-->
-                            <div class="modal fade" id="deleteaccount" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalCenterTitle"
-                                 aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header border-bottom-0">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body text-center">
-                                            <img src="{{ user.avatar.url }}" class="img-fluid mb-2" alt="">
-                                            <h6 class="py-2">Summery</h6>
-                                            <p>Pay It</p>
-                                        </div>
-                                        <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
-                                            </button>
-                                            <a href="{% url 'order:submit_order' %}"
-                                               type="button" class="btn btn-success">Pay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'components/cart/sidebar.html' %}
                     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-                        <!-- Products there is in the basket-->
                         <div class="widget dashboard-container my-adslist">
                             <h3 class="widget-header">Products</h3>
                             {% if cart.cart_item.all_unique %}
@@ -115,19 +35,24 @@
                                                      alt="image description">
                                             </td>
                                             <td class="product-details">
-                                                <h3 class="title">{{ item.shop_product.product.name|title }}</h3>
-                                            <span class="add-id">
-                                                <strong>Brand:</strong> {{ item.shop_product.product.brand|title }}
+                                                <h3 class="title">
+                                                    {{ item.shop_product.product.name|title }}
+                                                </h3>
+                                                <span class="add-id">
+                                                <strong>Brand:</strong>
+                                                    {{ item.shop_product.product.brand|title }}
                                             </span>
-                                            <span>
-                                                <strong>Posted on: </strong><time>Jun 27, 2017</time>
+                                                <span>
+                                                <strong>Posted on: </strong>
+                                                    <time>Jun 27, 2017</time>
                                             </span>
-                                            <span class="status active">
-                                                <strong>Price</strong>${{ item.shop_product.price }}
+                                                <span class="status active">
+                                                <strong>Price</strong>
+                                                    ${{ item.shop_product.price }}
                                             </span>
-                                            <span class="location" id="item-quantity{{ forloop.counter }}">
+                                                <span class="location" id="item-quantity{{ forloop.counter }}">
                                                 <strong>Quantity</strong>
-                                                {{ item.count_same.count }}
+                                                    {{ item.count_same.count }}
                                             </span>
                                             </td>
                                             <td class="product-category">
@@ -136,14 +61,12 @@
                                             </span>
                                             </td>
                                             <td class="action" data-title="Action">
-                                                <div class="">
+                                                <div>
                                                     <ul class="list-inline justify-content-center">
                                                         <li class="list-inline-item">
                                                             <a data-toggle="tooltip" data-placement="top" title="View"
                                                                class="view"
-                                                               href="
-                        {% url 'product:product' slug=item.shop_product.product.slug shop_product_id=item.shop_product.id %}
-                                                                    ">
+                                                               href="{% url 'product:product' item.shop_product.product.slug item.shop_product.id %}">
                                                                 <i class="fa fa-eye"></i>
                                                             </a>
                                                         </li>
@@ -175,6 +98,7 @@
         </section>
     </main>
 {% endblock content %}
+
 {% block extra_js %}
     <script src="{% static 'custom/js/cart.js' %}"></script>
 {% endblock extra_js %}

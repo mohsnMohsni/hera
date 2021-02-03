@@ -22,7 +22,7 @@
                                     </li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Subcategory <span>{{ category.get_children|length }}</span>
+                                            Subcategory <span>{{ category.get_children.count }}</span>
                                         </a>
                                     </li>
                                     <li>

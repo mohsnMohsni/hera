@@ -46,10 +46,7 @@
                                         <div class="product-item bg-light">
                                             <div class="card">
                                                 <div class="thumb-content">
-                                                    <a
-                                                            href="
-                        {% url 'product:product' slug=product.slug  shop_product_id=product.get_shop_products.first.id %}
-                                                                  ">
+                                                    <a href="{% url 'product:product' product.slug  product.get_shop_products.first.id %}">
                                                         <img class="card-img-top img-fluid"
                                                              style="height: 240px !important;"
                                                              src="{{ product.image.url }}" alt="Card image cap">
@@ -57,9 +54,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <h4 class="card-title">
-                                                        <a href="
-                        {% url 'product:product' slug=product.slug  shop_product_id=product.get_shop_products.first.id %}
-                                                                 ">
+                                                        <a href="{% url 'product:product' product.slug  product.get_shop_products.first.id %}">
                                                             {{ product.name|title }}
                                                         </a>
                                                     </h4>
