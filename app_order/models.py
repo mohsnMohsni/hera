@@ -86,8 +86,6 @@ class CartItem(models.Model):
 
 
 class Order(models.Model):
-    products = models.ManyToManyField("app_product.Product", verbose_name=_('Products'),
-                                      related_name='order', related_query_name='order')
     cart = models.ForeignKey("Cart", on_delete=models.CASCADE, verbose_name=_('Cart'),
                              related_name='order', related_query_name='order')
     create_at = models.DateTimeField(_('Create At'), auto_now_add=True)
@@ -106,9 +104,11 @@ class Order(models.Model):
         Return total price off all products add to this cart
         and that's related to User have been send request.
         """
-        return Order.objects.filter(cart=self.cart).aggregate(
-            models.Sum('order_item__shop_product__price')
-        ).get('order_item__shop_product__price__sum')
+        query_object = Order.objects.get(cart=self.cart, create_at=self.create_at).order_item.all()
+        price_sum = 0
+        for item in query_object:
+            price_sum += item.item_price
+        return price_sum
 
 
 class OrderItem(models.Model):
@@ -126,6 +126,10 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return str(self.order)
+
+    @property
+    def item_price(self):
+        return self.price * self.count
 
 
 class Payment(models.Model):

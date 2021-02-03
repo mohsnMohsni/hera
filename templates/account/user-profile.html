@@ -11,31 +11,43 @@
             <div class="row">
                 {% include 'components/profile/sidebar.html' %}
                 <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
-                    <div class="my-2">
+                    <div class="mb-2">
                         <div class="widget welcome-message">
                             <h2>Orders</h2>
                         </div>
-                        {% for order in order_list %}
-                            <div class="col-lg-4 col-md-6 mx-sm-auto">
-                                <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
-                                    <div class="package-content-heading border-bottom">
-                                        <i class="fa fa-check"></i>
-                                        <h5>{{ order.create_at }}</h5>
-                                        <h4 class="py-3"><span>${{ order.total_price }}</span></h4>
+                        <div class="row">
+                            {% for order in order_list %}
+                                <div class="col-md-6 mx-sm-auto px-2">
+                                    <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
+                                        <div class="package-content-heading border-bottom">
+                                            <i class="fa fa-check"></i>
+                                            <h5>{{ order.create_at }}</h5>
+                                            <h4 class="py-3"><span>${{ order.total_price }}</span></h4>
+                                        </div>
+                                        <ul>
+                                            {% for order_item in order.order_item.all %}
+                                                <li class="my-4">
+                                                    <a href="{% url 'product:product' slug=order_item.shop_product.product.slug shop_product_id=order_item.shop_product.id %}">
+                                                        <i class="fa fa-barcode"></i>
+                                                        <span class="border-bottom text-info px-1">
+                                                            Count: {{ order_item.count }}
+                                                        </span>
+                                                        <span class="mx-1 px-1 border-left">
+                                                            {{ order_item.shop_product.product.name|title }}
+                                                        </span>
+                                                        <span class=" text-info px-1">
+                                                            ${{ order_item.price }}
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
-                                    <ul>
-                                        {% for order_item in order.order_item.all %}
-                                            <li class="my-4">
-                                                <i class="fa fa-dot-circle-o"></i>
-                                                {{ order_item.shop_product.product.name|title }}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="my-2">
+                    <div class="mb-2 mt-3">
                         <div class="widget welcome-message">
                             <h2>Addresses</h2>
                         </div>
