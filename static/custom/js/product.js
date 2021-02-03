@@ -46,6 +46,7 @@ function makeStarforRate(rate) {
 
 function addComment(response) {
     let listInline = $('#list-inline');
+    $('#no-comments').hide();
     listInline.append(`
                         <div class="media">
                             <img src="${response.author.avatar}" alt="avatar"
@@ -133,3 +134,5 @@ function addToCartAjax() {
         },
     })
 }
+
+setValNull();

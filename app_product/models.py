@@ -191,7 +191,6 @@ class Category(AbstractDetail):
         return product_list
 
 
-
 class Gallery(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name=_('Product'),
                                 related_name='images', related_query_name='images')
@@ -260,6 +259,13 @@ class Shop(AbstractDetail):
             return 1
         else:
             return 0
+
+    @property
+    def buyers_count(self):
+        query_objects = User.objects.filter(
+            cart__order__order_item__shop_product__shop=self
+        ).values_list('id', flat=True)
+        return len(set(query_objects))
 
     @property
     def happy_customers(self):
