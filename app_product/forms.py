@@ -2,7 +2,7 @@ from .models import Shop, Product, ShopProduct, ProductMeta, Brand, Category
 from django import forms
 
 
-class AddShopForm(forms.ModelForm):
+class ShopForm(forms.ModelForm):
     class Meta:
         model = Shop
         fields = ('slug', 'name', 'detail', 'image', 'user')

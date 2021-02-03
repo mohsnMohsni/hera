@@ -30,16 +30,23 @@
         <!-- Rate Widget -->
         <div class="widget rate">
             <div class="d-flex justify-content-center">
-                <span class="py-2 px-5 border product-side-option" id="like-product" onclick="sendLikeResponse()">
+                <span class="py-2 px-4 border product-side-option" id="like-product" onclick="sendLikeResponse()">
                     {% if product.id in product.likes.all.first.user_is_liked %}
                         <i class="fa fa-bookmark"></i>
                     {% else %}
                         <i class="fa fa-bookmark-o alt-color"></i>
                     {% endif %}
                 </span>
-                <span class="py-2 px-5 border product-side-option">
+                <span class="py-2 px-4 border product-side-option">
                     <i class="fa fa-share-alt"></i>
                 </span>
+                {% if user == shop_product.shop.user %}
+                    <span class="py-2 px-4 border product-side-option">
+                        <a href="{% url 'product:edit_product' slug=product.slug shop_product_id=shop_product.id %}">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </span>
+                {% endif %}
             </div>
         </div>
         <div class="widget coupon text-center">

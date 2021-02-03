@@ -1,6 +1,6 @@
-from django.views.generic import DetailView, ListView, CreateView
+from django.views.generic import DetailView, ListView, CreateView, UpdateView
+from .forms import ShopForm, ShopProductForm, ProductMetaForm
 from .models import Category, Product, ShopProduct, Shop
-from .forms import AddShopForm, ShopProductForm, ProductMetaForm
 from django.shortcuts import get_object_or_404
 from django.shortcuts import reverse
 
@@ -61,7 +61,7 @@ class ShopProductList(ListView):
 class AddShopView(CreateView):
     model = Shop
     template_name = 'main/forms/add_shop.html'
-    form_class = AddShopForm
+    form_class = ShopForm
 
     def form_valid(self, form):
         self.kwargs['slug'] = form.cleaned_data.get('slug')
@@ -88,6 +88,32 @@ class AddShopProductView(CreateView):
                                                   price=price, quantity=quantity)
         self.kwargs['shop_product_id'] = shop_product.id
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('product:product', kwargs={'slug': self.kwargs.get('slug'),
+                                                  'shop_product_id': self.kwargs.get('shop_product_id')})
+
+
+class EditShopProductView(UpdateView):
+    model = Product
+    form_class = ShopProductForm
+    template_name = 'main/forms/edit_product.html'
+
+    def form_valid(self, form):
+        slug = self.kwargs.get('slug')
+        price = form.cleaned_data.pop('price')
+        quantity = form.cleaned_data.pop('quantity')
+        ShopProduct.objects.filter(product__slug=slug, shop=self.request.user.shop).update(
+            price=price, quantity=quantity
+        )
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        shop_product_id = self.kwargs.get('shop_product_id')
+        shop_product = ShopProduct.objects.filter(id=shop_product_id).first()
+        context['form1'] = ShopProductForm(instance=shop_product)
+        return context
 
     def get_success_url(self):
         return reverse('product:product', kwargs={'slug': self.kwargs.get('slug'),
