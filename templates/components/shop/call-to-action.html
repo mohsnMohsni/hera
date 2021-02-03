@@ -7,10 +7,14 @@
                         <li class="list-inline-item">
                             <a class="btn btn-main"
                                href="{% url 'product:add_product' %}">
-                                Add Product</a>
+                                Add Product
+                            </a>
                         </li>
-                        <li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Browser
-                            Listing</a></li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-secondary" href="{% url 'product:edit_shop' slug=shop.slug %}">
+                                Edit Shop
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

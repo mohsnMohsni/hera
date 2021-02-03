@@ -60,7 +60,7 @@ class ShopProductList(ListView):
 
 class AddShopView(CreateView):
     model = Shop
-    template_name = 'main/forms/add_shop.html'
+    template_name = 'main/forms/shop_form.html'
     form_class = ShopForm
 
     def form_valid(self, form):
@@ -74,10 +74,25 @@ class AddShopView(CreateView):
         return reverse('product:shop_product_list', kwargs={'slug': self.kwargs.get('slug')})
 
 
+class EditShopView(UpdateView):
+    model = Shop
+    form_class = ShopForm
+    template_name = 'main/forms/shop_form.html'
+
+    def form_valid(self, form):
+        self.kwargs['slug'] = form.cleaned_data.get('slug')
+        valid_form = form.save(commit=False)
+        valid_form.user = self.request.user
+        return super().form_valid(valid_form)
+
+    def get_success_url(self):
+        return reverse('product:shop_product_list', kwargs={'slug': self.kwargs.get('slug')})
+
+
 class AddShopProductView(CreateView):
     model = Product
     form_class = ShopProductForm
-    template_name = 'main/forms/add_product.html'
+    template_name = 'main/forms/product_form.html'
 
     def form_valid(self, form):
         self.kwargs['slug'] = form.cleaned_data.get('slug')
@@ -97,7 +112,7 @@ class AddShopProductView(CreateView):
 class EditShopProductView(UpdateView):
     model = Product
     form_class = ShopProductForm
-    template_name = 'main/forms/edit_product.html'
+    template_name = 'main/forms/product_edit_form.html'
 
     def form_valid(self, form):
         slug = self.kwargs.get('slug')
