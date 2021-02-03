@@ -22,12 +22,12 @@
                         <i class="fa fa-dollar"></i>
                         Total Price
                         <span class="font-weight-bold" style="font-size: .8em">
-                                                    {% if cart.total_price %}
-                                                        ${{ cart.total_price }}
-                                                    {% else %}
-                                                        0
-                                                    {% endif %}
-                                            </span>
+                            {% if cart.total_price %}
+                                ${{ cart.total_price }}
+                            {% else %}
+                                0
+                            {% endif %}
+                        </span>
                     </a>
                 </li>
                 <li>
@@ -35,8 +35,8 @@
                         <i class="fa fa-shopping-cart"></i>
                         Products Quantity
                         <span style="font-size: .8em">
-                                                {{ cart.cart_item.all.count }}
-                                            </span>
+                            {{ cart.cart_item.all.count }}
+                        </span>
                     </a>
                 </li>
                 <li>
@@ -44,8 +44,8 @@
                         <i class="fa fa-paypal"></i>
                         Method
                         <span style="font-size: .8em">
-                                                PayPall
-                                            </span>
+                            PayPall
+                        </span>
                     </a>
                 </li>
                 <li>
@@ -59,26 +59,42 @@
         <div class="modal fade" id="deleteaccount" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle"
              aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img src="{{ user.avatar.url }}" class="img-fluid mb-2" alt="">
-                        <h6 class="py-2">Summery</h6>
-                        <p>Pay It</p>
-                    </div>
-                    <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
-                        </button>
-                        <a href="{% url 'order:submit_order' %}"
-                           type="button" class="btn btn-success">Pay</a>
+            <form action="{% url 'order:submit_order' %}" method="post">
+                {% csrf_token %}
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="{{ user.avatar.url }}" class="img-fluid mb-2" alt="">
+                            <div>
+                                <textarea placeholder="Description..." name="description" cols="30" rows="6"></textarea>
+                            </div>
+                            <a>
+                                Total Price:
+                                <span class="font-weight-bold" style="font-size: .8em">
+                            {% if cart.total_price %}
+                                <i class="fa fa-dollar"></i>{{ cart.total_price }}
+                            {% else %}
+                                0
+                            {% endif %}
+                        </span>
+                            </a>
+                        </div>
+                        <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                Pay
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
