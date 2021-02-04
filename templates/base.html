@@ -1,7 +1,15 @@
 {% load static %}
-{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!-- Current language: {{ LANGUAGE_CODE }} -->
+
+{% if LANGUAGE_CODE == 'fa' %}
+    <html lang="{{ LANGUAGE_CODE }}" dir="rtl">
+{% else %}
+    <html lang="{{ LANGUAGE_CODE }}">
+{% endif %}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +28,10 @@
     <link href="{% static 'plugins/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
+    <!-- Language Static Control -->
+    {% if LANGUAGE_CODE == 'fa' %}
+        <link href="{% static 'custom-persian/css/persian-style.css' %}" rel="stylesheet">
+    {% endif %}
     {% block extra_css %} {% endblock extra_css %}
 </head>
 

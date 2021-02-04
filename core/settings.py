@@ -106,7 +106,6 @@ except UndefinedValueError:
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -124,22 +123,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGES = (
-    ('fa', ugettext_lazy('Persian')),
-    ('en', ugettext_lazy('English')),
+    ('fa', 'Persian'),
+    ('en', 'English'),
 )
-
 LANGUAGE_CODE = 'fa'
-
-LOCALE_PATHS = [BASE_DIR / 'local']
-
+LOCALE_PATHS = [BASE_DIR / 'locale']
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)

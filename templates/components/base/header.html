@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-<section>
+<section dir="ltr">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -18,7 +18,7 @@
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
                                     <a class="nav-link login-button" href="{% url 'account:logout' %}">
-                                        {% translate "Sign Out" %}
+                                        {% trans "Sign Out" %}
                                     </a>
                                 </li>
                                 <li class="nav-item">
