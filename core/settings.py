@@ -132,6 +132,8 @@ LANGUAGES = (
 
 LANGUAGE_CODE = 'fa'
 
+LOCALE_PATHS = [BASE_DIR / 'local']
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True

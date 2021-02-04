@@ -32,7 +32,7 @@
                     {% if user.is_seller %}
                         <a class="my-1 d-inline-block" href="{% url 'product:shop_product_list' user.shop.slug %}">
                             <i class="fa fa-external-link-square mx-1"></i>
-                            {% translate "See My Shop" %}
+                            {% translate "My Shop" %}
                         </a>
                     {% else %}
                         <a class="my-1 d-inline-block" href="{% url 'product:add_shop' %}">

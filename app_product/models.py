@@ -102,7 +102,6 @@ class ProductMeta(models.Model):
 
     class Meta:
         verbose_name = _('Product Meta Detail')
-        verbose_name_plural = _('Product Meta Detail\'s')
 
     def __str__(self):
         return str(self.product) + f'({self.label})'

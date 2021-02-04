@@ -121,8 +121,8 @@ class OrderItem(models.Model):
     price = models.IntegerField(_('Price'))
 
     class Meta:
-        verbose_name = _('Basket Item')
-        verbose_name_plural = _('Basket Item')
+        verbose_name = _('Order Item')
+        verbose_name_plural = _('Order Items')
 
     def __str__(self):
         return str(self.order)
