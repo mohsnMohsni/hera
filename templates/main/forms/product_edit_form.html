@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %} Edit Profile {% endblock title %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Product" %}
+ {% endblock title %}
 
 {% block content %}
     <div class="widget personal-info">
-        <h3 class="widget-header user">Edit Personal Information</h3>
+        <h3 class="widget-header user">
+            {% translate "Product Information" %}
+        </h3>
         {% if form.errors %}
             <div class="alert alert-danger d-flex justify-content-center align-items-center">
                 <span>
@@ -17,11 +23,15 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="id_phone">slug</label>
+                        <label for="id_phone">
+                            {% translate "Slug" %}
+                        </label>
                         {{ form.slug }}
                     </div>
                     <div class="col-sm-6">
-                        <label for="id_phone">name</label>
+                        <label for="id_phone">
+                            {% translate "Name" %}
+                        </label>
                         {{ form.name }}
                     </div>
                 </div>
@@ -33,11 +43,15 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="id_phone">Price</label>
+                        <label for="id_phone">
+                            {% translate "Price" %}
+                        </label>
                         {{ form1.price }}
                     </div>
                     <div class="col-sm-6">
-                        <label for="id_phone">Quantity</label>
+                        <label for="id_phone">
+                            {% translate "Quantity" %}
+                        </label>
                         {{ form1.quantity }}
                     </div>
                 </div>
@@ -45,27 +59,37 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="id_phone">Brand</label>
+                        <label for="id_phone">
+                            {% translate "Brand" %}
+                        </label>
                         {{ form.brand }}
                     </div>
                     <div class="col-sm-6">
-                        <label for="id_phone">Category</label>
+                        <label for="id_phone">
+                            {% translate "Category" %}
+                        </label>
                         {{ form.category }}
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="id_phone">Detail</label>
+                <label for="id_phone">
+                    {% translate "Detail" %}
+                </label>
                 {{ form.detail }}
             </div>
             <div class="form-group">
-                <label for="id_phone">Extra Fields</label>
+                <label for="id_phone">
+                    {% translate "Extra Fields" %}
+                </label>
                 <div class="row">
                     <div class="col-sm-6">{{ form.label }}</div>
                     <div class="col-sm-6">{{ form.value }}</div>
                 </div>
             </div>
-            <button class="btn btn-transparent">Save My Changes</button>
+            <button class="btn btn-transparent">
+                {% translate "Save My Changes" %}
+            </button>
         </form>
     </div>
 {% endblock content %}

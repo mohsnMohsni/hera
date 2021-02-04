@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
+
 {% load static %}
-{% block title %} Login {% endblock title %}
+
+{% block title %}
+    {% translate "Login" %}
+{% endblock title %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'auth/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'auth/responsive/responsive.css' %}">
 {% endblock extra_css %}
+
 {% block content %}
     <main class="auth-main d-flex justify-content-center align-items-center">
         <div class="auth-container">
-            <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
+            <div class="text-center font-weight-bold w-100 my-4 display-4">
+                {% translate "Welcome" %}
+            </div>
             <form class="my-2" method="post">
                 {% csrf_token %}
                 {% if form.errors %}
@@ -19,23 +29,33 @@
                 <div class="d-flex align-items-center flex-column">
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.username }}
-                        <label for="id_email" class="input-placeholder">Email</label>
+                        <label for="id_email" class="input-placeholder">
+                            {% translate "Email" %}
+                        </label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password }}
-                        <label for="id_password" class="input-placeholder">Password</label>
+                        <label for="id_password" class="input-placeholder">
+                            {% translate "Password" %}
+                        </label>
                         <span class="input-border"></span>
                     </div>
                 </div>
                 <div class="my-3 d-flex justify-content-center">
-                    <button class="btn btn-success rounded-pill w-50">Login</button>
+                    <button class="btn btn-success rounded-pill w-50">
+                        {% translate "Login" %}
+                    </button>
                 </div>
             </form>
             <ul class="text-muted d-flex align-items-center flex-column">
                 <li>
-                    <span>Don’t have an account?</span>
-                    <a href="{% url 'account:register' %}" class="text-decoration-none">Sign up</a>
+                    <span>
+                        {% translate "Don’t have an account?" %}
+                    </span>
+                    <a href="{% url 'account:register' %}" class="text-decoration-none">
+                        {% translate "Sign up" %}
+                    </a>
                 </li>
             </ul>
         </div>

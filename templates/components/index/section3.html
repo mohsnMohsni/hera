@@ -1,10 +1,16 @@
+{% load i18n %}
+
 <section class=" section">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>All Categories</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
+                    <h2>
+                        {% translate "All Categories" %}
+                    </h2>
+                    <p>
+                        {% translate "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!" %}
+                    </p>
                 </div>
                 <div class="row">
                     {% for category in categories %}
@@ -17,21 +23,21 @@
                                 <ul class="category-list">
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Products <span>{{ category.get_products.count }}</span>
+                                            {% translate "Products" %} <span>{{ category.get_products.count }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Subcategory <span>{{ category.get_children.count }}</span>
+                                            {% translate "Subcategory" %} <span>{{ category.get_children.count }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Viewer <span>{{ category.product.all.count }}</span>
+                                            {% translate "Viewer" %} <span>{{ category.product.all.count }}</span>
                                         </a></li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            Detail <span>{{ category.detail|truncatechars:15 }}</span>
+                                            {% translate "Detail" %} <span>{{ category.detail|truncatechars:15 }}</span>
                                         </a>
                                     </li>
                                 </ul>

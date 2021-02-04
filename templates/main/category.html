@@ -2,13 +2,15 @@
 
 {% load static %}
 
+{% load i18n %}
+
 {% load mathfilters %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
 {% endblock extra_css %}
 
-{% block title %} Category-{{ category.name|title }} {% endblock title %}
+{% block title %} {% translate "Category" %}-{{ category.name|title }} {% endblock title %}
 
 {% block content %}
     <main>
@@ -24,8 +26,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="search-result bg-gray">
-                            <h2>Results For "{{ category|capfirst }}"</h2>
-                            <p>{{ object_list|length }} Results on
+                            <h2>{% translate "Results For" %} "{{ category|capfirst }}"</h2>
+                            <p>{{ object_list|length }} {% translate "Results on" %}
                                 <script>
                                     const CurrentDate = new Date().toLocaleString()
                                     document.write(CurrentDate)

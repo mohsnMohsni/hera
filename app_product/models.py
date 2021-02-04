@@ -101,8 +101,8 @@ class ProductMeta(models.Model):
     value = models.CharField(_('Value'), max_length=100)
 
     class Meta:
-        verbose_name = _('Product Meta Data')
-        verbose_name_plural = _('Product Meta Detail')
+        verbose_name = _('Product Meta Detail')
+        verbose_name_plural = _('Product Meta Detail\'s')
 
     def __str__(self):
         return str(self.product) + f'({self.label})'

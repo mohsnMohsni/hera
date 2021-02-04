@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
-{% block title %} Logout {% endblock title %}
+
+{% load i18n%}
+
+{% block title %}
+    {% translate "Logout" %}
+{% endblock title %}
+
 {% block content %}
     <main style="height: 70vh;" class="d-flex justify-content-center align-items-center">
         <div class="text-muted font-weight-bold display-4">
-            Sign out have been successful.
+            {% translate "Sign out have been successful." %}
             <div>
                 <a href="{% url 'siteview:home' %}" class="btn btn-info">
-                    &#8592; Back to home
+                    {% translate "&#8592; Back to home" %}
                 </a>
             </div>
         </div>

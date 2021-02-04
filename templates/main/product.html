@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %} Product-{{ product.name }} {% endblock title %}
+{% block title %} {% translate "Product" %}-{{ product.name }} {% endblock title %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
@@ -29,13 +31,15 @@
                             <div class="product-meta">
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <i class="fa fa-user-o"></i> By
+                                        <i class="fa fa-user-o"></i>
+                                        {% translate "By" %}
                                         <a href="{% url 'product:shop_product_list' shop_product.shop.slug %}">
                                             {{ shop_product.shop.name|title }}
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <i class="fa fa-folder-open-o"></i> Category
+                                        <i class="fa fa-folder-open-o"></i>
+                                        {% translate "Category" %}
                                         <a href="{% url 'product:category' product.category.slug %}">
                                             {{ product.category|title }}
                                         </a>
@@ -61,21 +65,21 @@
                                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
                                            href="#pills-home" role="tab" aria-controls="pills-home"
                                            aria-selected="true">
-                                            Product Details
+                                            {% translate "Product Details" %}
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
                                            href="#pills-profile" role="tab" aria-controls="pills-profile"
                                            aria-selected="false">
-                                            Specifications
+                                            {% translate "Specifications" %}
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
                                            href="#pills-contact" role="tab" aria-controls="pills-contact"
                                            aria-selected="false">
-                                            Reviews
+                                            {% translate "Reviews" %}
                                         </a>
                                     </li>
                                 </ul>
@@ -102,16 +106,16 @@
                 {% if product.shop_product.all.count > 1 %}
                     <div class="mt-5 mb-2 border-bottom text-center text-capitalize h4 p-1 text-muted"
                          style="border-bottom-color: #5672F9 !important;">
-                        Other shops, That they sell this product.
+                        {% translate "Other shops, That they sell this product." %}
                     </div>
                     <div class="widget">
                         <ul>
                             <li class="d-flex justify-content-between align-items-center p-3 pl-0 pr-5">
                                 <p class="font-weight-bold m-0 border-right pr-5 text-info h6">
-                                    Shop Name
+                                    {% translate "Shop Name" %}
                                 </p>
                                 <p class="font-weight-bold m-0 border-left pl-5 text-info h6">
-                                    Price
+                                    {% translate "Price" %}
                                 </p>
                             </li>
                             {% for shopProduct in product.shop_product.all %}

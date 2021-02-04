@@ -1,0 +1,2450 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-04 10:32+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: app_account/admin.py:12 app_account/models.py:40 app_account/models.py:98
+#: templates/account/auth/login.html:33 templates/account/auth/register.html:33
+#: templates/account/edit-profile.html:31
+msgid "Email"
+msgstr "ایمیل"
+
+#: app_account/admin.py:13 app_account/models.py:99
+msgid "Emails"
+msgstr "ایمیل ها"
+
+#: app_account/admin.py:22 app_account/models.py:118
+msgid "Address"
+msgstr "آدرس"
+
+#: app_account/admin.py:23 app_account/models.py:119
+#: templates/account/user-profile.html:59
+msgid "Addresses"
+msgstr "آدرس ها"
+
+#: app_account/models.py:41
+msgid "required valid email like example@gamil.com"
+msgstr "فیلد الزامی، برای مثال example@gmail.com"
+
+#: app_account/models.py:42 app_product/models.py:16
+#: templates/account/auth/register.html:40
+#: templates/main/forms/product_edit_form.html:33
+#: templates/main/forms/product_form.html:31
+#: templates/main/forms/shop_form.html:29
+msgid "Name"
+msgstr "اسم"
+
+#: app_account/models.py:43
+msgid "enter your full name"
+msgstr "اسم کامل خود را وارد کنید"
+
+#: app_account/models.py:44 templates/account/edit-profile.html:41
+msgid "Phone"
+msgstr "تلفن"
+
+#: app_account/models.py:45
+msgid "Avatar"
+msgstr "آواتر"
+
+#: app_account/models.py:47
+msgid "Is Seller"
+msgstr "فروشنده"
+
+#: app_account/models.py:48
+msgid "Is Staff"
+msgstr "کارکنان"
+
+#: app_account/models.py:50
+msgid "Designates whether the user can log into this admin site."
+msgstr "مشخص می کند آیا کاربر می تواند به این سایت مدیر وارد شود یا خیر."
+
+#: app_account/models.py:52
+msgid "Active"
+msgstr "فعال"
+
+#: app_account/models.py:54
+msgid ""
+"Designates whether this user should be treated as active.Unselect this "
+"instead of deleting accounts."
+msgstr ""
+"تعیین می کند که آیا با این کاربر باید به عنوان فعال رفتار شود یا خیر. به جای "
+"حذف حساب ها."
+
+#: app_account/models.py:65 app_account/models.py:91 app_account/models.py:109
+#: app_order/models.py:9 app_order/models.py:136 app_product/models.py:300
+#: app_product/models.py:327 templates/admin/object_history.html:23
+msgid "User"
+msgstr "کاربر"
+
+#: app_account/models.py:66
+msgid "Users"
+msgstr "کاربر ها"
+
+#: app_account/models.py:93
+msgid "Subject"
+msgstr "موضوغ"
+
+#: app_account/models.py:94
+msgid "To"
+msgstr "به"
+
+#: app_account/models.py:95
+msgid "Text body"
+msgstr "بدنه متن"
+
+#: app_account/models.py:111 templates/account/add-address.html:23
+msgid "City"
+msgstr "شهر"
+
+#: app_account/models.py:112 templates/account/add-address.html:29
+msgid "Street"
+msgstr "خیابان"
+
+#: app_account/models.py:113 templates/account/add-address.html:35
+msgid "Alley"
+msgstr "کوچه"
+
+#: app_account/models.py:114
+msgid "Home no"
+msgstr "پلاک"
+
+#: app_account/models.py:115 templates/account/add-address.html:47
+msgid "Postal Code"
+msgstr "کدپستی"
+
+#: app_account/views.py:42
+msgid "Active your shop account."
+msgstr "فعال کردن اکانت"
+
+#: app_account/views.py:77
+msgid "Activation link is invalid!"
+msgstr "لینک فعال سازی نامعتبر"
+
+#: app_order/models.py:13 app_order/models.py:55 app_order/models.py:89
+#: templates/order/cart.html:7
+msgid "Cart"
+msgstr "سبدخرید"
+
+#: app_order/models.py:14
+msgid "Carts"
+msgstr "سبدخرید ها"
+
+#: app_order/models.py:57 app_order/models.py:117 app_product/models.py:289
+msgid "Shop Product"
+msgstr "محصول فروشگاه"
+
+#: app_order/models.py:64
+msgid "Cart Item"
+msgstr "یکی از موارد سبدخرید"
+
+#: app_order/models.py:65
+msgid "Cart Items"
+msgstr "یکی از موارد سبدخرید ها"
+
+#: app_order/models.py:91
+msgid "Create At"
+msgstr "ساخته شده در"
+
+#: app_order/models.py:92 app_siteview/models.py:13
+msgid "Description"
+msgstr "توضیحات"
+
+#: app_order/models.py:95 app_order/models.py:115 app_order/models.py:138
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:379
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:386
+msgid "Order"
+msgstr "سفارش"
+
+#: app_order/models.py:96 templates/account/user-profile.html:19
+msgid "Orders"
+msgstr "سفارش ها"
+
+#: app_order/models.py:120
+msgid "Count"
+msgstr "تعداد"
+
+#: app_order/models.py:121 app_product/models.py:285
+#: templates/components/product/sidebar.html:9
+#: templates/main/forms/product_edit_form.html:47
+#: templates/main/forms/product_form.html:45 templates/main/product.html:118
+#: templates/order/cart.html:66
+msgid "Price"
+msgstr "قیمت"
+
+#: app_order/models.py:124 app_order/models.py:125
+msgid "Basket Item"
+msgstr "یکی از موارد سبدخرید"
+
+#: app_order/models.py:140
+msgid "Amount"
+msgstr "قیمت"
+
+#: app_order/models.py:143 app_order/models.py:144
+msgid "Payment"
+msgstr "پرداخت"
+
+#: app_product/models.py:15 templates/main/forms/product_edit_form.html:27
+#: templates/main/forms/product_form.html:25
+#: templates/main/forms/shop_form.html:23
+msgid "Slug"
+msgstr "اسلاگ"
+
+#: app_product/models.py:17 templates/components/index/section3.html:40
+#: templates/main/forms/product_edit_form.html:77
+#: templates/main/forms/product_form.html:75
+#: templates/main/forms/shop_form.html:39
+msgid "Detail"
+msgstr "اطلاعات"
+
+#: app_product/models.py:19 app_product/models.py:47 app_product/models.py:113
+#: app_product/models.py:146 app_product/models.py:197
+#: templates/order/cart.html:28
+#: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:379
+msgid "Image"
+msgstr "عکس"
+
+#: app_product/models.py:20 app_product/models.py:302
+msgid "Create Date"
+msgstr "تاریخ ساخت"
+
+#: app_product/models.py:21 app_product/models.py:303
+msgid "Update Date"
+msgstr "تاریخ بروزرسانی"
+
+#: app_product/models.py:22 app_siteview/models.py:14
+msgid "Crop It"
+msgstr "برش عکس"
+
+#: app_product/models.py:43 app_product/models.py:117
+#: templates/components/product/specifications.html:17
+#: templates/main/forms/product_edit_form.html:63
+#: templates/main/forms/product_form.html:61
+msgid "Brand"
+msgstr "نام تجاری"
+
+#: app_product/models.py:45 app_product/models.py:150
+#: templates/main/category.html:13
+#: templates/main/forms/product_edit_form.html:69
+#: templates/main/forms/product_form.html:67 templates/main/product.html:42
+#: templates/order/cart.html:34
+msgid "Category"
+msgstr "دسته بندی"
+
+#: app_product/models.py:51 app_product/models.py:98 app_product/models.py:195
+#: app_product/models.py:283 app_product/models.py:298
+#: templates/main/forms/product_edit_form.html:6
+#: templates/main/forms/product_form.html:5 templates/main/product.html:7
+msgid "Product"
+msgstr "محصول"
+
+#: app_product/models.py:52 templates/components/index/section1.html:41
+#: templates/components/index/section3.html:26
+#: templates/components/shop/product_list.html:9
+#: templates/components/utils/search-bar.html:30 templates/order/cart.html:21
+msgid "Products"
+msgstr "محصولات"
+
+#: app_product/models.py:100
+msgid "Label"
+msgstr "برچسب"
+
+#: app_product/models.py:101
+msgid "Value"
+msgstr "مقدار"
+
+#: app_product/models.py:104
+msgid "Product Meta Detail"
+msgstr "اطلاعات اضافه محصول"
+
+#: app_product/models.py:105
+#, fuzzy
+#| msgid "Product Meta Detail"
+msgid "Product Meta Detail's"
+msgstr "اطلاعات اضافه محصول"
+
+#: app_product/models.py:118
+msgid "Brands"
+msgstr "نام های تجاری"
+
+#: app_product/models.py:143
+msgid "Parent"
+msgstr "والد"
+
+#: app_product/models.py:151 templates/components/index/section1.html:47
+#: templates/components/utils/search-bar.html:36
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: app_product/models.py:200 app_product/models.py:201
+msgid "Gallery"
+msgstr "گالری"
+
+#: app_product/models.py:219
+msgid "Owner"
+msgstr "صاحب"
+
+#: app_product/models.py:221
+msgid "Picture"
+msgstr "تصویر"
+
+#: app_product/models.py:225 app_product/models.py:281
+#: templates/main/shop.html:5
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: app_product/models.py:226
+msgid "Shops"
+msgstr "فروشگاه ها"
+
+#: app_product/models.py:286 templates/main/forms/product_edit_form.html:53
+#: templates/main/forms/product_form.html:51 templates/order/cart.html:70
+msgid "Quantity"
+msgstr "تعداد"
+
+#: app_product/models.py:290
+msgid "Shop Products"
+msgstr "محولات فروشگاه"
+
+#: app_product/models.py:304
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2055
+msgid "Text"
+msgstr "متن"
+
+#: app_product/models.py:305
+msgid "Rate"
+msgstr "امتیاز"
+
+#: app_product/models.py:308 app_product/models.py:309
+msgid "Comments"
+msgstr "نظر ها"
+
+#: app_product/models.py:329
+msgid "Products liked"
+msgstr "علاقه‌مندی محصولات"
+
+#: app_product/models.py:331
+msgid "Condition"
+msgstr "شرط"
+
+#: app_product/models.py:334
+msgid "Like"
+msgstr "علاقه‌مندی"
+
+#: app_siteview/models.py:11
+msgid "Action Text"
+msgstr "متن"
+
+#: app_siteview/models.py:12
+msgid "Action Url"
+msgstr "مسیر"
+
+#: app_siteview/models.py:15
+msgid "Title"
+msgstr "موضوع"
+
+#: app_siteview/models.py:16
+msgid "Background"
+msgstr "پس زمینه"
+
+#: app_siteview/models.py:18
+msgid "End At"
+msgstr "اتمام در"
+
+#: app_siteview/models.py:21
+msgid "Slide Show"
+msgstr "تصویر متحرک"
+
+#: app_siteview/models.py:22
+msgid "Slide Shows"
+msgstr "تصاویر متحرک"
+
+#: core/settings.py:129
+msgid "Persian"
+msgstr "فارسی"
+
+#: core/settings.py:130
+msgid "English"
+msgstr "انگلیسی"
+
+#: templates/account/add-address.html:10
+#, fuzzy
+#| msgid "Address"
+msgid "Add Address"
+msgstr "آدرس"
+
+#: templates/account/add-address.html:41
+msgid "Home Number"
+msgstr ""
+
+#: templates/account/add-address.html:52
+#, fuzzy
+#| msgid "Address"
+msgid "Submit Address"
+msgstr "آدرس"
+
+#: templates/account/auth/change_password.html:10
+#: templates/account/auth/change_password.html:60
+#: templates/components/profile/sidebar.html:28
+#, fuzzy
+#| msgid "Change password"
+msgid "Change Password"
+msgstr "تغییر رمز"
+
+#: templates/account/auth/change_password.html:22
+#, fuzzy
+#| msgid "Change password"
+msgid "You Can Change Your Password"
+msgstr "تغییر رمز"
+
+#: templates/account/auth/change_password.html:39
+#, fuzzy
+#| msgid "Change password"
+msgid "Current Password"
+msgstr "تغییر رمز"
+
+#: templates/account/auth/change_password.html:46
+#, fuzzy
+#| msgid "Change password"
+msgid "New Password"
+msgstr "تغییر رمز"
+
+#: templates/account/auth/change_password.html:53
+#: templates/account/auth/register.html:54
+#, fuzzy
+#| msgid "Change password"
+msgid "Confirm Password"
+msgstr "تغییر رمز"
+
+#: templates/account/auth/change_password.html:67
+msgid "Back To home"
+msgstr ""
+
+#: templates/account/auth/email-confirm/active_email.html:4
+msgid "Hello"
+msgstr ""
+
+#: templates/account/auth/email-confirm/active_email.html:6
+msgid "Now you can click on this link for active your account:"
+msgstr ""
+
+#: templates/account/auth/email-confirm/active_email.html:8
+msgid "Current Link:"
+msgstr ""
+
+#: templates/account/auth/email-confirm/active_email.html:10
+msgid "Be successful."
+msgstr ""
+
+#: templates/account/auth/email-confirm/email_response.html:5
+msgid "sending email is successful"
+msgstr ""
+
+#: templates/account/auth/email-confirm/email_response.html:13
+msgid "Email sent successful."
+msgstr ""
+
+#: templates/account/auth/email-confirm/email_response.html:16
+msgid "Back to home"
+msgstr ""
+
+#: templates/account/auth/email-confirm/email_response.html:19
+#: templates/account/auth/login.html:8 templates/account/auth/login.html:47
+msgid "Login"
+msgstr ""
+
+#: templates/account/auth/login.html:20 templates/account/auth/register.html:20
+#, fuzzy
+#| msgid "Welcome,"
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+#: templates/account/auth/login.html:40 templates/account/auth/register.html:47
+#, fuzzy
+#| msgid "Change password"
+msgid "Password"
+msgstr "تغییر رمز"
+
+#: templates/account/auth/login.html:54
+msgid "Don’t have an account?"
+msgstr ""
+
+#: templates/account/auth/login.html:57
+msgid "Sign up"
+msgstr ""
+
+#: templates/account/auth/logout.html:6
+msgid "Logout"
+msgstr ""
+
+#: templates/account/auth/logout.html:12
+msgid "Sign out have been successful."
+msgstr ""
+
+#: templates/account/auth/logout.html:15
+msgid "&#8592; Back to home"
+msgstr ""
+
+#: templates/account/auth/register.html:8
+#: templates/components/base/header.html:47
+msgid "Sign Up"
+msgstr ""
+
+#: templates/account/auth/register.html:61
+msgid "Sing Up"
+msgstr ""
+
+#: templates/account/auth/register.html:68
+msgid "Do you have an account?"
+msgstr ""
+
+#: templates/account/auth/register.html:71
+#: templates/components/base/header.html:41
+msgid "Sign In"
+msgstr ""
+
+#: templates/account/edit-profile.html:6
+#: templates/components/cart/sidebar.html:13
+#: templates/components/profile/sidebar.html:16
+msgid "Edit Profile"
+msgstr ""
+
+#: templates/account/edit-profile.html:12
+msgid "Edit Personal Information"
+msgstr ""
+
+#: templates/account/edit-profile.html:25
+msgid "First Name"
+msgstr ""
+
+#: templates/account/edit-profile.html:46
+#: templates/main/forms/product_edit_form.html:91
+#: templates/main/forms/product_form.html:89
+#: templates/main/forms/shop_form.html:44
+msgid "Save My Changes"
+msgstr ""
+
+#: templates/account/user-profile.html:39
+#, fuzzy
+#| msgid "Count"
+msgid "Count:"
+msgstr "تعداد"
+
+#: templates/account/user-profile.html:76
+#, fuzzy
+#| msgid "Postal Code"
+msgid "Postal Code:"
+msgstr "کدپستی"
+
+#: templates/admin/404.html:5
+msgid "Page not found"
+msgstr "صفحه پیدا نشد"
+
+#: templates/admin/500.html:6 templates/admin/app_index.html:9
+#: templates/admin/auth/user/change_password.html:13
+#: templates/admin/base.html:65 templates/admin/change_form.html:18
+#: templates/admin/change_list.html:31
+#: templates/admin/delete_confirmation.html:14
+#: templates/admin/delete_selected_confirmation.html:14
+#: templates/admin/invalid_setup.html:6 templates/admin/object_history.html:6
+#: templates/main/index.html:7
+msgid "Home"
+msgstr "خانه"
+
+#: templates/admin/500.html:7
+msgid "Server error"
+msgstr "مشکل در سرور"
+
+#: templates/admin/500.html:11
+msgid "Server error (500)"
+msgstr "مشکل در ارور (500)"
+
+#: templates/admin/500.html:14
+msgid "Server Error <em>(500)</em>"
+msgstr "مشکل در ارور <em>(500)</em>"
+
+#: templates/admin/500.html:15
+msgid ""
+"There’s been an error. It’s been reported to the site administrators via "
+"email and should be fixed shortly. Thanks for your patience."
+msgstr ""
+
+#: templates/admin/actions.html:8
+msgid "Run the selected action"
+msgstr ""
+
+#: templates/admin/actions.html:8
+msgid "Go"
+msgstr ""
+
+#: templates/admin/actions.html:16
+msgid "Click here to select the objects across all pages"
+msgstr ""
+
+#: templates/admin/actions.html:16
+#, python-format
+msgid "Select all %(total_count)s %(module_name)s"
+msgstr ""
+
+#: templates/admin/actions.html:18
+msgid "Clear selection"
+msgstr ""
+
+#: templates/admin/app_list.html:8
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+#: templates/admin/app_list.html:19
+#: templates/admin/widgets/related_widget_wrapper.html:18
+msgid "Add"
+msgstr ""
+
+#: templates/admin/app_list.html:26 templates/admin/edit_inline/stacked.html:12
+#: templates/admin/edit_inline/tabular.html:34
+msgid "View"
+msgstr ""
+
+#: templates/admin/app_list.html:28 templates/admin/edit_inline/stacked.html:12
+#: templates/admin/edit_inline/tabular.html:34
+#: templates/admin/widgets/related_widget_wrapper.html:11
+#: venv/lib/python3.8/site-packages/django/forms/widgets.py:400
+msgid "Change"
+msgstr "تغییر"
+
+#: templates/admin/app_list.html:39
+msgid "You don’t have permission to view or edit anything."
+msgstr "شما دسترسی ندارید"
+
+#: templates/admin/auth/user/add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you’ll be able to edit more user "
+"options."
+msgstr ""
+
+#: templates/admin/auth/user/add_form.html:8
+msgid "Enter a username and password."
+msgstr "وارد کردن نام کاربری و رمز"
+
+#: templates/admin/auth/user/change_password.html:17
+#: templates/admin/auth/user/change_password.html:55
+#: templates/admin/base.html:53
+msgid "Change password"
+msgstr "تغییر رمز"
+
+#: templates/admin/auth/user/change_password.html:28
+#: templates/admin/change_form.html:43 templates/admin/change_list.html:51
+#: templates/admin/login.html:23
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/admin/auth/user/change_password.html:28
+#: templates/admin/change_form.html:43 templates/admin/change_list.html:51
+#: templates/admin/login.html:23
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/admin/auth/user/change_password.html:32
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr ""
+
+#: templates/admin/base.html:39
+msgid "Welcome,"
+msgstr "خوش آمدید"
+
+#: templates/admin/base.html:44
+msgid "View site"
+msgstr ""
+
+#: templates/admin/base.html:49
+msgid "Documentation"
+msgstr ""
+
+#: templates/admin/base.html:55
+msgid "Log out"
+msgstr ""
+
+#: templates/admin/base_site.html:3
+msgid "Django site admin"
+msgstr ""
+
+#: templates/admin/base_site.html:6
+msgid "Django administration"
+msgstr ""
+
+#: templates/admin/change_form.html:21
+#: templates/admin/change_list_object_tools.html:8
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/admin/change_form_object_tools.html:5
+#: templates/admin/object_history.html:10
+msgid "History"
+msgstr ""
+
+#: templates/admin/change_form_object_tools.html:7
+#: templates/admin/edit_inline/stacked.html:14
+#: templates/admin/edit_inline/tabular.html:36
+msgid "View on site"
+msgstr ""
+
+#: templates/admin/change_list.html:76
+msgid "Filter"
+msgstr ""
+
+#: templates/admin/change_list.html:78
+msgid "Clear all filters"
+msgstr ""
+
+#: templates/admin/change_list_results.html:17
+msgid "Remove from sorting"
+msgstr ""
+
+#: templates/admin/change_list_results.html:18
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr ""
+
+#: templates/admin/change_list_results.html:19
+msgid "Toggle sorting"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:18
+#: templates/admin/submit_line.html:7
+#: templates/admin/widgets/related_widget_wrapper.html:25
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:391
+msgid "Delete"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:24
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:31
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:38
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:40
+#: templates/admin/delete_selected_confirmation.html:39
+msgid "Objects"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:47
+#: templates/admin/delete_selected_confirmation.html:50
+msgid "Yes, I’m sure"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:48
+#: templates/admin/delete_selected_confirmation.html:51
+msgid "No, take me back"
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:17
+msgid "Delete multiple objects"
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:23
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:30
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:37
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
+msgstr ""
+
+#: templates/admin/edit_inline/tabular.html:20
+msgid "Delete?"
+msgstr ""
+
+#: templates/admin/filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: templates/admin/includes/object_delete_summary.html:2
+msgid "Summary"
+msgstr ""
+
+#: templates/admin/index.html:23
+msgid "Recent actions"
+msgstr ""
+
+#: templates/admin/index.html:24
+msgid "My actions"
+msgstr ""
+
+#: templates/admin/index.html:28
+msgid "None available"
+msgstr ""
+
+#: templates/admin/index.html:42
+msgid "Unknown content"
+msgstr ""
+
+#: templates/admin/invalid_setup.html:12
+msgid ""
+"Something’s wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
+msgstr ""
+
+#: templates/admin/login.html:39
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/admin/login.html:59
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/admin/login.html:63
+msgid "Log in"
+msgstr ""
+
+#: templates/admin/nav_sidebar.html:2
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/admin/object_history.html:22
+msgid "Date/time"
+msgstr ""
+
+#: templates/admin/object_history.html:24 templates/order/cart.html:37
+msgid "Action"
+msgstr ""
+
+#: templates/admin/object_history.html:38
+msgid ""
+"This object doesn’t have a change history. It probably wasn’t added via this "
+"admin site."
+msgstr ""
+
+#: templates/admin/pagination.html:10 templates/admin/search_form.html:9
+msgid "Show all"
+msgstr ""
+
+#: templates/admin/pagination.html:11 templates/admin/submit_line.html:4
+msgid "Save"
+msgstr ""
+
+#: templates/admin/popup_response.html:3
+msgid "Popup closing…"
+msgstr ""
+
+#: templates/admin/search_form.html:7
+msgid "Search"
+msgstr ""
+
+#: templates/admin/search_form.html:9
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/search_form.html:9
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr ""
+
+#: templates/admin/submit_line.html:9
+msgid "Save as new"
+msgstr ""
+
+#: templates/admin/submit_line.html:10
+msgid "Save and add another"
+msgstr ""
+
+#: templates/admin/submit_line.html:11
+msgid "Save and continue editing"
+msgstr ""
+
+#: templates/admin/submit_line.html:11
+msgid "Save and view"
+msgstr ""
+
+#: templates/admin/submit_line.html:12
+msgid "Close"
+msgstr ""
+
+#: templates/admin/widgets/related_widget_wrapper.html:10
+#, python-format
+msgid "Change selected %(model)s"
+msgstr ""
+
+#: templates/admin/widgets/related_widget_wrapper.html:17
+#, python-format
+msgid "Add another %(model)s"
+msgstr ""
+
+#: templates/admin/widgets/related_widget_wrapper.html:24
+#, python-format
+msgid "Delete selected %(model)s"
+msgstr ""
+
+#: templates/components/base/header.html:21
+msgid "Sign Out"
+msgstr ""
+
+#: templates/components/cart/sidebar.html:21
+#, fuzzy
+#| msgid "Basket Item"
+msgid "My Basket"
+msgstr "یکی از موارد سبدخرید"
+
+#: templates/components/cart/sidebar.html:27
+#, fuzzy
+#| msgid "Price"
+msgid "Total Price"
+msgstr "قیمت"
+
+#: templates/components/cart/sidebar.html:40
+#, fuzzy
+#| msgid "Products liked"
+msgid "Products Quantity"
+msgstr "علاقه‌مندی محصولات"
+
+#: templates/components/cart/sidebar.html:49
+msgid "Pay Method"
+msgstr ""
+
+#: templates/components/cart/sidebar.html:59
+msgid "Submit Order"
+msgstr ""
+
+#: templates/components/cart/sidebar.html:82
+msgid "Total Price:"
+msgstr ""
+
+#: templates/components/cart/sidebar.html:94
+msgid "Cancel"
+msgstr ""
+
+#: templates/components/cart/sidebar.html:97
+#, fuzzy
+#| msgid "Payment"
+msgid "Pay"
+msgstr "پرداخت"
+
+#: templates/components/category/sidebar.html:6
+#, fuzzy
+#| msgid "Category"
+msgid "All Category"
+msgstr "دسته بندی"
+
+#: templates/components/category/sidebar.html:18
+#: templates/components/category/sidebar.html:38
+msgid "There is no subcategory."
+msgstr ""
+
+#: templates/components/category/sidebar.html:26
+#, fuzzy
+#| msgid "Category"
+msgid "SubCategory"
+msgstr "دسته بندی"
+
+#: templates/components/category/sidebar.html:46
+msgid "Filter By"
+msgstr ""
+
+#: templates/components/category/sidebar.html:52
+msgid "Top rated"
+msgstr ""
+
+#: templates/components/category/sidebar.html:55
+msgid "Lowest Price"
+msgstr ""
+
+#: templates/components/category/sidebar.html:58
+msgid "Highest Price"
+msgstr ""
+
+#: templates/components/category/sidebar.html:64
+#, fuzzy
+#| msgid "Price"
+msgid "Price Range"
+msgstr "قیمت"
+
+#: templates/components/index/section1.html:9
+msgid "Buy & Sell"
+msgstr ""
+
+#: templates/components/index/section1.html:12
+msgid ""
+"Join the millions who buy and sell from each other <br> everyday in local "
+"communities around theworld"
+msgstr ""
+
+#: templates/components/index/section1.html:32
+#: templates/components/utils/search-bar.html:21
+msgid "Search Now"
+msgstr ""
+
+#: templates/components/index/section2.html:11
+msgid "Trending"
+msgstr ""
+
+#: templates/components/index/section2.html:14
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam."
+msgstr ""
+
+#: templates/components/index/section3.html:9
+#, fuzzy
+#| msgid "Categories"
+msgid "All Categories"
+msgstr "دسته بندی ها"
+
+#: templates/components/index/section3.html:12
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, "
+"provident!"
+msgstr ""
+
+#: templates/components/index/section3.html:31
+#, fuzzy
+#| msgid "Category"
+msgid "Subcategory"
+msgstr "دسته بندی"
+
+#: templates/components/index/section3.html:36
+msgid "Viewer"
+msgstr ""
+
+#: templates/components/product/detail.html:6
+#, fuzzy
+#| msgid "Description"
+msgid "Product Description"
+msgstr "توضیحات"
+
+#: templates/components/product/reviews.html:8
+#, fuzzy
+#| msgid "Products liked"
+msgid "Product Review"
+msgstr "علاقه‌مندی محصولات"
+
+#: templates/components/product/reviews.html:50
+msgid "There is no comment yet."
+msgstr ""
+
+#: templates/components/product/reviews.html:56
+msgid "Submit your review"
+msgstr ""
+
+#: templates/components/product/reviews.html:75
+msgid "Submit"
+msgstr ""
+
+#: templates/components/product/sidebar.html:28
+msgid "Safety Tips"
+msgstr ""
+
+#: templates/components/product/sidebar.html:63
+msgid "Add To Cart"
+msgstr ""
+
+#: templates/components/product/specifications.html:5
+#, fuzzy
+#| msgid "Product Meta Detail"
+msgid "Product Specifications"
+msgstr "اطلاعات اضافه محصول"
+
+#: templates/components/product/specifications.html:9
+msgid "Seller Price"
+msgstr ""
+
+#: templates/components/product/specifications.html:13
+msgid "Added"
+msgstr ""
+
+#: templates/components/product/specifications.html:21
+msgid "State"
+msgstr ""
+
+#: templates/components/product/specifications.html:24
+msgid "Exists"
+msgstr ""
+
+#: templates/components/product/specifications.html:26
+msgid "Not Exists"
+msgstr ""
+
+#: templates/components/profile/sidebar.html:22
+#, fuzzy
+#| msgid "Address"
+msgid "Add New Address"
+msgstr "آدرس"
+
+#: templates/components/profile/sidebar.html:35
+msgid "See My Shop"
+msgstr ""
+
+#: templates/components/profile/sidebar.html:40
+#, fuzzy
+#| msgid "Is Seller"
+msgid "Become As Seller"
+msgstr "فروشنده"
+
+#: templates/components/shop/call-to-action.html:12
+#, fuzzy
+#| msgid "Product"
+msgid "Add Product"
+msgstr "محصول"
+
+#: templates/components/shop/call-to-action.html:18
+#, fuzzy
+#| msgid "Shop"
+msgid "Edit Shop"
+msgstr "فروشگاه"
+
+#: templates/components/shop/summery_of_shop.html:11
+msgid "Days Work Experience"
+msgstr ""
+
+#: templates/components/shop/summery_of_shop.html:20
+msgid "Buyers"
+msgstr ""
+
+#: templates/components/shop/summery_of_shop.html:29
+msgid "Bookmarked"
+msgstr ""
+
+#: templates/components/shop/summery_of_shop.html:38
+msgid "Happy Customers"
+msgstr ""
+
+#: templates/components/utils/paginate.html:12
+msgid "Previous"
+msgstr ""
+
+#: templates/components/utils/paginate.html:37
+msgid "Next"
+msgstr ""
+
+#: templates/main/category.html:29
+msgid "Results For"
+msgstr ""
+
+#: templates/main/category.html:30
+msgid "Results on"
+msgstr ""
+
+#: templates/main/forms/product_edit_form.html:12
+#: templates/main/forms/product_form.html:10
+msgid "Product Information"
+msgstr ""
+
+#: templates/main/forms/product_edit_form.html:83
+#: templates/main/forms/product_form.html:81
+msgid "Extra Fields"
+msgstr ""
+
+#: templates/main/forms/shop_form.html:10
+msgid "Shop Information"
+msgstr ""
+
+#: templates/main/product.html:35
+msgid "By"
+msgstr ""
+
+#: templates/main/product.html:68
+#, fuzzy
+#| msgid "Product Meta Detail"
+msgid "Product Details"
+msgstr "اطلاعات اضافه محصول"
+
+#: templates/main/product.html:75
+msgid "Specifications"
+msgstr ""
+
+#: templates/main/product.html:82
+msgid "Reviews"
+msgstr ""
+
+#: templates/main/product.html:109
+msgid "Other shops, That they sell this product."
+msgstr ""
+
+#: templates/main/product.html:115
+#, fuzzy
+#| msgid "Name"
+msgid "Shop Name"
+msgstr "اسم"
+
+#: templates/main/shop.html:32
+msgid "About Us"
+msgstr ""
+
+#: templates/order/cart.html:31
+#, fuzzy
+#| msgid "Products liked"
+msgid "Product Title"
+msgstr "علاقه‌مندی محصولات"
+
+#: templates/order/cart.html:55
+#, fuzzy
+#| msgid "Brand"
+msgid "Brand:"
+msgstr "نام تجاری"
+
+#: templates/order/cart.html:61
+msgid "Posted on:"
+msgstr ""
+
+#: templates/order/cart.html:108
+#, fuzzy
+#| msgid "Basket Item"
+msgid "Basket is empty."
+msgstr "یکی از موارد سبدخرید"
+
+#: templates/rest_framework/base.html:37
+msgid "navbar"
+msgstr ""
+
+#: templates/rest_framework/base.html:75
+msgid "content"
+msgstr ""
+
+#: templates/rest_framework/base.html:78
+msgid "request form"
+msgstr ""
+
+#: templates/rest_framework/base.html:136
+msgid "Extra Actions"
+msgstr ""
+
+#: templates/rest_framework/base.html:150
+msgid "Filters"
+msgstr ""
+
+#: templates/rest_framework/base.html:157
+msgid "utils content"
+msgstr ""
+
+#: templates/rest_framework/base.html:173
+msgid "request info"
+msgstr ""
+
+#: templates/rest_framework/base.html:177
+msgid "response info"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/contrib/sitemaps/apps.py:7
+msgid "Site Maps"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/paginator.py:48
+msgid "That page number is not an integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/paginator.py:50
+msgid "That page number is less than 1"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/paginator.py:55
+msgid "That page contains no results"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:20
+msgid "Enter a valid value."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:91
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:671
+msgid "Enter a valid URL."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:145
+msgid "Enter a valid integer."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:156
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: venv/lib/python3.8/site-packages/django/core/validators.py:230
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:237
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:246
+#: venv/lib/python3.8/site-packages/django/core/validators.py:266
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:251
+#: venv/lib/python3.8/site-packages/django/core/validators.py:267
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:261
+#: venv/lib/python3.8/site-packages/django/core/validators.py:265
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:295
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:301
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:334
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:343
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:353
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:368
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:387
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:292
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:327
+msgid "Enter a number."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:389
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:394
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:399
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:461
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/core/validators.py:513
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/base.py:1190
+#: venv/lib/python3.8/site-packages/django/forms/models.py:760
+msgid "and"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/base.py:1192
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:100
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:101
+msgid "This field cannot be null."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:102
+msgid "This field cannot be blank."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:103
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:126
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:939
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:940
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:942
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:983
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1047
+msgid "Comma-separated integers"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1096
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1098
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1241
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1101
+msgid "Date (without time)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1239
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1243
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1247
+msgid "Date (with time)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1395
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1397
+msgid "Decimal number"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1536
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1539
+msgid "Duration"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1589
+msgid "Email address"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1612
+msgid "File path"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1678
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1680
+msgid "Floating point number"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1718
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1720
+msgid "Integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1803
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1819
+msgid "IPv4 address"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1850
+msgid "IP address"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1930
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1931
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1933
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1976
+msgid "Positive big integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1989
+msgid "Positive integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2002
+msgid "Positive small integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2016
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2048
+msgid "Small integer"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2083
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2085
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2088
+msgid "Time"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2214
+msgid "URL"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2236
+msgid "Raw binary data"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2301
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2303
+msgid "Universally unique identifier"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:231
+msgid "File"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/json.py:18
+msgid "A JSON object"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/json.py:20
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/related.py:790
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/related.py:792
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1045
+msgid "One-to-one relationship"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1099
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1100
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1142
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: venv/lib/python3.8/site-packages/django/forms/boundfield.py:150
+msgid ":?.!"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:54
+msgid "This field is required."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:247
+msgid "Enter a whole number."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:398
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1139
+msgid "Enter a valid date."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:422
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1140
+msgid "Enter a valid time."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:450
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:484
+msgid "Enter a valid duration."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:485
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:545
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:546
+msgid "No file was submitted."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:547
+msgid "The submitted file is empty."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:549
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:552
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:613
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:775
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:865
+#: venv/lib/python3.8/site-packages/django/forms/models.py:1296
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:866
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:981
+#: venv/lib/python3.8/site-packages/django/forms/models.py:1295
+msgid "Enter a list of values."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:982
+msgid "Enter a complete value."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1198
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:1228
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: venv/lib/python3.8/site-packages/django/forms/forms.py:78
+msgid ":"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/forms.py:205
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:93
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:345
+#, python-format
+msgid "Please submit %d or fewer forms."
+msgid_plural "Please submit %d or fewer forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:352
+#, python-format
+msgid "Please submit %d or more forms."
+msgid_plural "Please submit %d or more forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:755
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:759
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:765
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:774
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:1096
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:1180
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/models.py:1298
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/utils.py:167
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/widgets.py:398
+msgid "Clear"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/widgets.py:399
+msgid "Currently"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/widgets.py:709
+msgid "Unknown"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/widgets.py:710
+msgid "Yes"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/forms/widgets.py:711
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:790
+msgid "yes,no,maybe"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:819
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:836
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:838
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:840
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:842
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:844
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/template/defaultfilters.py:846
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dateformat.py:65
+msgid "p.m."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dateformat.py:66
+msgid "a.m."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dateformat.py:71
+msgid "PM"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dateformat.py:72
+msgid "AM"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dateformat.py:149
+msgid "midnight"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dateformat.py:151
+msgid "noon"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "January"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "February"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "March"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "August"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "September"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "October"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "November"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:16
+msgid "December"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "jan"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "feb"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "mar"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "apr"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "may"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "jun"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "jul"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "aug"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "sep"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "oct"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "nov"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "dec"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/text.py:70
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/text.py:236
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: venv/lib/python3.8/site-packages/django/utils/text.py:255
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:83
+msgid ", "
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:120
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:61
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:111
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:338
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:589
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:623
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/list.py:67
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/generic/list.py:154
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/static.py:42
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:7
+msgid "Django: the Web framework for perfectionists with deadlines."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:346
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:368
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:369
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:384
+msgid "Django Documentation"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:385
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:396
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:397
+msgid "Get started with Django"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:408
+msgid "Django Community"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:409
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/image_cropping/backends/base.py:53
+#, python-brace-format
+msgid "There's no widget registered to the class {class_name}"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/image_cropping/utils.py:28
+msgid "Can't retrieve the image backend '{}'. Message: '{}'."
+msgstr ""
+
+#~ msgid "Product Meta Data"
+#~ msgstr "اطلاعات اضافه محصول"

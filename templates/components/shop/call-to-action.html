@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <section class="call-to-action overly bg-3 section-sm">
     <div class="container">
         <div class="row justify-content-md-center text-center">
@@ -7,13 +9,13 @@
                         <li class="list-inline-item">
                             <a class="btn btn-main"
                                href="{% url 'product:add_product' %}">
-                                Add Product
+                                {% translate "Add Product" %}
                             </a>
                         </li>
                         <li class="list-inline-item">
                             <a class="btn btn-secondary"
                                href="{% url 'product:edit_shop' slug=shop.slug %}">
-                                Edit Shop
+                                {% translate "Edit Shop" %}
                             </a>
                         </li>
                     </ul>

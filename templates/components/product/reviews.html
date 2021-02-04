@@ -1,7 +1,12 @@
 {% load mathfilters %}
+
+{% load i18n %}
+
 <div class="tab-pane fade" id="pills-contact" role="tabpanel"
      aria-labelledby="pills-contact-tab">
-    <h3 class="tab-title">Product Review</h3>
+    <h3 class="tab-title">
+        {% translate "Product Review" %}
+    </h3>
     <div class="product-review">
         <div id="list-inline">
             {% for comment in product.comments.all %}
@@ -42,12 +47,14 @@
                 </div>
             {% empty %}
                 <div class="my-5 py-5 text-muted font-weight-bold h2 text-center" id="no-comments">
-                    There is no comment yet.
+                    {% translate "There is no comment yet." %}
                 </div>
             {% endfor %}
         </div>
         <div class="review-submission">
-            <h3 class="tab-title">Submit your review</h3>
+            <h3 class="tab-title">
+                {% translate "Submit your review" %}
+            </h3>
             <!-- Rate -->
             <div class="rate">
                 <div class="starrr"></div>
@@ -64,7 +71,8 @@
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-main"
-                                onclick="sendCommentResponse()">Submit
+                                onclick="sendCommentResponse()">
+                            {% translate "Submit" %}
                         </button>
                     </div>
                 </div>

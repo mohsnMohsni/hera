@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% block title %} Add Address {% endblock title %}
 
 {% block content %}
     <div class="widget change-password">
         <h3 class="widget-header user">
-            Add Address
+            {% translate "Add Address" %}
         </h3>
         {% if form.errors %}
             <div class="alert alert-danger d-flex justify-content-center align-items-center">
@@ -17,26 +19,38 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label for="current-password">City</label>
+                <label for="current-password">
+                    {% translate "City" %}
+                </label>
                 {{ form.city }}
             </div>
             <div class="form-group">
-                <label for="new-password">Street</label>
+                <label for="new-password">
+                    {% translate "Street" %}
+                </label>
                 {{ form.street }}
             </div>
             <div class="form-group">
-                <label for="confirm-password">Alley</label>
+                <label for="confirm-password">
+                    {% translate "Alley" %}
+                </label>
                 {{ form.alley }}
             </div>
             <div class="form-group">
-                <label for="confirm-password">Home Number</label>
+                <label for="confirm-password">
+                    {% translate "Home Number" %}
+                </label>
                 {{ form.no }}
             </div>
             <div class="form-group">
-                <label for="confirm-password">Postal Code</label>
+                <label for="confirm-password">
+                    {% translate "Postal Code" %}
+                </label>
                 {{ form.postal_code }}
             </div>
-            <button class="btn btn-transparent">Submit Address</button>
+            <button class="btn btn-transparent">
+                {% translate "Submit Address" %}
+            </button>
         </form>
     </div>
 {% endblock content %}

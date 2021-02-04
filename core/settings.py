@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config, UndefinedValueError
+from django.utils.translation import ugettext_lazy
 from easy_thumbnails.conf import Settings as ThumbnailSettings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -124,7 +125,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+    ('fa', ugettext_lazy('Persian')),
+    ('en', ugettext_lazy('English')),
+)
+
+LANGUAGE_CODE = 'fa'
 
 TIME_ZONE = 'UTC'
 

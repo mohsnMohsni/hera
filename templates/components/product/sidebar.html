@@ -1,8 +1,13 @@
 {% load static %}
+
+{% load i18n %}
+
 <div class="col-md-4">
     <div class="sidebar">
         <div class="widget price text-center">
-            <h4>Price</h4>
+            <h4>
+                {% translate "Price" %}
+            </h4>
             <p>${{ shop_product.price }}</p>
         </div>
         <div class="widget user text-center">
@@ -19,8 +24,11 @@
             </ul>
         </div>
         <div class="widget disclaimer">
-            <h5 class="widget-header">Safety Tips</h5>
+            <h5 class="widget-header">
+                {% translate "Safety Tips" %}
+            </h5>
             <ul>
+                <!-- Point's -->
                 <li>Meet seller at a public place</li>
                 <li>Check the item before you buy</li>
                 <li>Pay only after collecting the item</li>
@@ -52,7 +60,7 @@
         <div class="widget coupon text-center">
             <input type="text" hidden value="{{ shop_product.id }}" id="shopProduct-id">
             <a href="" class="btn btn-transparent-white" onclick="addToCartAjax()" id="add-to-cart">
-                Add To Cart
+                {% translate "Add To Cart" %}
                 <span class="px-2">
                     <img src="{% static 'images/cart.png' %}" alt="" style="height: 2rem; width: auto">
                 </span>

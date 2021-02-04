@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %} Edit Profile {% endblock title %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Edit Profile" %}
+{% endblock title %}
 
 {% block content %}
     <div class="widget personal-info">
-        <h3 class="widget-header user">Edit Personal Information</h3>
+        <h3 class="widget-header user">
+            {% translate "Edit Personal Information" %}
+        </h3>
         {% if form.errors %}
             <div class="alert alert-danger d-flex justify-content-center align-items-center">
                 <span>
@@ -15,11 +21,15 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="id_full_name">First Name</label>
+                <label for="id_full_name">
+                    {% translate "First Name" %}
+                </label>
                 {{ form.full_name }}
             </div>
             <div class="form-group">
-                <label for="id_email">Email</label>
+                <label for="id_email">
+                    {% translate "Email" %}
+                </label>
                 {{ form.email }}
             </div>
             <div class="form-group choose-file d-inline-flex">
@@ -27,10 +37,14 @@
                 {{ form.avatar }}
             </div>
             <div class="form-group">
-                <label for="id_phone">Phone</label>
+                <label for="id_phone">
+                    {% translate "Phone" %}
+                </label>
                 {{ form.phone }}
             </div>
-            <button class="btn btn-transparent">Save My Changes</button>
+            <button class="btn btn-transparent">
+                {% translate "Save My Changes" %}
+            </button>
         </form>
     </div>
 {% endblock content %}

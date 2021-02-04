@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <section>
     <div class="container">
         <div class="row">
@@ -17,7 +18,7 @@
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
                                     <a class="nav-link login-button" href="{% url 'account:logout' %}">
-                                        Sign Out
+                                        {% translate "Sign Out" %}
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -37,13 +38,13 @@
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
                                     <a class="nav-link login-button" href="{% url 'account:login' %}">
-                                        Sign In
+                                        {% translate "Sign In" %}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white add-button" href="{% url 'account:register' %}">
                                         <i class="fa fa-plus-circle"></i>
-                                        Sing Up
+                                        {% translate "Sign Up" %}
                                     </a>
                                 </li>
                                 <li class="nav-item">

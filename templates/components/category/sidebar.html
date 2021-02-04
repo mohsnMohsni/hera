@@ -1,6 +1,10 @@
+{% load i18n %}
+
 <div class="category-sidebar">
     <div class="widget category-list">
-        <h4 class="widget-header">All Category</h4>
+        <h4 class="widget-header">
+            {% translate "All Category" %}
+        </h4>
         <ul class="category-list">
             {% for category in all_category %}
                 <li>
@@ -10,13 +14,17 @@
                 </li>
             {% empty %}
                 <li class="text-muted">
-                    <span>There is no subcategory.</span>
+                    <span>
+                        {% translate "There is no subcategory." %}
+                    </span>
                 </li>
             {% endfor %}
         </ul>
     </div>
     <div class="widget category-list">
-        <h4 class="widget-header">SubCategory</h4>
+        <h4 class="widget-header">
+            {% translate "SubCategory" %}
+        </h4>
         <ul class="category-list">
             {% for child in category.get_children %}
                 <li>
@@ -26,23 +34,35 @@
                 </li>
             {% empty %}
                 <li class="text-muted">
-                    <span>There is no subcategory.</span>
+                    <span>
+                        {% translate "There is no subcategory." %}
+                    </span>
                 </li>
             {% endfor %}
         </ul>
     </div>
     <div class="widget filter">
-        <h4 class="widget-header">Filter By</h4>
+        <h4 class="widget-header">
+            {% translate "Filter By" %}
+        </h4>
         <form action="" id="filter-form"></form>
         <select onchange="submitForm()" form="filter-form" name="filter">
-            <option>Nothing</option>
-            <option value="top_rated">Top rated</option>
-            <option value="lowest_price">Lowest Price</option>
-            <option value="highest_price">Highest Price</option>
+            <option>-----</option>
+            <option value="top_rated">
+                {% translate "Top rated" %}
+            </option>
+            <option value="lowest_price">
+                {% translate "Lowest Price" %}
+            </option>
+            <option value="highest_price">
+                {% translate "Highest Price" %}
+            </option>
         </select>
     </div>
     <div class="widget price-range w-100">
-        <h4 class="widget-header">Price Range</h4>
+        <h4 class="widget-header">
+            {% translate "Price Range" %}
+        </h4>
         <div class="block" onchange="priceRangeFilter()">
             <input class="range-track w-100" type="text" data-slider-min="0"
                    data-slider-max="5000" data-slider-step="5"

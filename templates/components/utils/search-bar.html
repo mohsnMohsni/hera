@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <section class="page-search">
     <div class="container">
         <div class="row">
@@ -15,7 +17,8 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <button type="submit" class="btn btn-primary"
-                                        onclick="searchResponse()">Search Now
+                                        onclick="searchResponse()">
+                                    {% translate "Search Now" %}
                                 </button>
                             </div>
                         </div>
@@ -23,11 +26,15 @@
                     <div id="response-visual" class="my-2">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="text-center font-weight-bold border-bottom pb-2">Products</h4>
+                                <h4 class="text-center font-weight-bold border-bottom pb-2">
+                                    {% translate "Products" %}
+                                </h4>
                                 <ul id="products-ul" class="p-3"></ul>
                             </div>
                             <div class="col-md-6">
-                                <h4 class="text-center font-weight-bold border-bottom pb-2">Categories</h4>
+                                <h4 class="text-center font-weight-bold border-bottom pb-2">
+                                    {% translate "Categories" %}
+                                </h4>
                                 <ul id="categories-ul" class="p-3"></ul>
                             </div>
                         </div>

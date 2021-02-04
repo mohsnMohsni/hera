@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% block title %} {{ user.full_name|title }} {% endblock title %}
 
 {% block content %}
@@ -13,7 +15,9 @@
                 <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
                     <div class="mb-2">
                         <div class="widget welcome-message">
-                            <h2>Orders</h2>
+                            <h2>
+                                {% translate "Orders" %}
+                            </h2>
                         </div>
                         <div class="row">
                             {% for order in order_list %}
@@ -32,7 +36,7 @@
                                                     <a href="{% url 'product:product' order_item.shop_product.product.slug order_item.shop_product.id %}">
                                                         <i class="fa fa-barcode"></i>
                                                         <span class="border-bottom text-info px-1">
-                                                            Count: {{ order_item.count }}
+                                                            {% translate "Count:" %} {{ order_item.count }}
                                                         </span>
                                                         <span class="mx-1 px-1 border-left">
                                                             {{ order_item.shop_product.product.name|title }}
@@ -51,7 +55,9 @@
                     </div>
                     <div class="mb-2 mt-3">
                         <div class="widget welcome-message">
-                            <h2>Addresses</h2>
+                            <h2>
+                                {% translate "Addresses" %}
+                            </h2>
                         </div>
                         <div class="row d-flex justify-content-center">
                             {% for addrs in address %}
@@ -67,7 +73,7 @@
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-info">
-                                        Postal Code:
+                                        {% translate "Postal Code:" %}
                                         <span class="text-muted"> {{ addrs.postal_code }}</span>
                                     </div>
                                 </div>

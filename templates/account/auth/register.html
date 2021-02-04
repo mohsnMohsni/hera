@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
+
 {% load static %}
-{% block title %} Sign Up {% endblock title %}
+
+{% block title %}
+    {% translate "Sign Up" %}
+{% endblock title %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'auth/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'auth/responsive/responsive.css' %}">
 {% endblock extra_css %}
+
 {% block content %}
     <main class="auth-main d-flex justify-content-center align-items-center">
         <div class="auth-container">
-            <div class="text-center font-weight-bold w-100 my-4 display-4">Welcome</div>
+            <div class="text-center font-weight-bold w-100 my-4 display-4">
+                {% translate "Welcome" %}
+            </div>
             <form class="my-2" method="post" action="{% url 'account:register' %}">
                 {% csrf_token %}
                 {% if form.errors %}
@@ -19,33 +29,47 @@
                 <div class="d-flex align-items-center flex-column">
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.email }}
-                        <label for="id_email" class="input-placeholder">Email</label>
+                        <label for="id_email" class="input-placeholder">
+                            {% translate "Email" %}
+                        </label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.full_name }}
-                        <label for="id_full_name" class="input-placeholder">Name</label>
+                        <label for="id_full_name" class="input-placeholder">
+                            {% translate "Name" %}
+                        </label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password }}
-                        <label for="id_password" class="input-placeholder">Password</label>
+                        <label for="id_password" class="input-placeholder">
+                            {% translate "Password" %}
+                        </label>
                         <span class="input-border"></span>
                     </div>
                     <div class="my-3 d-flex justify-content-center w-50 position-relative">
                         {{ form.password2 }}
-                        <label for="id_password2" class="input-placeholder">Confirm Password</label>
+                        <label for="id_password2" class="input-placeholder">
+                            {% translate "Confirm Password" %}
+                        </label>
                         <span class="input-border"></span>
                     </div>
                 </div>
                 <div class="my-3 d-flex justify-content-center">
-                    <button class="btn btn-success rounded-pill w-50">Sing Up</button>
+                    <button class="btn btn-success rounded-pill w-50">
+                        {% translate "Sing Up" %}
+                    </button>
                 </div>
             </form>
             <ul class="text-muted d-flex align-items-center flex-column">
                 <li>
-                    <span>Do you have an account?</span>
-                    <a href="{% url 'account:login' %}" class="text-decoration-none">Sign In</a>
+                    <span>
+                        {% translate "Do you have an account?" %}
+                    </span>
+                    <a href="{% url 'account:login' %}" class="text-decoration-none">
+                        {% translate "Sign In" %}
+                    </a>
                 </li>
             </ul>
         </div>

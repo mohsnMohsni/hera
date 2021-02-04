@@ -1,12 +1,16 @@
+{% load i18n %}
+
 <section class="hero-area bg-1 text-center overly">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="content-block">
-                    <h1>Buy & Sell </h1>
-                    <p>Join the millions who buy and sell from each other
-                        <br> everyday in local communities around the
-                        world
+                    <h1>
+                        {% translate "Buy & Sell" %}
+                    </h1>
+                    <p>
+                        {% translate "Join the millions who buy and sell from each other <br> everyday in local communities around theworld" %}
+                    </p>
                 </div>
                 <div class="advance-search">
                     <div class="container">
@@ -24,7 +28,8 @@
                                         </div>
                                         <div class="form-group col-md-2 align-self-center">
                                             <button type="submit" class="btn btn-primary"
-                                                    onclick="searchResponse()">Search Now
+                                                    onclick="searchResponse()">
+                                                {% translate "Search Now" %}
                                             </button>
                                         </div>
                                     </div>
@@ -32,11 +37,15 @@
                                 <div id="response-visual" class="my-2">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h4 class="text-center font-weight-bold border-bottom pb-2">Products</h4>
+                                            <h4 class="text-center font-weight-bold border-bottom pb-2">
+                                                {% translate "Products" %}
+                                            </h4>
                                             <ul id="products-ul" class="p-3"></ul>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="text-center font-weight-bold border-bottom pb-2">Categories</h4>
+                                            <h4 class="text-center font-weight-bold border-bottom pb-2">
+                                                {% translate "Categories" %}
+                                            </h4>
                                             <ul id="categories-ul" class="p-3"></ul>
                                         </div>
                                     </div>

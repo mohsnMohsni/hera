@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %} Cart-{{ user.full_name|title }} {% endblock title %}
+{% block title %} {% translate "Cart" %}-{{ user.full_name|title }} {% endblock title %}
 
 {% block content %}
     <main>
@@ -15,15 +17,25 @@
                     {% include 'components/cart/sidebar.html' %}
                     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
                         <div class="widget dashboard-container my-adslist">
-                            <h3 class="widget-header">Products</h3>
+                            <h3 class="widget-header">
+                                {% translate "Products" %}
+                            </h3>
                             {% if cart.cart_item.all_unique %}
                                 <table class="table table-responsive product-dashboard-table">
                                     <thead>
                                     <tr>
-                                        <th>Image</th>
-                                        <th>Product Title</th>
-                                        <th class="text-center">Category</th>
-                                        <th class="text-center">Action</th>
+                                        <th>
+                                            {% translate "Image" %}
+                                        </th>
+                                        <th>
+                                            {% translate "Product Title" %}
+                                        </th>
+                                        <th class="text-center">
+                                            {% translate "Category" %}
+                                        </th>
+                                        <th class="text-center">
+                                            {% translate "Action" %}
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -39,19 +51,23 @@
                                                     {{ item.shop_product.product.name|title }}
                                                 </h3>
                                                 <span class="add-id">
-                                                <strong>Brand:</strong>
+                                                <strong>
+                                                    {% translate "Brand:" %}
+                                                </strong>
                                                     {{ item.shop_product.product.brand|title }}
                                             </span>
                                                 <span>
-                                                <strong>Posted on: </strong>
-                                                    <time>Jun 27, 2017</time>
+                                                <strong>
+                                                    {% translate "Posted on:" %}
+                                                </strong>
+                                                    <time>{{ item.shop_product.product.create_at }}</time>
                                             </span>
                                                 <span class="status active">
-                                                <strong>Price</strong>
+                                                <strong>{% translate "Price" %}</strong>
                                                     ${{ item.shop_product.price }}
                                             </span>
                                                 <span class="location" id="item-quantity{{ forloop.counter }}">
-                                                <strong>Quantity</strong>
+                                                <strong>{% translate "Quantity" %}</strong>
                                                     {{ item.count_same.count }}
                                             </span>
                                             </td>
@@ -88,7 +104,9 @@
                                 </table>
                             {% else %}
                                 <div class="d-flex justify-content-center py-4 h4">
-                                    <span class="text-muted py-4">Basket is empty.</span>
+                                    <span class="text-muted py-4">
+                                        {% translate "Basket is empty." %}
+                                    </span>
                                 </div>
                             {% endif %}
                         </div>

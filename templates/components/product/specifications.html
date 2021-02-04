@@ -1,27 +1,29 @@
+{% load i18n %}
+
 <div class="tab-pane fade" id="pills-profile" role="tabpanel"
      aria-labelledby="pills-profile-tab">
-    <h3 class="tab-title">Product Specifications</h3>
+    <h3 class="tab-title">{% translate "Product Specifications" %}</h3>
     <table class="table table-bordered product-table">
         <tbody>
         <tr>
-            <td>Seller Price</td>
+            <td>{% translate "Seller Price" %}</td>
             <td>${{ shop_product.price }}</td>
         </tr>
         <tr>
-            <td>Added</td>
+            <td>{% translate "Added" %}</td>
             <td>{{ product.create_at.date }}</td>
         </tr>
         <tr>
-            <td>Brand</td>
+            <td>{% translate "Brand" %}</td>
             <td>{{ product.brand|title }}</td>
         </tr>
         <tr>
-            <td>State</td>
+            <td>{% translate "State" %}</td>
             <td>
                 {% if shop_product.quantity > 0 %}
-                    Exists
+                    {% translate "Exists" %}
                 {% else %}
-                    Not Exists
+                    {% translate "Not Exists" %}
                 {% endif %}
             </td>
         </tr>
