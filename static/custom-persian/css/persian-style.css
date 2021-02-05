@@ -1,3 +1,48 @@
 body {
     text-align: right;
 }
+
+.auth-input {
+    text-align: left !important;
+}
+
+.input-placeholder {
+    right: 5px !important;
+}
+
+.border-left, .pr-border-right {
+    border-right: 1px solid #dee2e6 !important;
+    border-left: 0 solid black !important;
+}
+
+.pr-item-sidebar {
+    position: absolute !important;
+    left: 4.5em;
+}
+
+.pr-border-right {
+    padding-right: 3em !important;
+    padding-left: 1em !important;
+}
+
+.pr-border-left {
+    border-left: 1px solid #dee2e6 !important;
+    border-right: 0 solid black !important;
+    padding-left: 3em !important;
+    padding-right: 1em !important;
+}
+
+.ml-auto {
+    margin-right: auto !important;
+}
+
+.nav-item {
+    margin-right: 1em !important;
+}
+
+.cart-icon {
+    padding-right: 12px !important;
+    margin-left: 0 !important;
+    border-left: 0 solid gray !important;
+    border-right: 1px solid gray;
+}

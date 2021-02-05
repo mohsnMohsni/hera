@@ -5,7 +5,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 <!-- Current language: {{ LANGUAGE_CODE }} -->
 
-<section dir="ltr">
+<section>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -19,47 +19,49 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        {% if user.is_authenticated %}
-                            <ul class="navbar-nav ml-auto mt-10">
-                                <li class="nav-item">
-                                    <a class="nav-link login-button" href="{% url 'account:logout' %}">
-                                        {% translate "Sign Out" %}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="{% url 'account:user_profile' %}">
-                                        <i class="fa fa-user"></i>
-                                        {{ user.full_name|title }}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link cart-icon" href="{% url 'order:cart' %}">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span id="cart-icon"></span>
-                                    </a>
-                                </li>
-                            </ul>
+                        {% if LANGUAGE_CODE == 'fa' %}
+                            <ul class="navbar-nav mr-auto mt-10">
                         {% else %}
                             <ul class="navbar-nav ml-auto mt-10">
-                                <li class="nav-item">
-                                    <a class="nav-link login-button" href="{% url 'account:login' %}">
-                                        {% translate "Sign In" %}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="{% url 'account:register' %}">
-                                        <i class="fa fa-plus-circle"></i>
-                                        {% translate "Sign Up" %}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link cart-icon" href="{% url 'order:cart' %}">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span id="cart-icon"></span>
-                                    </a>
-                                </li>
-                            </ul>
                         {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link login-button" href="{% url 'account:logout' %}">
+                                    {% translate "Sign Out" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white add-button" href="{% url 'account:user_profile' %}">
+                                    <i class="fa fa-user"></i>
+                                    {{ user.full_name|title }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link cart-icon" href="{% url 'order:cart' %}" dir="ltr">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span id="cart-icon"></span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link login-button" href="{% url 'account:login' %}">
+                                    {% translate "Sign In" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white add-button" href="{% url 'account:register' %}">
+                                    <i class="fa fa-plus-circle"></i>
+                                    {% translate "Sign Up" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link cart-icon" href="{% url 'order:cart' %}">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span id="cart-icon"></span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        </ul>
                     </div>
                 </nav>
             </div>

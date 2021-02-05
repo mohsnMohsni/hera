@@ -9,7 +9,10 @@
             {% for category in all_category %}
                 <li>
                     <a href="{% url 'product:category' category.slug %}">
-                        {{ category|capfirst }} <span>{{ category.get_products.count }}</span>
+                        {{ category|capfirst }}
+                        <span class="pr-item-sidebar">
+                            {{ category.get_products.count }}
+                        </span>
                     </a>
                 </li>
             {% empty %}
@@ -29,7 +32,10 @@
             {% for child in category.get_children %}
                 <li>
                     <a href={% url 'product:category' child.slug %}>
-                        {{ child|capfirst }} <span>{{ child.get_products.count }}</span>
+                        {{ child|capfirst }}
+                        <span class="pr-item-sidebar">
+                            {{ child.get_products.count }}
+                        </span>
                     </a>
                 </li>
             {% empty %}

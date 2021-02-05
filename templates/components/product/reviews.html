@@ -12,7 +12,7 @@
             {% for comment in product.comments.all %}
                 <div class="media">
                     <img src="{{ comment.user.avatar.url }}" alt="avatar"
-                         style="height: 70px !important; width: 70px !important;">
+                         style="height: 70px !important; width: 70px !important;" class="mx-3">
                     <div class="media-body">
                         <div class="ratings">
                             <ul class="list-inline">

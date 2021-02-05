@@ -47,29 +47,29 @@
                                                      alt="image description">
                                             </td>
                                             <td class="product-details">
-                                                <h3 class="title">
+                                                <h3 class="title font-weight-bold mb-2">
                                                     {{ item.shop_product.product.name|title }}
                                                 </h3>
-                                                <span class="add-id">
+                                                <span class="add-id my-2">
+                                                    <strong>
+                                                        {% translate "Brand" %}
+                                                    </strong>
+                                                        {{ item.shop_product.product.brand|title }}
+                                                </span>
+                                                <span class="my-2">
                                                 <strong>
-                                                    {% translate "Brand:" %}
-                                                </strong>
-                                                    {{ item.shop_product.product.brand|title }}
-                                            </span>
-                                                <span>
-                                                <strong>
-                                                    {% translate "Posted on:" %}
+                                                    {% translate "Posted on" %}
                                                 </strong>
                                                     <time>{{ item.shop_product.product.create_at }}</time>
-                                            </span>
-                                                <span class="status active">
-                                                <strong>{% translate "Price" %}</strong>
-                                                    ${{ item.shop_product.price }}
-                                            </span>
-                                                <span class="location" id="item-quantity{{ forloop.counter }}">
-                                                <strong>{% translate "Quantity" %}</strong>
-                                                    {{ item.count_same.count }}
-                                            </span>
+                                                </span>
+                                                <span class="status active my-2">
+                                                    <strong>{% translate "Price" %}</strong>
+                                                        ${{ item.shop_product.price }}
+                                                </span>
+                                                <span class="location mt-2" id="item-quantity{{ forloop.counter }}">
+                                                    <strong>{% translate "Quantity" %}</strong>
+                                                        {{ item.count_same.count }}
+                                                </span>
                                             </td>
                                             <td class="product-category">
                                             <span class="categories">

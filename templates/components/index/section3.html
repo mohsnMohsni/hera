@@ -23,21 +23,33 @@
                                 <ul class="category-list">
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            {% translate "Products" %} <span>{{ category.get_products.count }}</span>
+                                            {% translate "Products" %}
+                                            <span class="pr-item-sidebar">
+                                                {{ category.get_products.count }}
+                                            </span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            {% translate "Subcategory" %} <span>{{ category.get_children.count }}</span>
+                                            {% translate "Subcategory" %}
+                                            <span class="pr-item-sidebar">
+                                                {{ category.get_children.count }}
+                                            </span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            {% translate "Viewer" %} <span>{{ category.product.all.count }}</span>
+                                            {% translate "Viewer" %}
+                                            <span class="pr-item-sidebar">
+                                                {{ category.product.all.count }}
+                                            </span>
                                         </a></li>
                                     <li>
                                         <a href="{% url 'product:category' category.slug %}">
-                                            {% translate "Detail" %} <span>{{ category.detail|truncatechars:15 }}</span>
+                                            {% translate "Detail" %}
+                                            <span class="pr-item-sidebar">
+                                                {{ category.detail|truncatechars:15 }}
+                                            </span>
                                         </a>
                                     </li>
                                 </ul>

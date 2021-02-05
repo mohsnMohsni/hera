@@ -2,6 +2,9 @@
 
 {% load i18n %}
 
+{% get_current_language as LANGUAGE_CODE %}
+<!-- Current language: {{ LANGUAGE_CODE }} -->
+
 {% block title %} {% translate "Shop" %}-{{ shop.name|title }} {% endblock title %}
 
 {% block content %}
@@ -12,11 +15,15 @@
     <section class="page-title">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <h3>{{ shop.name|title }}</h3>
+                {% if LANGUAGE_CODE == 'fa' %}
+                    <div class="col-md-12 offset-md-2 text-center">
+                {% else %}
+                    <div class="col-md-8 offset-md-2 text-center">
+                {% endif %}
+                <h3>{{ shop.name|title }}</h3>
+                </div>
                 </div>
             </div>
-        </div>
     </section>
     <section class="section">
         <div class="container">

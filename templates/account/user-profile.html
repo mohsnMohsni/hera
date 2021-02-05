@@ -21,7 +21,7 @@
                         </div>
                         <div class="row">
                             {% for order in order_list %}
-                                <div class="col-md-6 mx-sm-auto px-2">
+                                <div class="col-md-6 mx-sm-auto px-2 my-2">
                                     <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
                                         <div class="package-content-heading border-bottom">
                                             <i class="fa fa-check"></i>
@@ -41,7 +41,7 @@
                                                         <span class="mx-1 px-1 border-left">
                                                             {{ order_item.shop_product.product.name|title }}
                                                         </span>
-                                                        <span class=" text-info px-1">
+                                                        <span class="text-info px-1">
                                                             ${{ order_item.price }}
                                                         </span>
                                                     </a>
