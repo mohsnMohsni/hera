@@ -18,14 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('app_siteview.urls')),
-    path('shop/', include('app_product.urls')),
-    path('auth/', include('app_account.urls')),
-    path('order/', include('app_order.urls')),
-] + static(
+                  path('admin/', admin.site.urls),
+                  path('', include('app_siteview.urls')),
+                  path('shop/', include('app_product.urls')),
+                  path('auth/', include('app_account.urls')),
+                  path('order/', include('app_order.urls')),
+                  # path('i18n/', include('django.conf.urls.i18n')),
+              ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
 ) + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT

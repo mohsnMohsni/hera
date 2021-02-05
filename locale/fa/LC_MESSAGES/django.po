@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 19:15+0000\n"
+"POT-Creation-Date: 2021-02-05 05:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,7 +264,7 @@ msgid "Brand"
 msgstr "نام تجاری"
 
 #: app_product/models.py:45 app_product/models.py:149
-#: templates/components/index/section1.html:27
+#: templates/components/index/section1.html:28
 #: templates/components/utils/search-bar.html:16
 #: templates/main/category.html:13
 #: templates/main/forms/product_edit_form.html:69
@@ -280,7 +280,7 @@ msgstr "دسته بندی"
 msgid "Product"
 msgstr "محصول"
 
-#: app_product/models.py:52 templates/components/index/section1.html:41
+#: app_product/models.py:52 templates/components/index/section1.html:42
 #: templates/components/index/section3.html:26
 #: templates/components/shop/product_list.html:9
 #: templates/components/utils/search-bar.html:30 templates/order/cart.html:21
@@ -307,7 +307,7 @@ msgstr "نام های تجاری"
 msgid "Parent"
 msgstr "والد"
 
-#: app_product/models.py:150 templates/components/index/section1.html:47
+#: app_product/models.py:150 templates/components/index/section1.html:48
 #: templates/components/utils/search-bar.html:36
 msgid "Categories"
 msgstr "دسته بندی ها"
@@ -481,7 +481,7 @@ msgstr "برگشتن به صفحه اصلی"
 
 #: templates/account/auth/email-confirm/email_response.html:19
 #: templates/account/auth/login.html:47 templates/account/auth/register.html:71
-#: templates/components/base/header.html:41
+#: templates/components/base/header.html:47
 msgid "Sign In"
 msgstr "ورود"
 
@@ -522,7 +522,7 @@ msgid "&#8592; Back to home"
 msgstr "برگشتن به صفحه اصلی"
 
 #: templates/account/auth/register.html:8
-#: templates/components/base/header.html:47
+#: templates/components/base/header.html:53
 msgid "Sign Up"
 msgstr "ثبت‌نام"
 
@@ -944,27 +944,19 @@ msgstr ""
 msgid "Delete selected %(model)s"
 msgstr ""
 
-#: templates/components/base/header.html:21
-#, fuzzy
-#| msgid "Sign up"
+#: templates/components/base/header.html:27
 msgid "Sign Out"
 msgstr "خروج"
 
 #: templates/components/cart/sidebar.html:21
-#, fuzzy
-#| msgid "Basket Item"
 msgid "My Basket"
 msgstr "سبدخرید من"
 
 #: templates/components/cart/sidebar.html:27
-#, fuzzy
-#| msgid "Price"
 msgid "Total Price"
 msgstr "جمع قیمت"
 
-#: templates/components/cart/sidebar.html:40
-#, fuzzy
-#| msgid "Products liked"
+#: templates/components/cart/sidebar.html:40"
 msgid "Products Quantity"
 msgstr "تعداد محصولات"
 
@@ -984,15 +976,11 @@ msgstr "جمع قیمت"
 msgid "Cancel"
 msgstr "لغو"
 
-#: templates/components/cart/sidebar.html:97
-#, fuzzy
-#| msgid "Payment"
+#: templates/components/cart/sidebar.html:97"
 msgid "Pay"
 msgstr "پرداخت"
 
 #: templates/components/category/sidebar.html:6
-#, fuzzy
-#| msgid "Category"
 msgid "All Category"
 msgstr "دسته‌بندی‌ها"
 
@@ -1002,8 +990,6 @@ msgid "There is no subcategory."
 msgstr "زیردسته‌ای وجود ندارد"
 
 #: templates/components/category/sidebar.html:26
-#, fuzzy
-#| msgid "Category"
 msgid "SubCategory"
 msgstr "زیردسته‌"
 
@@ -1024,31 +1010,25 @@ msgid "Highest Price"
 msgstr "بیشترین قیمت"
 
 #: templates/components/category/sidebar.html:64
-#, fuzzy
-#| msgid "Price"
 msgid "Price Range"
 msgstr "محدوده قیمت"
 
-#: templates/components/index/section1.html:9
+#: templates/components/index/section1.html:10
 msgid "Get Nice Experience In Our Shops"
 msgstr "تجربه خوبی رو در فروشگاه ما بدست آورید"
 
-#: templates/components/index/section1.html:12
-#, fuzzy
-#| msgid ""
-#| "Join the millions who buy and sell from each other <br> everyday in local "
-#| "communities around theworld"
+#: templates/components/index/section1.html:13
 msgid ""
 "Join the millions who buy and sell from each other <br> everyday in local "
 "communities around the world"
-msgstr "به‌میلیون‌ها کسانی که خرید و فروش میکنن بپیوندید"
+msgstr "به ‌میلیون‌ها کسانی که خرید و فروش میکنن بپیوندید"
 
-#: templates/components/index/section1.html:23
+#: templates/components/index/section1.html:24
 #: templates/components/utils/search-bar.html:12
 msgid "What are you looking for"
 msgstr "دنبال چه چیزی میگردی"
 
-#: templates/components/index/section1.html:32
+#: templates/components/index/section1.html:33
 #: templates/components/utils/search-bar.html:21
 msgid "Search Now"
 msgstr "جستجو"
@@ -1062,8 +1042,6 @@ msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam."
 msgstr ""
 
 #: templates/components/index/section3.html:9
-#, fuzzy
-#| msgid "Categories"
 msgid "All Categories"
 msgstr "دسته‌بندی ها"
 
@@ -1074,8 +1052,6 @@ msgid ""
 msgstr ""
 
 #: templates/components/index/section3.html:31
-#, fuzzy
-#| msgid "Category"
 msgid "Subcategory"
 msgstr "زیردسته"
 
@@ -2475,6 +2451,12 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/image_cropping/utils.py:28
 msgid "Can't retrieve the image backend '{}'. Message: '{}'."
 msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "                                            Sign Out\n"
+#~ "                                        "
+#~ msgstr "خروج"
 
 #~ msgid "Persian"
 #~ msgstr "فارسی"
