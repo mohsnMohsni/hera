@@ -1,6 +1,12 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from app_product.models import Category
+from django.shortcuts import reverse
 from .models import SlideShowImage
+
+
+class ChangeDefaultLanguage(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        return reverse('siteview:home')[:1] + 'fa/'
 
 
 class HomeView(TemplateView):
