@@ -1,8 +1,9 @@
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
-from .forms import ShopForm, ShopProductForm, ProductMetaForm
 from .models import Category, Product, ShopProduct, Shop
 from django.shortcuts import get_object_or_404
+from .forms import ShopForm, ShopProductForm
 from django.shortcuts import reverse
+from .utils import add_product_meta
 
 
 class ProductList(ListView):
@@ -94,9 +95,11 @@ class AddShopProductView(CreateView):
 
     def form_valid(self, form):
         self.kwargs['slug'] = form.cleaned_data.get('slug')
+        post_data = self.request.POST.copy()
         price = form.cleaned_data.pop('price')
         quantity = form.cleaned_data.pop('quantity')
         product = form.save()
+        add_product_meta(post_data, product)
         shop_product = ShopProduct.objects.create(product=product, shop=self.request.user.shop,
                                                   price=price, quantity=quantity)
         self.kwargs['shop_product_id'] = shop_product.id

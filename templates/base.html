@@ -29,11 +29,11 @@
     <link href="{% static 'plugins/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
+    {% block extra_css %} {% endblock extra_css %}
     <!-- Language Static Control -->
     {% if LANGUAGE_CODE == 'fa' %}
         <link href="{% static 'custom-persian/css/persian-style.css' %}" rel="stylesheet">
     {% endif %}
-    {% block extra_css %} {% endblock extra_css %}
 </head>
 
 <body class="body-wrapper">

@@ -12,3 +12,21 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     display: none;
 }
+
+.btn-add {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #5672F9 !important;
+}
+
+.add-icon {
+    background: transparent !important;
+    color: #5672F9 !important;
+    transition: .4s ease;
+    font-size: 1px;
+}
+
+.btn-add:hover .add-icon {
+    color: #00a94e !important;
+}

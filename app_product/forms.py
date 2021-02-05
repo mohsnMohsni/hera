@@ -32,13 +32,3 @@ class ShopProductForm(forms.ModelForm):
             'detail': forms.Textarea(attrs={'class': 'form-control'}),
             'image': forms.FileInput(attrs={'class': 'form-control-file mt-2 pt-1'}),
         }
-
-
-class ProductMetaForm(forms.ModelForm):
-    class Meta:
-        model = ProductMeta
-        exclude = ('product',)
-        widgets = {
-            'label': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Label'}),
-            'value': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Value'}),
-        }

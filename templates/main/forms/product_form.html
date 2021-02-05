@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% load i18n %}
 
 {% block title %}{% translate "Product" %}{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
     <div class="widget personal-info">
@@ -21,13 +27,13 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="id_phone">
+                        <label for="id_slug">
                             {% translate "Slug" %}
                         </label>
                         {{ form.slug }}
                     </div>
                     <div class="col-sm-6">
-                        <label for="id_phone">
+                        <label for="id_name">
                             {% translate "Name" %}
                         </label>
                         {{ form.name }}
@@ -41,13 +47,13 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="id_phone">
+                        <label for="id_price">
                             {% translate "Price" %}
                         </label>
                         {{ form.price }}
                     </div>
                     <div class="col-sm-6">
-                        <label for="id_phone">
+                        <label for="id_quantity">
                             {% translate "Quantity" %}
                         </label>
                         {{ form.quantity }}
@@ -57,13 +63,13 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="id_phone">
+                        <label for="id_brand">
                             {% translate "Brand" %}
                         </label>
                         {{ form.brand }}
                     </div>
                     <div class="col-sm-6">
-                        <label for="id_phone">
+                        <label for="id_category">
                             {% translate "Category" %}
                         </label>
                         {{ form.category }}
@@ -71,23 +77,40 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="id_phone">
+                <label for="id_detail">
                     {% translate "Detail" %}
                 </label>
                 {{ form.detail }}
             </div>
             <div class="form-group">
-                <label for="id_phone">
+                <label for="">
                     {% translate "Extra Fields" %}
                 </label>
-                <div class="row">
-                    <div class="col-sm-6">{{ form.label }}</div>
-                    <div class="col-sm-6">{{ form.value }}</div>
+                <div class="row" id="meta-field-container">
+                    <div class="row col-12" id="meta-field">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="label" id="meta-label"
+                                   placeholder="{% translate "Label" %}">
+                        </div>
+                        <div class="col-11 col-sm-5">
+                            <input type="text" class="form-control" name="value" id="meta-value"
+                                   placeholder="{% translate "Value" %}">
+                        </div>
+                        <div class="col-1">
+                            <button class="btn-add" type="button" onclick="callAddField()">
+                                <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button class="btn btn-transparent">
+            <button class="btn btn-transparent" type="submit">
                 {% translate "Save My Changes" %}
             </button>
         </form>
     </div>
 {% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'custom/js/product-form.js' %}"></script>
+{% endblock extra_js %}
