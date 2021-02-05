@@ -21,7 +21,7 @@ function sendCommentPromise() {
         let data = getCommentValue()
         $.ajax({
             type: "POST",
-            url: "/shop/api/add_comment/",
+            url: "/en/shop/api/add_comment/",
             data: data,
             success: function (response) {
                 resolve(response);
@@ -50,10 +50,10 @@ function addComment(response) {
     listInline.append(`
                         <div class="media">
                             <img src="${response.author.avatar}" alt="avatar"
-                                 style="height: 70px !important; width: 70px !important;">
+                                 style="height: 70px !important; width: 70px !important;" class="mx-3">
                             <div class="media-body">
                             <div class="ratings">
-                                <ul class="list-inline" id="list-inline">
+                                <ul class="list-inline my-1" dir="ltr">
                                     ${makeStarforRate(response.rate)}
                                 </ul>
                             </div>
@@ -92,7 +92,7 @@ function sendLikePromise() {
         let data = getLikeValue()
         $.ajax({
             type: "POST",
-            url: "/shop/api/like_product/",
+            url: "/en/shop/api/like_product/",
             data: data,
             success: function (response) {
                 resolve(response);
