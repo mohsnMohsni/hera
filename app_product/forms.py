@@ -1,4 +1,5 @@
 from .models import Shop, Product, ShopProduct, ProductMeta, Brand, Category
+from django.db.utils import OperationalError
 from django import forms
 
 
@@ -20,8 +21,12 @@ class ShopProductForm(forms.ModelForm):
     quantity = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=True)
 
     class Meta:
-        BRAND_CHOICE = Brand.objects.all() if Brand.objects.all().exists() else []
-        CATEGORY_CHOICE = Category.objects.all() if Category.objects.all().exists() else []
+        try:
+            BRAND_CHOICE = Brand.objects.all()
+            CATEGORY_CHOICE = Category.objects.all()
+        except OperationalError:
+            BRAND_CHOICE = []
+            CATEGORY_CHOICE = []
         model = Product
         exclude = ('crop_it', 'cropping')
         widgets = {
