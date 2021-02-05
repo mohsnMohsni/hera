@@ -99,9 +99,9 @@ class AddShopProductView(CreateView):
         price = form.cleaned_data.pop('price')
         quantity = form.cleaned_data.pop('quantity')
         product = form.save()
-        add_product_meta(post_data, product)
         shop_product = ShopProduct.objects.create(product=product, shop=self.request.user.shop,
                                                   price=price, quantity=quantity)
+        add_product_meta(post_data, product)
         self.kwargs['shop_product_id'] = shop_product.id
         return super().form_valid(form)
 
@@ -125,8 +125,8 @@ class EditShopProductView(UpdateView):
         shop_product = self.kwargs.get('shop_product')
         price = form.cleaned_data.pop('price')
         quantity = form.cleaned_data.pop('quantity')
-        post_data = self.request.POST.copy()
         shop_product.update(price=price, quantity=quantity)
+        post_data = self.request.POST.copy()
         update_product_meta(post_data, self.get_queryset())
         return super().form_valid(form)
 

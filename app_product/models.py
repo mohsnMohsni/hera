@@ -249,6 +249,10 @@ class Shop(AbstractDetail):
 
     @property
     def bookmark_count(self):
+        """
+        Count user's, who add a product to like product
+        and that product related to this shop.
+        """
         num = self.shop_product.all().aggregate(
             models.Sum('product__likes__condition')
         ).get('product__likes__condition__sum')
@@ -261,6 +265,9 @@ class Shop(AbstractDetail):
 
     @property
     def buyers_count(self):
+        """
+        return all user, who have buy from this shop
+        """
         query_objects = User.objects.filter(
             cart__order__order_item__shop_product__shop=self
         ).values_list('id', flat=True)
@@ -268,10 +275,16 @@ class Shop(AbstractDetail):
 
     @property
     def happy_customers(self):
+        """
+        Return user's, that who submit more than 3 star
+        """
         return self.shop_product.filter(product__comments__rate__gte=3).count()
 
     @property
     def start_date_per_day(self):
+        """
+        Return days of start work to yet.
+        """
         q = self.create_at - timezone.now()
         return abs(q.days)
 

@@ -20,8 +20,8 @@ class ShopProductForm(forms.ModelForm):
     quantity = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=True)
 
     class Meta:
-        BRAND_CHOICE = Brand.objects.all()
-        CATEGORY_CHOICE = Category.objects.all()
+        BRAND_CHOICE = Brand.objects.all() if Brand.objects.all().exists() else []
+        CATEGORY_CHOICE = Category.objects.all() if Category.objects.all().exists() else []
         model = Product
         exclude = ('crop_it', 'cropping')
         widgets = {
