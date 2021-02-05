@@ -12,12 +12,15 @@ def filter_product(filter_value, products_list):
 
 
 def add_product_meta(dic, product):
+    """
+    Add meta field for product. Get a dic from view
+    and for label and value make an extra field for product.
+    """
     extra_items = ['price', 'name', 'slug', 'category', 'brand', 'quantity', 'detail', 'csrfmiddlewaretoken']
     extra_items += ('image',) if 'image' in dic.keys() else []
     [dic.pop(key) for key in extra_items]
     i = 0
     label, value = '', ''
-    print(list(dic.items()))
     for k, v in dic.items():
         i += 1
         if i % 2 != 0:
@@ -25,4 +28,28 @@ def add_product_meta(dic, product):
         else:
             value = v
             product.meta_field.create(label=label, value=value)
+    return
+
+
+def update_product_meta(dic, product):
+    """
+    Update meta field for product. Get a dic from view
+    and for label and value, update an extra field for product.
+    """
+    copy_dic = dic.copy()
+    extra_items = ['price', 'name', 'slug', 'category', 'brand', 'quantity', 'detail', 'csrfmiddlewaretoken']
+    extra_items += ('image',) if 'image' in dic.keys() else []
+    [dic.pop(key) for key in extra_items]
+    i = 0
+    label, value = '', ''
+    for k, v in dic.items():
+        i += 1
+        if i % 2 != 0:
+            label = v
+        else:
+            value = v
+            product.first().meta_field.filter(label=label).update(value=value)
+            if not product.first().meta_field.filter(label=label).exists():
+                copy_dic[label] = value
+                add_product_meta(copy_dic, product.first())
     return

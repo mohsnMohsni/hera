@@ -1,9 +1,9 @@
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from .models import Category, Product, ShopProduct, Shop
+from .utils import add_product_meta, update_product_meta
 from django.shortcuts import get_object_or_404
 from .forms import ShopForm, ShopProductForm
 from django.shortcuts import reverse
-from .utils import add_product_meta
 
 
 class ProductList(ListView):
@@ -115,20 +115,26 @@ class EditShopProductView(UpdateView):
     form_class = ShopProductForm
     template_name = 'main/forms/product_edit_form.html'
 
+    def get_queryset(self):
+        shop_product_id = self.kwargs.get('shop_product_id')
+        shop_product = ShopProduct.objects.filter(id=shop_product_id)
+        self.kwargs['shop_product'] = shop_product
+        return super().get_queryset().filter(shop_product=shop_product.first())
+
     def form_valid(self, form):
-        slug = self.kwargs.get('slug')
+        shop_product = self.kwargs.get('shop_product')
         price = form.cleaned_data.pop('price')
         quantity = form.cleaned_data.pop('quantity')
-        ShopProduct.objects.filter(product__slug=slug, shop=self.request.user.shop).update(
-            price=price, quantity=quantity
-        )
+        post_data = self.request.POST.copy()
+        shop_product.update(price=price, quantity=quantity)
+        update_product_meta(post_data, self.get_queryset())
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        shop_product_id = self.kwargs.get('shop_product_id')
-        shop_product = ShopProduct.objects.filter(id=shop_product_id).first()
-        context['form1'] = ShopProductForm(instance=shop_product)
+        shop_product = self.kwargs.get('shop_product')
+        context['form1'] = ShopProductForm(instance=shop_product.first())
+        context['meta_fields'] = shop_product.first().product.meta_field.all()
         return context
 
     def get_success_url(self):

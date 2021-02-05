@@ -1,5 +1,6 @@
 let metaFieldContainer = $('#meta-field-container');
-var state = 0
+
+var state = $('#state-count').text();
 
 function addFieldValue(labelName, valueName) {
     state += 1;
