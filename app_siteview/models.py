@@ -1,9 +1,9 @@
-from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.html import format_html
 from image_cropping import ImageRatioField
-from PIL import Image
+from django.utils.html import format_html
 from datetime import datetime
+from django.db import models
+from PIL import Image
 from pytz import utc
 
 

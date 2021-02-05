@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Vazir-pr';
+    src: url("../../plugins/fonts/Vazir-Thin.woff");
+}
+
+html, *:not(i) {
+    font-family: "Vazir-pr", serif !important;
+}
+
 body {
     text-align: right;
 }
