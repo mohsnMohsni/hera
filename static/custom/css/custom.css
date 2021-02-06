@@ -30,3 +30,52 @@
 .btn-add:hover .add-icon {
     color: #00a94e !important;
 }
+
+.fa-share-alt {
+    position: relative;
+    top: 2px;
+}
+
+.fa-edit, .fa-bookmark-o, .fa-bookmark {
+    position: relative;
+    top: 3px;
+}
+
+.plus-picture {
+    font-size: 0.6em;
+    position: relative;
+    left: -1px;
+    bottom: -6px;
+}
+
+.fa-picture-o {
+    position: relative;
+    left: 5px;
+    top: 1px;
+}
+
+.item-arrow {
+    font-size: .5em;
+    position: relative;
+    left: 8px;
+    bottom: 8px;
+}
+
+.item-select {
+    position: relative;
+    left: 12px;
+    top: 1px;
+}
+
+.angel-background {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: rgb(22, 22, 22);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.carousel-indicators > li {
+    background-color: #000000;
+}

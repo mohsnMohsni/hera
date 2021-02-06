@@ -18,7 +18,8 @@
             <ul class="list-inline mt-20">
                 <li class="list-inline-item">
                     <a href="{% url 'product:shop_product_list' slug=shop_product.shop.slug %}"
-                       class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">See Other Products
+                       class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">
+                        {% translate "See Other Products" %}
                     </a>
                 </li>
             </ul>
@@ -38,25 +39,43 @@
         <!-- Rate Widget -->
         <div class="widget rate">
             <div class="d-flex justify-content-center">
-                <span class="py-2 px-4 border product-side-option" id="like-product" onclick="sendLikeResponse()">
+                <span class="py-2 px-5 border product-side-option" id="like-product" onclick="sendLikeResponse()">
                     {% if product.id in product.likes.all.first.user_is_liked %}
                         <i class="fa fa-bookmark"></i>
                     {% else %}
                         <i class="fa fa-bookmark-o alt-color"></i>
                     {% endif %}
                 </span>
-                <span class="py-2 px-4 border product-side-option">
+                <span class="py-2 px-5 border product-side-option">
                     <i class="fa fa-share-alt"></i>
                 </span>
-                {% if user == shop_product.shop.user %}
+
+            </div>
+        </div>
+        {% if user == shop_product.shop.user %}
+            <div class="widget rate">
+                <div class="d-flex justify-content-center">
                     <span class="py-2 px-4 border product-side-option">
                         <a href="{% url 'product:edit_product' slug=product.slug shop_product_id=shop_product.id %}">
                             <i class="fa fa-edit"></i>
                         </a>
                     </span>
-                {% endif %}
+                    <span class="py-2 px-4 border product-side-option" dir="ltr">
+                        <a href="{% url 'product:add_product_image' product.slug shop_product.id %}">
+                            <i class="fa fa-picture-o"></i>
+                            <i class="fa fa-plus plus-picture"></i>
+                        </a>
+                    </span>
+                    <span class="py-2 px-4 border product-side-option" dir="ltr">
+                        <a href="#">
+                            <i class="fa fa-list-ul item-select"></i>
+                            <i class="fa fa-long-arrow-down item-arrow"></i>
+                            <i class="fa fa-plus plus-picture"></i>
+                        </a>
+                    </span>
+                </div>
             </div>
-        </div>
+        {% endif %}
         <div class="widget coupon text-center">
             <input type="text" hidden value="{{ shop_product.id }}" id="shopProduct-id">
             <a href="" class="btn btn-transparent-white" onclick="addToCartAjax()" id="add-to-cart">

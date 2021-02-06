@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-05 06:10+0000\n"
+"POT-Creation-Date: 2021-02-06 05:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "Address"
 msgstr "آدرس"
 
 #: app_account/admin.py:23 app_account/models.py:119
-#: templates/account/user-profile.html:59
+#: templates/account/user-profile.html:63
 msgid "Addresses"
 msgstr "آدرس ها"
 
@@ -47,8 +47,8 @@ msgstr "فیلد الزامی، برای مثال example@gmail.com"
 
 #: app_account/models.py:42 app_product/models.py:16
 #: templates/account/auth/register.html:40
-#: templates/main/forms/product_edit_form.html:33
-#: templates/main/forms/product_form.html:31
+#: templates/main/forms/product_edit_form.html:39
+#: templates/main/forms/product_form.html:37
 #: templates/main/forms/shop_form.html:29
 msgid "Name"
 msgstr "اسم"
@@ -90,8 +90,8 @@ msgstr ""
 "حذف حساب ها."
 
 #: app_account/models.py:65 app_account/models.py:91 app_account/models.py:109
-#: app_order/models.py:9 app_order/models.py:136 app_product/models.py:299
-#: app_product/models.py:326 templates/admin/object_history.html:23
+#: app_order/models.py:9 app_order/models.py:136 app_product/models.py:312
+#: app_product/models.py:339 templates/admin/object_history.html:23
 msgid "User"
 msgstr "کاربر"
 
@@ -152,7 +152,7 @@ msgstr "سبدخرید"
 msgid "Carts"
 msgstr "سبدخرید ها"
 
-#: app_order/models.py:57 app_order/models.py:117 app_product/models.py:288
+#: app_order/models.py:57 app_order/models.py:117 app_product/models.py:301
 msgid "Shop Product"
 msgstr "محصول فروشگاه"
 
@@ -186,10 +186,10 @@ msgstr "سفارش ها"
 msgid "Count"
 msgstr "تعداد"
 
-#: app_order/models.py:121 app_product/models.py:284
+#: app_order/models.py:121 app_product/models.py:297
 #: templates/components/product/sidebar.html:9
-#: templates/main/forms/product_edit_form.html:47
-#: templates/main/forms/product_form.html:45 templates/main/product.html:118
+#: templates/main/forms/product_edit_form.html:53
+#: templates/main/forms/product_form.html:51 templates/main/product.html:118
 #: templates/order/cart.html:66
 msgid "Price"
 msgstr "قیمت"
@@ -214,15 +214,15 @@ msgstr "پرداخت"
 msgid "product"
 msgstr "محصول"
 
-#: app_product/models.py:15 templates/main/forms/product_edit_form.html:27
-#: templates/main/forms/product_form.html:25
+#: app_product/models.py:15 templates/main/forms/product_edit_form.html:33
+#: templates/main/forms/product_form.html:31
 #: templates/main/forms/shop_form.html:23
 msgid "Slug"
 msgstr "اسلاگ"
 
-#: app_product/models.py:17 templates/components/index/section3.html:40
-#: templates/main/forms/product_edit_form.html:77
-#: templates/main/forms/product_form.html:75
+#: app_product/models.py:17 templates/components/index/section3.html:49
+#: templates/main/forms/product_edit_form.html:83
+#: templates/main/forms/product_form.html:81
 #: templates/main/forms/shop_form.html:39
 msgid "Detail"
 msgstr "اطلاعات"
@@ -234,11 +234,11 @@ msgstr "اطلاعات"
 msgid "Image"
 msgstr "تصویر"
 
-#: app_product/models.py:20 app_product/models.py:301
+#: app_product/models.py:20 app_product/models.py:314
 msgid "Create Date"
 msgstr "تاریخ ساخت"
 
-#: app_product/models.py:21 app_product/models.py:302
+#: app_product/models.py:21 app_product/models.py:315
 msgid "Update Date"
 msgstr "تاریخ بروزرسانی"
 
@@ -248,8 +248,8 @@ msgstr "برش عکس"
 
 #: app_product/models.py:43 app_product/models.py:116
 #: templates/components/product/specifications.html:17
-#: templates/main/forms/product_edit_form.html:63
-#: templates/main/forms/product_form.html:61 templates/order/cart.html:55
+#: templates/main/forms/product_edit_form.html:69
+#: templates/main/forms/product_form.html:67 templates/order/cart.html:55
 msgid "Brand"
 msgstr "نام تجاری"
 
@@ -257,16 +257,16 @@ msgstr "نام تجاری"
 #: templates/components/index/section1.html:27
 #: templates/components/utils/search-bar.html:16
 #: templates/main/category.html:13
-#: templates/main/forms/product_edit_form.html:69
-#: templates/main/forms/product_form.html:67 templates/main/product.html:42
+#: templates/main/forms/product_edit_form.html:75
+#: templates/main/forms/product_form.html:73 templates/main/product.html:42
 #: templates/order/cart.html:34
 msgid "Category"
 msgstr "دسته بندی"
 
 #: app_product/models.py:51 app_product/models.py:98 app_product/models.py:194
-#: app_product/models.py:282 app_product/models.py:297
-#: templates/main/forms/product_edit_form.html:6
-#: templates/main/forms/product_form.html:5 templates/main/product.html:7
+#: app_product/models.py:295 app_product/models.py:310
+#: templates/main/forms/product_edit_form.html:8
+#: templates/main/forms/product_form.html:7 templates/main/product.html:7
 msgid "Product"
 msgstr "محصول"
 
@@ -277,11 +277,15 @@ msgstr "محصول"
 msgid "Products"
 msgstr "محصولات"
 
-#: app_product/models.py:100
+#: app_product/models.py:100 templates/main/forms/product_edit_form.html:97
+#: templates/main/forms/product_edit_form.html:115
+#: templates/main/forms/product_form.html:93
 msgid "Label"
 msgstr "برچسب"
 
-#: app_product/models.py:101
+#: app_product/models.py:101 templates/main/forms/product_edit_form.html:102
+#: templates/main/forms/product_edit_form.html:120
+#: templates/main/forms/product_form.html:97
 msgid "Value"
 msgstr "مقدار"
 
@@ -314,8 +318,8 @@ msgstr "مدیر"
 msgid "Picture"
 msgstr "تصویر"
 
-#: app_product/models.py:224 app_product/models.py:280
-#: templates/main/shop.html:5
+#: app_product/models.py:224 app_product/models.py:293
+#: templates/main/shop.html:8
 msgid "Shop"
 msgstr "فروشگاه"
 
@@ -323,37 +327,37 @@ msgstr "فروشگاه"
 msgid "Shops"
 msgstr "فروشگاه ها"
 
-#: app_product/models.py:285 templates/main/forms/product_edit_form.html:53
-#: templates/main/forms/product_form.html:51 templates/order/cart.html:70
+#: app_product/models.py:298 templates/main/forms/product_edit_form.html:59
+#: templates/main/forms/product_form.html:57 templates/order/cart.html:70
 msgid "Quantity"
 msgstr "تعداد"
 
-#: app_product/models.py:289
+#: app_product/models.py:302
 msgid "Shop Products"
 msgstr "محصولات فروشگاه"
 
-#: app_product/models.py:303
+#: app_product/models.py:316
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2055
 msgid "Text"
 msgstr "متن"
 
-#: app_product/models.py:304
+#: app_product/models.py:317
 msgid "Rate"
 msgstr "امتیاز"
 
-#: app_product/models.py:307 app_product/models.py:308
+#: app_product/models.py:320 app_product/models.py:321
 msgid "Comments"
 msgstr "نظر ها"
 
-#: app_product/models.py:328
+#: app_product/models.py:341
 msgid "Products liked"
 msgstr "علاقه‌مندی محصولات"
 
-#: app_product/models.py:330
+#: app_product/models.py:343
 msgid "Condition"
 msgstr "شرط"
 
-#: app_product/models.py:333
+#: app_product/models.py:346
 msgid "Like"
 msgstr "علاقه‌مندی"
 
@@ -455,7 +459,7 @@ msgstr "برگشتن به صفحه اصلی"
 
 #: templates/account/auth/email-confirm/email_response.html:19
 #: templates/account/auth/login.html:47 templates/account/auth/register.html:71
-#: templates/components/base/header.html:46
+#: templates/components/base/header.html:48
 msgid "Sign In"
 msgstr "ورود"
 
@@ -492,7 +496,7 @@ msgid "&#8592; Back to home"
 msgstr "برگشتن به صفحه اصلی"
 
 #: templates/account/auth/register.html:8
-#: templates/components/base/header.html:52
+#: templates/components/base/header.html:54
 msgid "Sign Up"
 msgstr "ثبت‌نام"
 
@@ -505,7 +509,6 @@ msgid "Do you have an account?"
 msgstr "حسابی ندارید؟"
 
 #: templates/account/edit-profile.html:6
-#: templates/components/cart/sidebar.html:13
 #: templates/components/profile/sidebar.html:16
 msgid "Edit Profile"
 msgstr "تغییر مشخصات"
@@ -519,8 +522,8 @@ msgid "First Name"
 msgstr "نام"
 
 #: templates/account/edit-profile.html:46
-#: templates/main/forms/product_edit_form.html:91
-#: templates/main/forms/product_form.html:89
+#: templates/main/forms/product_edit_form.html:132
+#: templates/main/forms/product_form.html:108
 #: templates/main/forms/shop_form.html:44
 msgid "Save My Changes"
 msgstr "ذخیره تغییرات"
@@ -529,9 +532,17 @@ msgstr "ذخیره تغییرات"
 msgid "Count:"
 msgstr "تعداد"
 
-#: templates/account/user-profile.html:76
+#: templates/account/user-profile.html:55
+msgid "There is no order."
+msgstr "سفارشی وجود ندارد."
+
+#: templates/account/user-profile.html:80
 msgid "Postal Code:"
 msgstr "کدپستی"
+
+#: templates/account/user-profile.html:86
+msgid "There is no address."
+msgstr "آدرسی وجود ندارد."
 
 #: templates/admin/404.html:5
 msgid "Page not found"
@@ -910,39 +921,39 @@ msgstr ""
 msgid "Delete selected %(model)s"
 msgstr ""
 
-#: templates/components/base/header.html:26
+#: templates/components/base/header.html:30
 msgid "Sign Out"
 msgstr "خروج"
 
-#: templates/components/cart/sidebar.html:21
+#: templates/components/cart/sidebar.html:18
 msgid "My Basket"
 msgstr "سبدخرید من"
 
-#: templates/components/cart/sidebar.html:27
+#: templates/components/cart/sidebar.html:24
 msgid "Total Price"
 msgstr "جمع قیمت"
 
-#: templates/components/cart/sidebar.html:40
+#: templates/components/cart/sidebar.html:37
 msgid "Products Quantity"
 msgstr "تعداد محصولات"
 
-#: templates/components/cart/sidebar.html:49
+#: templates/components/cart/sidebar.html:46
 msgid "Pay Method"
 msgstr "روش پرداخت"
 
-#: templates/components/cart/sidebar.html:59
+#: templates/components/cart/sidebar.html:56
 msgid "Submit Order"
 msgstr "ثبت سفارش"
 
-#: templates/components/cart/sidebar.html:82
+#: templates/components/cart/sidebar.html:79
 msgid "Total Price:"
 msgstr "جمع قیمت"
 
-#: templates/components/cart/sidebar.html:94
+#: templates/components/cart/sidebar.html:91
 msgid "Cancel"
 msgstr "لغو"
 
-#: templates/components/cart/sidebar.html:97
+#: templates/components/cart/sidebar.html:94
 msgid "Pay"
 msgstr "پرداخت"
 
@@ -950,32 +961,32 @@ msgstr "پرداخت"
 msgid "All Category"
 msgstr "دسته‌بندی‌ها"
 
-#: templates/components/category/sidebar.html:18
-#: templates/components/category/sidebar.html:38
+#: templates/components/category/sidebar.html:21
+#: templates/components/category/sidebar.html:44
 msgid "There is no subcategory."
 msgstr "زیردسته‌ای وجود ندارد"
 
-#: templates/components/category/sidebar.html:26
+#: templates/components/category/sidebar.html:29
 msgid "SubCategory"
 msgstr "زیردسته‌"
 
-#: templates/components/category/sidebar.html:46
+#: templates/components/category/sidebar.html:52
 msgid "Filter By"
 msgstr "فیلتر با"
 
-#: templates/components/category/sidebar.html:52
+#: templates/components/category/sidebar.html:58
 msgid "Top rated"
 msgstr "بالاترین امتیاز"
 
-#: templates/components/category/sidebar.html:55
+#: templates/components/category/sidebar.html:61
 msgid "Lowest Price"
 msgstr "کمترین قیمت"
 
-#: templates/components/category/sidebar.html:58
+#: templates/components/category/sidebar.html:64
 msgid "Highest Price"
 msgstr "بیشترین قیمت"
 
-#: templates/components/category/sidebar.html:64
+#: templates/components/category/sidebar.html:70
 msgid "Price Range"
 msgstr "محدوده قیمت"
 
@@ -1017,11 +1028,11 @@ msgid ""
 "provident!"
 msgstr ""
 
-#: templates/components/index/section3.html:31
+#: templates/components/index/section3.html:34
 msgid "Subcategory"
 msgstr "زیردسته"
 
-#: templates/components/index/section3.html:36
+#: templates/components/index/section3.html:42
 msgid "Viewer"
 msgstr "بازدید کننده"
 
@@ -1129,13 +1140,13 @@ msgstr "نتیجه برای"
 msgid "Results on"
 msgstr "نتیجه در"
 
-#: templates/main/forms/product_edit_form.html:12
-#: templates/main/forms/product_form.html:10
+#: templates/main/forms/product_edit_form.html:18
+#: templates/main/forms/product_form.html:16
 msgid "Product Information"
 msgstr "اطلاعات محصول"
 
-#: templates/main/forms/product_edit_form.html:83
-#: templates/main/forms/product_form.html:81
+#: templates/main/forms/product_edit_form.html:89
+#: templates/main/forms/product_form.html:87
 msgid "Extra Fields"
 msgstr "فیلد های دیگر"
 
@@ -1167,7 +1178,7 @@ msgstr "فروشندگان دیگر"
 msgid "Shop Name"
 msgstr "اسم"
 
-#: templates/main/shop.html:32
+#: templates/main/shop.html:39
 msgid "About Us"
 msgstr "درباره ما"
 

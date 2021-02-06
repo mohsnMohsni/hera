@@ -1,9 +1,9 @@
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
-from .models import Category, Product, ShopProduct, Shop
-from .utils import add_product_meta, update_product_meta
+from .utils import add_product_meta, update_product_meta, add_product_gallery
+from .models import Category, Product, ShopProduct, Shop, Gallery
+from django.shortcuts import reverse, redirect, render
 from django.shortcuts import get_object_or_404
 from .forms import ShopForm, ShopProductForm
-from django.shortcuts import reverse
 
 
 class ProductList(ListView):
@@ -140,3 +140,11 @@ class EditShopProductView(UpdateView):
     def get_success_url(self):
         return reverse('product:product', kwargs={'slug': self.kwargs.get('slug'),
                                                   'shop_product_id': self.kwargs.get('shop_product_id')})
+
+
+def add_product_image(request, slug, shop_product_id):
+    product = get_object_or_404(Product, slug=slug, shop_product__id=shop_product_id)
+    if request.method == 'POST':
+        add_product_gallery(request.FILES, Gallery, product)
+        return redirect('product:product', slug=slug, shop_product_id=shop_product_id)
+    return render(request, 'main/forms/product_gallery.html', context={'product': product})

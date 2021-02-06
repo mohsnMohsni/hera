@@ -50,6 +50,10 @@
                                         </ul>
                                     </div>
                                 </div>
+                            {% empty %}
+                                <div class="text-center w-100 my-4">
+                                    {% translate "There is no order." %}
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -76,6 +80,10 @@
                                         {% translate "Postal Code:" %}
                                         <span class="text-muted"> {{ addrs.postal_code }}</span>
                                     </div>
+                                </div>
+                                {% empty %}
+                                <div class="text-center w-100 my-4">
+                                    {% translate "There is no address." %}
                                 </div>
                             {% endfor %}
                         </div>
