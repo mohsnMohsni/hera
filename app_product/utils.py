@@ -12,6 +12,24 @@ def filter_product(filter_value, products_list):
     return products_list
 
 
+def save_product_meta_content(product, label, value, update=False):
+    """
+    Split value and make it some filed
+    """
+    if value.endswith(','):
+        n = len(value)
+        clean_str = list(value)[n - 1] = ''
+        value = "".join(clean_str)
+    clean_li = value.split(',') if value.__contains__(',') else value.split('،')
+    meta_label = product.meta_field.create(label=label)
+    if update:
+        pass
+    else:
+        while len(clean_li) > 0:
+            meta_label.value.create(value=clean_li.pop())
+    return
+
+
 def add_product_meta(dic, product):
     """
     Add meta field for product. Get a dic from view
@@ -30,7 +48,7 @@ def add_product_meta(dic, product):
         else:
             value = v
             if value != '':
-                product.meta_field.create(label=label, value=value)
+                save_product_meta_content(product, label, value)
     return
 
 
@@ -52,14 +70,14 @@ def update_product_meta(dic, product):
             label = v
         else:
             value = v
-            product_meta_field = product.first().meta_field.filter(label=label)
+            product_meta_field = product.meta_field.filter(label=label)
             if value == '' and product_meta_field.exists():
-                product.delete()
+                product_meta_field.delete()
             elif not product_meta_field.exists():
                 copy_dic[label] = value
-                add_product_meta(copy_dic, product.first())
+                add_product_meta(copy_dic, product)
             else:
-                product_meta_field.update(value=value)
+                product_meta_field.first().value.all().update(value=value)
     return
 
 

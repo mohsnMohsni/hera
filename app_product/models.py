@@ -98,13 +98,18 @@ class ProductMeta(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name=_('Product'),
                                 related_name='meta_field', related_query_name='meta_field')
     label = models.CharField(_('Label'), max_length=100)
-    value = models.CharField(_('Value'), max_length=100)
 
     class Meta:
         verbose_name = _('Product Meta Detail')
 
     def __str__(self):
         return str(self.product) + f'({self.label})'
+
+
+class Value(models.Model):
+    product_meta = models.ForeignKey('ProductMeta', on_delete=models.CASCADE, verbose_name=_('Value'),
+                                     related_name='value', related_query_name='value')
+    value = models.CharField(_('Value'), max_length=100)
 
 
 class Brand(AbstractDetail):

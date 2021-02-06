@@ -127,7 +127,7 @@ class EditShopProductView(UpdateView):
         quantity = form.cleaned_data.pop('quantity')
         shop_product.update(price=price, quantity=quantity)
         post_data = self.request.POST.copy()
-        update_product_meta(post_data, self.get_queryset())
+        update_product_meta(post_data, self.get_queryset().first())
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
