@@ -9,4 +9,4 @@ class SlideShowAdmin(ImageCroppingMixin, admin.ModelAdmin):
     SlideShowImage admin, which to use for mange SlideShowImage data,
     and inherited from ImageCroppingMixin to add crop image Feature
     """
-    list_display = ('title', 'picture', 'have_time')
+    list_display = ('action_text', 'picture', 'have_time')

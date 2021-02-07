@@ -12,7 +12,6 @@ class SlideShowImage(models.Model):
     action_url = models.URLField(_('Action Url'))
     description = models.CharField(_('Description'), max_length=150)
     crop_it = models.BooleanField(_('Crop It'), default=False)
-    title = models.CharField(_('Title'), max_length=100)
     image = models.ImageField(_('Background'), upload_to='slideShowPictures/images')
     cropping = ImageRatioField('image', '530x360', size_warning=True)
     end_time = models.DateTimeField(_('End At'))
@@ -22,7 +21,7 @@ class SlideShowImage(models.Model):
         verbose_name_plural = _('Slide Shows')
 
     def __str__(self):
-        return self.title
+        return self.action_text
 
     def _have_time(self):
         """

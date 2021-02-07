@@ -10,9 +10,6 @@
                     <h2>
                         {% translate "Trending" %}
                     </h2>
-                    <p>
-                        {% translate "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam." %}
-                    </p>
                 </div>
             </div>
         </div>
@@ -31,15 +28,10 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="{{ slide.action_url }}">
-                                                {{ slide.title|title|truncatechars:25 }}
-                                            </a>
-                                        </h4>
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
                                                 <a href="{{ slide.action_url }}" dir="rtl">
-                                                    <i class="fa fa-folder-open-o mx-1"></i>
+                                                    <i class="fa fa-puzzle-piece mx-1"></i>
                                                     {{ slide.action_text }}
                                                 </a>
                                             </li>
