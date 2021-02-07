@@ -123,11 +123,26 @@ function sendLikeResponse() {
     })
 }
 
-function addToCartAjax() {
-    let id = $('#shopProduct-id').val();
+function addCartMeta(id) {
+    let label = $('#select-label').text();
+    console.log(label);
+    let value = $('#select-choice').val();
     $.ajax({
         type: 'POST',
-        url: '/cart/',
+        url: '/en/order/cart_meta/',
+        data: {id: id, label: label, value: value},
+        fail: function (err) {
+            console.log(err);
+        }
+    })
+}
+
+function addToCartAjax() {
+    let id = $('#shopProduct-id').val();
+    addCartMeta(id);
+    $.ajax({
+        type: 'POST',
+        url: '/en/cart/',
         data: {id},
         success: function (response) {
             getCartProductCount();

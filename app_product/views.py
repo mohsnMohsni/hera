@@ -139,12 +139,12 @@ class EditShopProductView(UpdateView):
 
 
 def product_meta(request, slug, shop_product_id):
+    product = get_object_or_404(Product, slug=slug, shop_product__id=shop_product_id)
     if request.method == 'POST':
         post_data = request.POST.copy()
-        product = get_object_or_404(Product, slug=slug, shop_product__id=shop_product_id)
         add_product_meta(post_data, product)
         return redirect('product:product', slug=slug, shop_product_id=shop_product_id)
-    return render(request, 'main/forms/product-meta.html')
+    return render(request, 'main/forms/product-meta.html', context={'meta_fields': product.meta_field.all()})
 
 
 def add_product_image(request, slug, shop_product_id):

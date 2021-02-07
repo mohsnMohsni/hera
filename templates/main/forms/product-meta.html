@@ -29,26 +29,53 @@
                     {% translate "Extra Fields" %}
                 </label>
                 <div class="row" id="meta-field-container">
-                    <div class="row col-12 border-bottom" id="meta-field">
-                        <div class="col-1">
-                            <button class="btn-add" type="button" onclick="callAddField()">
-                                <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
-                            </button>
+                    {% for meta_field in meta_fields %}
+                        <div class="row col-12 border-bottom my2 mt-3" id="meta-field">
+                            <div class="col-1">
+                                <button class="btn-add" type="button" onclick="callAddField()">
+                                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                                </button>
+                            </div>
+                            <div class="col-11 col-sm-5">
+                                <input type="text" class="form-control" name="label" id="meta-label"
+                                       placeholder="{% translate "Label" %}" value="{{ meta_field.label }}">
+                            </div>
+                            <div class="col-11 col-sm-5" id="value-input-container">
+                                {% for value_field in meta_field.value.all %}
+                                    <input type="text" class="form-control mb-2" name="value" id="meta-value"
+                                       placeholder="{% translate "Value" %}" value="{{ value_field.value }}">
+                                {% endfor %}
+                            </div>
+                            <div class="col-1">
+                                <button class="btn-add" type="button"
+                                        onclick="callAddValueInput('value-input-container')">
+                                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-11 col-sm-5">
-                            <input type="text" class="form-control" name="label" id="meta-label"
-                                   placeholder="{% translate "Label" %}">
+                    {% empty %}
+                        <div class="row col-12 border-bottom" id="meta-field">
+                            <div class="col-1">
+                                <button class="btn-add" type="button" onclick="callAddField()">
+                                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                                </button>
+                            </div>
+                            <div class="col-11 col-sm-5">
+                                <input type="text" class="form-control" name="label" id="meta-label"
+                                       placeholder="{% translate "Label" %}">
+                            </div>
+                            <div class="col-11 col-sm-5" id="value-input-container">
+                                <input type="text" class="form-control mb-2" name="value" id="meta-value"
+                                       placeholder="{% translate "Value" %}">
+                            </div>
+                            <div class="col-1">
+                                <button class="btn-add" type="button"
+                                        onclick="callAddValueInput('value-input-container')">
+                                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-11 col-sm-5" id="value-input-container">
-                            <input type="text" class="form-control mb-2" name="value" id="meta-value"
-                                   placeholder="{% translate "Value" %}">
-                        </div>
-                        <div class="col-1">
-                            <button class="btn-add" type="button" onclick="callAddValueInput('value-input-container')">
-                                <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
-                            </button>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <button class="btn btn-transparent" type="submit">
@@ -56,7 +83,7 @@
             </button>
         </form>
     </div>
-    <span id="state-count" hidden>0</span>
+    <span id="state-count" hidden>{{ choice_field.count }}</span>
 {% endblock content %}
 
 {% block extra_js %}

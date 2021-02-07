@@ -77,12 +77,64 @@
         {% endif %}
         <div class="widget coupon text-center">
             <input type="text" hidden value="{{ shop_product.id }}" id="shopProduct-id">
-            <a href="" class="btn btn-transparent-white" onclick="addToCartAjax()" id="add-to-cart">
+            <a data-toggle="modal" data-target="#deleteaccount"
+               class="btn btn-transparent-white">
                 {% translate "Add To Cart" %}
                 <span class="px-2">
                     <img src="{% static 'images/cart.png' %}" alt="" style="height: 2rem; width: auto">
                 </span>
             </a>
+            <div class="modal fade" id="deleteaccount" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle"
+                 aria-hidden="true">
+                <form action="{% url 'order:submit_order' %}" method="post">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header border-bottom-0">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center my-2">
+                                <img src="{{ product.image.url }}" class="img-fluid mb-2" alt=""
+                                     style="height: 200px !important; width: 300px !important;">
+                                <div>
+                                    {% for meta_filed in product.choice_field %}
+                                        <div class="form-group my-2">
+                                            <label for="select-choice" id="select-label">{{ meta_filed.label }}</label>
+                                            <select class="form-control" id="select-choice">
+                                                {% for value_field in meta_filed.value.all %}
+                                                    <option>{{ value_field.value }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="border py-2 mt-4 d-block">
+                                    {% translate "Price:" %}
+                                    <span class="font-weight-bold badge badge-danger"
+                                          style="font-size: .8em; letter-spacing: 1px;">
+                                        {% if shop_product.price %}
+                                            <i class="fa fa-dollar"></i>{{ shop_product.price }}
+                                        {% else %}
+                                            0
+                                        {% endif %}
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    {% translate "Cancel" %}
+                                </button>
+                                <a href="" class="btn btn-success"
+                                        onclick="addToCartAjax()" id="add-to-cart">
+                                    {% translate "Add" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

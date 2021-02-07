@@ -21,7 +21,7 @@ function getPk(n) {
 function deleteItem(pk) {
     $.ajax({
         type: 'POST',
-        url: '/order/delete_item/',
+        url: '/en/order/delete_item/',
         data: {pk},
     })
 }

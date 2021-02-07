@@ -93,6 +93,13 @@ class Product(AbstractDetail):
             self.crop_it = False
         return super(Product, self).save(*args, **kwargs)
 
+    @property
+    def choice_field(self):
+        """
+        Set a extra field for all object in list and filter it
+        """
+        return self.meta_field.annotate(num_books=models.Count('value')).filter(num_books__gt=1)
+
 
 class ProductMeta(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name=_('Product'),

@@ -34,6 +34,19 @@ class Cart(models.Model):
         ).get('cart_item__shop_product__price__sum')
 
 
+class CartMeta(models.Model):
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, verbose_name=_('cart'),
+                             related_name='cart_meta', related_query_name='cart_meta')
+    shop_product = models.ForeignKey('app_product.ShopProduct', on_delete=models.CASCADE,
+                                     verbose_name=_('shop_product'),
+                                     related_name='cart_meta', related_query_name='cart_meta')
+    label = models.CharField(_('Label'), max_length=100)
+    value = models.CharField(_('Value'), max_length=100)
+
+    def __str__(self):
+        return self.label + ' - ' + self.value
+
+
 class CartItemManager(models.Manager):
     def all_unique(self):
         """
