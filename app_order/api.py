@@ -1,9 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from .serializers import CartMetaSerializers
 from django.http import HttpResponse
 from .models import CartItem
-import json
 
 
 @csrf_exempt
@@ -14,7 +12,6 @@ def add_cart_meta(request):
         value = request.POST.getlist('value')[0]
         data = {'shop_product': shop_product_id, 'label': label, 'value': value, 'cart': request.user.cart.id}
         serializer = CartMetaSerializers(data=data)
-        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return HttpResponse('ok')
@@ -28,7 +25,9 @@ def delete_item(request):
     if request.method == 'POST':
         pk = request.POST.get('pk', None)
         if pk:
-            CartItem.objects.filter(pk=pk).delete()
+            cart_item = CartItem.objects.filter(pk=pk)
+            cart_item.first().cart.cart_meta.all().first().delete()
+            cart_item.delete()
             return HttpResponse(status=204)
         else:
             return HttpResponse('Pk Not available', status=404)

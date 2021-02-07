@@ -124,6 +124,19 @@ class Order(models.Model):
         return price_sum
 
 
+class OrderMeta(models.Model):
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, verbose_name=_('cart'),
+                              related_name='order_meta', related_query_name='order_meta')
+    shop_product = models.ForeignKey('app_product.ShopProduct', on_delete=models.CASCADE,
+                                     verbose_name=_('shop_product'),
+                                     related_name='order_meta', related_query_name='order_meta')
+    label = models.CharField(_('Label'), max_length=100)
+    value = models.CharField(_('Value'), max_length=100)
+
+    def __str__(self):
+        return self.label + ' - ' + self.value
+
+
 class OrderItem(models.Model):
     order = models.ForeignKey("Order", verbose_name=_('Order'), on_delete=models.CASCADE,
                               related_name='order_item', related_query_name='order_item')

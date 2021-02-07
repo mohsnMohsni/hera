@@ -125,7 +125,6 @@ function sendLikeResponse() {
 
 function addCartMeta(id) {
     let label = $('#select-label').text();
-    console.log(label);
     let value = $('#select-choice').val();
     $.ajax({
         type: 'POST',
