@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load i18n %}
+
+{% block title %}{% translate "Product" %}{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'custom/css/custom.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="widget personal-info">
+        <h3 class="widget-header user">
+            {% translate "Product Information" %}
+        </h3>
+        {% if form.errors %}
+            <div class="alert alert-danger d-flex justify-content-center align-items-center">
+                <span>
+                    {{ form.errors }}
+                </span>
+            </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="">
+                    {% translate "Extra Fields" %}
+                </label>
+                <div class="row" id="meta-field-container">
+                    <div class="row col-12 border-bottom" id="meta-field">
+                        <div class="col-1">
+                            <button class="btn-add" type="button" onclick="callAddField()">
+                                <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                            </button>
+                        </div>
+                        <div class="col-11 col-sm-5">
+                            <input type="text" class="form-control" name="label" id="meta-label"
+                                   placeholder="{% translate "Label" %}">
+                        </div>
+                        <div class="col-11 col-sm-5" id="value-input-container">
+                            <input type="text" class="form-control mb-2" name="value" id="meta-value"
+                                   placeholder="{% translate "Value" %}">
+                        </div>
+                        <div class="col-1">
+                            <button class="btn-add" type="button" onclick="callAddValueInput('value-input-container')">
+                                <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-transparent" type="submit">
+                {% translate "Save My Changes" %}
+            </button>
+        </form>
+    </div>
+    <span id="state-count" hidden>0</span>
+{% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'custom/js/product-form.js' %}"></script>
+{% endblock extra_js %}

@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, ListView, CreateView, UpdateView
+from django.views.generic import DetailView, ListView, CreateView, UpdateView, TemplateView
 from .utils import add_product_meta, update_product_meta, add_product_gallery
 from .models import Category, Product, ShopProduct, Shop, Gallery
 from django.shortcuts import reverse, redirect, render
@@ -95,13 +95,11 @@ class AddShopProductView(CreateView):
 
     def form_valid(self, form):
         self.kwargs['slug'] = form.cleaned_data.get('slug')
-        post_data = self.request.POST.copy()
         price = form.cleaned_data.pop('price')
         quantity = form.cleaned_data.pop('quantity')
         product = form.save()
         shop_product = ShopProduct.objects.create(product=product, shop=self.request.user.shop,
                                                   price=price, quantity=quantity)
-        add_product_meta(post_data, product)
         self.kwargs['shop_product_id'] = shop_product.id
         return super().form_valid(form)
 
@@ -126,8 +124,6 @@ class EditShopProductView(UpdateView):
         price = form.cleaned_data.pop('price')
         quantity = form.cleaned_data.pop('quantity')
         shop_product.update(price=price, quantity=quantity)
-        post_data = self.request.POST.copy()
-        update_product_meta(post_data, self.get_queryset().first())
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -140,6 +136,15 @@ class EditShopProductView(UpdateView):
     def get_success_url(self):
         return reverse('product:product', kwargs={'slug': self.kwargs.get('slug'),
                                                   'shop_product_id': self.kwargs.get('shop_product_id')})
+
+
+def product_meta(request, slug, shop_product_id):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        product = get_object_or_404(Product, slug=slug, shop_product__id=shop_product_id)
+        add_product_meta(post_data, product)
+        return redirect('product:product', slug=slug, shop_product_id=shop_product_id)
+    return render(request, 'main/forms/product-meta.html')
 
 
 def add_product_image(request, slug, shop_product_id):

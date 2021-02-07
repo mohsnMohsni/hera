@@ -30,7 +30,7 @@
         {% for meta_field in product.meta_field.all %}
             <tr>
                 <td>{{ meta_field.label|title }}</td>
-                <td>{{ meta_field.value|title }}</td>
+                <td>{{ meta_field.get_str_value|title }}</td>
             </tr>
         {% endfor %}
         </tbody>

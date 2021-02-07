@@ -84,50 +84,6 @@
                 </label>
                 {{ form.detail }}
             </div>
-            <div class="form-group">
-                <label for="id_phone">
-                    {% translate "Extra Fields" %}
-                </label>
-                <div class="row" id="meta-field-container">
-                    {% for field in meta_fields %}
-                        <div class="row col-12" id="meta-field">
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" name="label{{ forloop.counter }}"
-                                       id="meta-label"
-                                       placeholder="{% translate "Label" %}" value="{{ field.label }}">
-                            </div>
-                            <div class="col-11 col-sm-5">
-                                <input type="text" class="form-control" name="value{{ forloop.counter }}"
-                                       id="meta-value"
-                                       placeholder="{% translate "Value" %}" value="{{ field.value }}">
-                            </div>
-                            <div class="col-1">
-                                <button class="btn-add" type="button" onclick="callAddField()">
-                                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    {% empty %}
-                        <div class="row col-12" id="meta-field">
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" name="label"
-                                       id="meta-label"
-                                       placeholder="{% translate "Label" %}">
-                            </div>
-                            <div class="col-11 col-sm-5">
-                                <input type="text" class="form-control" name="value"
-                                       id="meta-value"
-                                       placeholder="{% translate "Value" %}">
-                            </div>
-                            <div class="col-1">
-                                <button class="btn-add" type="button" onclick="callAddField()">
-                                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
             <button class="btn btn-transparent">
                 {% translate "Save My Changes" %}
             </button>
@@ -135,7 +91,3 @@
     </div>
     <span id="state-count" hidden>{{ meta_fields.count }}</span>
 {% endblock content %}
-
-{% block extra_js %}
-    <script src="{% static 'custom/js/product-form.js' %}"></script>
-{% endblock extra_js %}

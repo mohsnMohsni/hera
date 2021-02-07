@@ -6,17 +6,22 @@ var num = 1;
 function addFieldValue(labelName, valueName) {
     state += 1;
     metaFieldContainer.append(`
-        <div class="row col-12" id="meta-field">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="label${state}" id="meta-label"
+        <div class="row col-12 border-bottom my2 mt-3" id="meta-field">
+            <div class="col-1">
+                <button class="btn-add" type="button" onclick="callAddField()">
+                    <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
+                </button>
+            </div>  
+            <div class="col-11 col-sm-5">
+                <input type="text" class="form-control mb-2" name="label${state}" id="meta-label"
                        placeholder="${labelName}">
             </div>
-            <div class="col-11 col-sm-5">
-                <input type="text" class="form-control" name="value${state}" id="meta-value"
+            <div class="col-11 col-sm-5" id="value-input-container${state}">
+                <input type="text" class="form-control mb-2" name="value${state}" id="meta-value"
                        placeholder="${valueName}">
             </div>
             <div class="col-1">
-                <button class="btn-add" type="button" onclick="callAddField()">
+                <button class="btn-add" type="button" onclick="callAddValueInput('value-input-container${state}')">
                     <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
                 </button>
             </div>
@@ -29,6 +34,21 @@ function callAddField() {
     let valueName = document.getElementById('meta-value').getAttribute('placeholder');
     addFieldValue(labelName, valueName);
 }
+
+
+function addValueInput(valueName, inputContainerId) {
+    let valueInputContainer = $(`#${inputContainerId}`);
+    valueInputContainer.append(`
+        <input type="text" class="form-control mb-2" name="value" id="meta-value"
+                                   placeholder="${valueName}">
+    `)
+}
+
+function callAddValueInput(inputContainerId) {
+    let valueName = document.getElementById('meta-value').getAttribute('placeholder');
+    addValueInput(valueName, inputContainerId);
+}
+
 
 function addImageInput() {
     num += 1;

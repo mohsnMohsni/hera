@@ -105,6 +105,10 @@ class ProductMeta(models.Model):
     def __str__(self):
         return str(self.product) + f'({self.label})'
 
+    @property
+    def get_str_value(self):
+        return "، ".join(self.value.all().values_list('value', flat=True))
+
 
 class Value(models.Model):
     product_meta = models.ForeignKey('ProductMeta', on_delete=models.CASCADE, verbose_name=_('Value'),
