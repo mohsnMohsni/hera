@@ -108,6 +108,7 @@ class ProductMeta(models.Model):
 
     class Meta:
         verbose_name = _('Product Meta Detail')
+        verbose_name_plural = _('Product Meta Detail\'s')
 
     def __str__(self):
         return str(self.product) + f'({self.label})'
@@ -125,6 +126,7 @@ class Value(models.Model):
 
 class Brand(AbstractDetail):
     slug = None
+    detail = None
     image = models.ImageField(_('Image'), upload_to='brand/images', blank=True,
                               default='default/default_upload.jpg')
 

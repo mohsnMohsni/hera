@@ -67,6 +67,7 @@ class AddShopView(CreateView):
         valid_form = form.save(commit=False)
         valid_form.user = self.request.user
         self.request.user.is_seller = True
+        self.request.user.save()
         return super().form_valid(valid_form)
 
     def get_success_url(self):

@@ -1,10 +1,11 @@
 let metaFieldContainer = $('#meta-field-container');
 let imageInputContainer = $('#image-input-container');
-var state = $('#state-count').text();
+var state = +$('#state-count').text();
 var num = 1;
 
+
 function addFieldValue(labelName, valueName) {
-    state += 1;
+    state = +state + 1;
     metaFieldContainer.append(`
         <div class="row col-12 border-bottom my2 mt-3" id="meta-field">
             <div class="col-1">
@@ -21,7 +22,8 @@ function addFieldValue(labelName, valueName) {
                        placeholder="${valueName}">
             </div>
             <div class="col-1">
-                <button class="btn-add" type="button" onclick="callAddValueInput('value-input-container${state}')">
+                <button class="btn-add" type="button" 
+                        onclick="callAddValueInput('value-input-container${state}', ${state})">
                     <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
                 </button>
             </div>
@@ -36,17 +38,17 @@ function callAddField() {
 }
 
 
-function addValueInput(valueName, inputContainerId) {
+function addValueInput(valueName, inputContainerId, num) {
     let valueInputContainer = $(`#${inputContainerId}`);
     valueInputContainer.append(`
-        <input type="text" class="form-control mb-2" name="value" id="meta-value"
+        <input type="text" class="form-control mb-2" name="value${num}" id="meta-value"
                                    placeholder="${valueName}">
     `)
 }
 
-function callAddValueInput(inputContainerId) {
+function callAddValueInput(inputContainerId, num) {
     let valueName = document.getElementById('meta-value').getAttribute('placeholder');
-    addValueInput(valueName, inputContainerId);
+    addValueInput(valueName, inputContainerId, num);
 }
 
 

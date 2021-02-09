@@ -37,18 +37,22 @@
                                 </button>
                             </div>
                             <div class="col-11 col-sm-5">
-                                <input type="text" class="form-control" name="label" id="meta-label"
+                                <input type="text" class="form-control mb-2" name="label{{ forloop.counter }}"
+                                       id="meta-label"
                                        placeholder="{% translate "Label" %}" value="{{ meta_field.label }}">
                             </div>
-                            <div class="col-11 col-sm-5" id="value-input-container">
-                                {% for value_field in meta_field.value.all %}
-                                    <input type="text" class="form-control mb-2" name="value" id="meta-value"
-                                       placeholder="{% translate "Value" %}" value="{{ value_field.value }}">
-                                {% endfor %}
+                            <div class="col-11 col-sm-5" id="value-input-container{{ forloop.counter }}">
+                                {% with forloop.counter as parent_forloop_counter %}
+                                    {% for value_field in meta_field.value.all %}
+                                        <input type="text" class="form-control mb-2"
+                                               name="value{{ parent_forloop_counter }}" id="meta-value"
+                                               placeholder="{% translate "Value" %}" value="{{ value_field.value }}">
+                                    {% endfor %}
+                                {% endwith %}
                             </div>
                             <div class="col-1">
                                 <button class="btn-add" type="button"
-                                        onclick="callAddValueInput('value-input-container')">
+                                        onclick="callAddValueInput('value-input-container{{ forloop.counter }}', {{ forloop.counter }})">
                                     <i class="fa fa-plus-circle add-icon" style="font-size: 1.5em;"></i>
                                 </button>
                             </div>
@@ -83,7 +87,7 @@
             </button>
         </form>
     </div>
-    <span id="state-count" hidden>{{ choice_field.count }}</span>
+    <span id="state-count" hidden>{{ meta_fields.count }}</span>
 {% endblock content %}
 
 {% block extra_js %}

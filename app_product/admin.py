@@ -1,15 +1,23 @@
 from django.contrib import admin
-from .models import (Product, ProductMeta, Brand, Category,
+from .models import (Product, ProductMeta, Brand, Category, Value,
                      Shop, ShopProduct, Gallery, Comment, Like)
 from image_cropping import ImageCroppingMixin
 
 
-class ProductMetaAdmin(admin.TabularInline):
+class ProductValueAdmin(admin.TabularInline):
     """
-    Tabular inline admin for manage ProductMeta model, then add to Product Admin
+    Tabular inline admin for manage Value model, then add to ProductMeta Admin
     """
-    model = ProductMeta
+    model = Value
     extra = 0
+
+
+@admin.register(ProductMeta)
+class ProductMetaAdmin(admin.ModelAdmin):
+    list_display = ('label',)
+    inlines = [
+        ProductValueAdmin,
+    ]
 
 
 class CommentAdmin(admin.TabularInline):
@@ -49,7 +57,6 @@ class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_filter = ('brand',)
     search_fields = ('name', 'detail')
     inlines = [
-        ProductMetaAdmin,
         GalleryAdmin,
         CommentAdmin,
         LikeAdmin

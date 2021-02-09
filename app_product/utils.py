@@ -34,26 +34,23 @@ def add_product_meta(dic, product):
     and for label and value make an extra field for product.
     """
     dic.pop('csrfmiddlewaretoken')
-    i = 0
-    label, value, meta_label, exists_status = '', '', '', ''
-    for k, v in dic.items():
-        i += 1
-        if i % 2 != 0:
-            label = v
-            exists_status = product.meta_field.filter(label=label).exists()
-            if not exists_status:
-                meta_label = product.meta_field.create(label=label)
+    labels, values = list(), list()
+    [labels.append(key) for key, value in dic.items() if key.__contains__('label')]
+    [values.append(key) for key, value in dic.items() if key.__contains__('value')]
+    labels.sort()
+    values.sort()
+    for label, value in zip(labels, values):
+        meta_label = product.meta_field.filter(label=dic.get(label))
+        value_list = dic.getlist(value)
+        if not meta_label.exists():
+            meta_label = product.meta_field.create(label=dic.get(label))
+            for _ in value_list:
+                meta_label.value.create(value=_)
         else:
-            value = dic.getlist(k)
-            if value == [''] and exists_status:
-                meta_label_obj = product.meta_field.filter(label=label)
-                meta_label_obj.delete()
-            elif not exists_status:
-                for _ in value:
-                    meta_label.value.create(value=_)
+            if '' in value_list:
+                meta_label.delete()
             else:
-                meta_label_obj = product.meta_field.filter(label=label).first()
-                update_product_meta(meta_label_obj, value)
+                update_product_meta(meta_label.first(), value_list)
     return
 
 
