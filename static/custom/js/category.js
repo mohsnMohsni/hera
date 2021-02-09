@@ -8,7 +8,6 @@ function priceRangeFilter() {
     for (let i = 0; i < cardPriceSpan.length; i++) {
         let productCard = $(`#product-card${i + 1}`);
         if (less > parseInt(cardPriceSpan[i].innerHTML) || parseInt(cardPriceSpan[i].innerHTML) > more) {
-            console.log('ok');
             productCard.hide();
         } else {
             productCard.show()

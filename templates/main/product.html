@@ -147,9 +147,7 @@
                                         <p class="font-weight-bold m-0" style="font-size: 18px;">
                                             {{ shopProduct.shop.name|title }}
                                         </p>
-                                        <a href="
-                                    {% url 'product:product' slug=product.slug  shop_product_id=shopProduct.id %}
-                                            "
+                                        <a href="{% url 'product:product' product.slug  shopProduct.id %}"
                                            class="btn btn-outline-dark">
                                             ${{ shopProduct.price|title }}
                                         </a>

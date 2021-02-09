@@ -19,7 +19,7 @@ function searchPromise() {
         const data = getSearchValue();
         $.ajax({
             type: 'POST',
-            url: '/search/',
+            url: '/en/search/',
             data: data,
             success: function (response) {
                 resolve(response);
@@ -34,7 +34,7 @@ function searchPromise() {
 function searchResponse() {
     searchPromise()
         .then((response) => {
-            searchResponseVisual(response)
+            searchResponseVisual(response);
         })
         .catch((error) => {
             alert(error)
