@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 09:00+0000\n"
+"POT-Creation-Date: 2021-02-10 05:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -686,13 +686,13 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: templates/admin/base_site.html:3
+#: templates/admin/base_site.html:5
 msgid "Django site admin"
 msgstr ""
 
-#: templates/admin/base_site.html:6
-msgid "Django administration"
-msgstr ""
+#: templates/admin/base_site.html:8
+msgid "Shop Admin"
+msgstr "مدیریت فروشگاه"
 
 #: templates/admin/change_form.html:21
 #: templates/admin/change_list_object_tools.html:8
