@@ -124,16 +124,23 @@ function sendLikeResponse() {
 }
 
 function addCartMeta(id) {
-    let label = $('#select-label').text();
-    let value = $('#select-choice').val();
-    $.ajax({
-        type: 'POST',
-        url: '/en/order/cart_meta/',
-        data: {id: id, label: label, value: value},
-        fail: function (err) {
-            console.log(err);
-        }
-    })
+    let labels = document.getElementsByClassName('select-label');
+    let values = document.getElementsByClassName('choice-option');
+    let [i, j, label, value] = [0, 0, '', ''];
+    while (i < labels.length) {
+        label = labels.item(i).innerHTML.trim();
+        value = values.item(j).value;
+        i++;
+        j += 2;
+        $.ajax({
+            type: 'POST',
+            url: '/en/order/cart_meta/',
+            data: {id: id, label: label, value: value},
+            fail: function (err) {
+                console.log(err);
+            }
+        })
+    }
 }
 
 function addToCartAjax() {

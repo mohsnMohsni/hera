@@ -66,12 +66,15 @@
                                                             {{ item.count_same.count }}
                                                     </span>
                                                 </span>
-                                                {% for field in item.shop_product.cart_meta.all %}
+                                                {% for field in item.shop_product.cart_meta.all_unique %}
                                                     <span class="add-id my-2 cart-meta">
                                                         <strong>
-                                                            {{ field.label }}
+                                                            {{ field.count_same.first.label }}
                                                         </strong>
-                                                            {{ field.value }}
+                                                            {% for field_value in field.count_same %}
+                                                                {{ field_value.value }}،
+                                                            {% endfor %}
+
                                                     </span>
                                                 {% endfor %}
                                             </td>

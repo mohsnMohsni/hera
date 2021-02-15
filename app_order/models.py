@@ -34,6 +34,23 @@ class Cart(models.Model):
         ).get('cart_item__shop_product__price__sum')
 
 
+class CartMetaManager(models.Manager):
+    def all_unique(self):
+        """
+        Get all basket item and their shop_product's id,
+        then if shop_product.id exists in list return it and pop it's id from shop_product.id list
+        """
+        all_query = self.get_queryset()
+        labels = list(set(all_query.values_list('label', flat=True)))
+        unique_list = list()
+        for item in all_query:
+            if item.label in labels:
+                unique_list.append(item)
+                i = labels.index(item.label)
+                labels.pop(i)
+        return unique_list
+
+
 class CartMeta(models.Model):
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, verbose_name=_('cart'),
                              related_name='cart_meta', related_query_name='cart_meta')
@@ -43,8 +60,20 @@ class CartMeta(models.Model):
     label = models.CharField(_('Label'), max_length=100)
     value = models.CharField(_('Value'), max_length=100)
 
+    objects = CartMetaManager()
+
     def __str__(self):
         return self.label + ' - ' + self.value
+
+    @property
+    def count_same(self):
+        """
+        Return quantity of this item, which there is in the cart
+        that's related to user have been send request.
+        """
+        return CartMeta.objects.filter(
+            shop_product=self.shop_product, label=self.label
+        )
 
 
 class CartItemManager(models.Manager):

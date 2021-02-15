@@ -99,8 +99,10 @@
                                 <div>
                                     {% for meta_filed in product.choice_field %}
                                         <div class="form-group my-2">
-                                            <label for="select-choice" id="select-label">{{ meta_filed.label }}</label>
-                                            <select class="form-control" id="select-choice">
+                                            <label for="choice-option" id="select-label" class="select-label">
+                                                {{ meta_filed.label }}
+                                            </label>
+                                            <select class="form-control choice-option" id="choice-option">
                                                 {% for value_field in meta_filed.value.all %}
                                                     <option>{{ value_field.value }}</option>
                                                 {% endfor %}
