@@ -5,7 +5,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - zoomit-web:/usr/src/app/
+      - web:/app/
     ports:
       - 8000:8000
     expose:
@@ -19,9 +19,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=postgres_hereIroot
-      - POSTGRES_PASSWORD=postgres_hereIroot
-      - POSTGRES_DB=postgres_hereIroot
+      - POSTGRES_USER=postgres_heraIroot
+      - POSTGRES_PASSWORD=postgres_heraIroot
+      - POSTGRES_DB=postgres_heraIroot
   nginx:
     build: ./nginx
     ports:
@@ -29,12 +29,8 @@ services:
     depends_on:
       - web
     volumes:
-      - static_volume:/usr/src/app/static
+      - /app/static/:/vol/web/static
 
 volumes:
   postgres_data:
-  zoomit-web:
-  static_volume:
-
-
- 
+  web:
