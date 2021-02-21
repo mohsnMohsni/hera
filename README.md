@@ -2,7 +2,7 @@
 
 Buy or sell and enjoy. Develope online markting with Django base backend and js/jquery base front.
 
-### Technologies
+## Technologies
 
 Technologies that are use in this project
 

@@ -6,6 +6,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - web:/app/
+      - ./media/:/vol/web/media
     ports:
       - 8000:8000
     expose:
@@ -29,7 +30,7 @@ services:
     depends_on:
       - web
     volumes:
-      - /app/static/:/vol/web/static
+      - ./assets/:/vol/web/static
 
 volumes:
   postgres_data:
