@@ -99,7 +99,7 @@ except UndefinedValueError:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': config('NAME'),
             'HOST': config('HOST'),
-            'PORT': config('PORT'),
+            'PORT': 5432,
             'USER': config('USER'),
             'PASSWORD': config('PASSWORD'),
         }
@@ -145,8 +145,10 @@ AUTH_USER_MODEL = 'app_account.User'
 
 # Static Config
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'assets'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+if DEBUG:
+    STATICFILES_DIRS = [BASE_DIR / 'static']
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 # Media Config
 MEDIA_URL = '/media/'
