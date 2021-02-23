@@ -30,7 +30,7 @@ services:
     depends_on:
       - web
     volumes:
-      - ./assets/:/vol/web/static
+      - ./static/:/app/static
 
 volumes:
   postgres_data:
