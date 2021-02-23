@@ -20,7 +20,8 @@ RUN echo 'nameserver 185.51.200.2'>>/etc/resolv.conf && apk update \
     && apk add jpeg-dev zlib-dev libjpeg \
     && pip install Pillow \
     && apk del build-deps \ 
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    && apk add gettext
 
 # install dependencies
 RUN pip install --upgrade pip
