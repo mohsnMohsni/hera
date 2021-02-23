@@ -18,7 +18,7 @@ services:
   db:
     image: postgres:12.0-alpine
     volumes:
-      - ./app/data/:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=postgres_heraIroot
       - POSTGRES_PASSWORD=postgres_heraIroot

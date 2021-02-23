@@ -27,6 +27,9 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+# copy data json file
+COPY ./datadump.json .
+
 # copy entrypoint file and change file mode
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
