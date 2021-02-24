@@ -31,6 +31,7 @@ services:
       - web
     volumes:
       - ./static/:/app/static
+      - ./media/:/app/media
 
 volumes:
   postgres_data:
