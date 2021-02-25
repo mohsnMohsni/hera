@@ -383,3 +383,6 @@ class IPAddress(models.Model):
     class Meta:
         verbose_name = _('IP Address')
         verbose_name_plural = _('IP Addressees')
+
+    def __str__(self):
+        return self.ip_address

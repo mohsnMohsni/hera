@@ -2,9 +2,10 @@ from .models import Cart, Order, OrderItem, OrderMeta
 from django.views.generic import DetailView
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CartDetail(DetailView):
+class CartDetail(LoginRequiredMixin, DetailView):
     model = Cart
     context_object_name = 'cart'
     template_name = 'order/cart.html'

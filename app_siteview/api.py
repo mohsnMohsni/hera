@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 from app_order.models import CartItem
 from django.db.models import Q
+import redis
 
 
 @csrf_exempt
@@ -40,12 +41,35 @@ def search(request):
 
 @csrf_exempt
 def handle_cart(request):
-    if request.method == 'GET':
-        count = request.user.cart.products_count
-        return JsonResponse({'product_count': count}, safe=False)
+    """
+    Using redis for caching cart data and if user is authenticated sort data in database
+    """
+    redis_server = redis.Redis('127.0.0.1')
+    if request.user.is_authenticated:
+        while redis_server.llen(f'{request.user.ip_address}') != 0:
+            pk = redis_server.lpop(f'{request.user.ip_address}')
+            shop_product = ShopProduct.objects.filter(pk=int(pk)).first() or None
+            if shop_product is not None:
+                CartItem.objects.create(shop_product=shop_product, cart=request.user.cart)
+
+        if request.method == 'GET':
+            count = request.user.cart.products_count
+            return JsonResponse({'product_count': count}, safe=False)
+
+        else:
+            pk = request.POST.get('id', None)
+            shop_product = ShopProduct.objects.filter(pk=pk).first() or None
+            if shop_product is not None:
+                CartItem.objects.create(shop_product=shop_product, cart=request.user.cart)
+            return HttpResponse(status=201)
     else:
-        pk = request.POST.get('id', None)
-        shop_product = ShopProduct.objects.filter(pk=pk).first() or None
-        if shop_product is not None:
-            CartItem.objects.create(shop_product=shop_product, cart=request.user.cart)
-        return HttpResponse(status=201)
+        if request.method == 'GET':
+            if redis_server.exists(f'{request.user.ip_address}'):
+                count = redis_server.llen(f'{request.user.ip_address}')
+            else:
+                count = 0
+            return JsonResponse({'product_count': count}, safe=False)
+
+        else:
+            redis_server.rpush(f'{request.user.ip_address}', request.POST.get('id'))
+            return HttpResponse(status=201)
