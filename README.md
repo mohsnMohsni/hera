@@ -8,6 +8,7 @@ Technologies that are use in this project
 
 * Django
 * RESTapi
+* Redis
 * Bootstrap
 * SCSS
 * JQuery
@@ -44,6 +45,12 @@ Run manage.py migrate
 
 ```bash
 python3 manage.py migrate
+```
+
+Compile messages to binary code to enable multi-languages
+
+```bash
+python3 manage.py compilemessages
 ```
 
 ## Launch in docker for production mode
