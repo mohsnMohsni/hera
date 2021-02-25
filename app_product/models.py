@@ -374,3 +374,12 @@ class Like(models.Model):
         """
         q = Like.objects.filter(user=self.user, condition=True).values_list('products_id', flat=True)
         return q
+
+
+class IPAddress(models.Model):
+    ip_address = models.GenericIPAddressField(_('Ip Address'))
+    hits = models.ManyToManyField('Category', blank=True, related_name='hits', verbose_name=_('Views'))
+
+    class Meta:
+        verbose_name = _('IP Address')
+        verbose_name_plural = _('IP Addressees')

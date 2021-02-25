@@ -38,7 +38,7 @@
                                         <a href="{% url 'product:category' category.slug %}">
                                             {% translate "Viewer" %}
                                             <span class="pr-item-sidebar">
-                                                {{ category.product.all.count }}
+                                                {{ category.hits.all.count }}
                                             </span>
                                         </a></li>
                                     <li>

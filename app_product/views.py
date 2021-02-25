@@ -13,7 +13,10 @@ class ProductList(ListView):
 
     def get_queryset(self):
         filter_value = self.request.GET.get('filter', 'Nothing')
+        ip_address = self.request.user.ip_address
         category = get_object_or_404(Category, slug=self.kwargs.get('slug'))
+        if ip_address not in category.hits.all():
+            category.hits.add(ip_address)
         self.kwargs['category'] = category
         return category.get_products(filter_value)
 
