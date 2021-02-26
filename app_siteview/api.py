@@ -44,7 +44,7 @@ def handle_cart(request):
     """
     Using redis for caching cart data and if user is authenticated sort data in database
     """
-    redis_server = redis.Redis('127.0.0.1')
+    redis_server = redis.Redis('37.152.186.205')
     if request.user.is_authenticated:
         while redis_server.llen(f'{request.user.ip_address}') != 0:
             pk = redis_server.lpop(f'{request.user.ip_address}')

@@ -37,13 +37,19 @@
         <!-- Rate Widget -->
         <div class="widget rate">
             <div class="d-flex justify-content-center">
-                <span class="py-2 px-5 border product-side-option" id="like-product" onclick="sendLikeResponse()">
+                {% if user.is_authenticated %}
+                    <span class="py-2 px-5 border product-side-option" id="like-product" onclick="sendLikeResponse()">
                     {% if product.id in product.likes.all.first.user_is_liked %}
                         <i class="fa fa-bookmark"></i>
                     {% else %}
                         <i class="fa fa-bookmark-o alt-color"></i>
                     {% endif %}
-                </span>
+                    </span>
+                {% else %}
+                    <span class="py-2 px-5 border product-side-option">
+                        <a href="{% url 'account:login' %}"><i class="fa fa-bookmark-o alt-color"></i></a>
+                    </span>
+                {% endif %}
                 <span class="py-2 px-5 border product-side-option">
                     <i class="fa fa-share-alt"></i>
                 </span>
@@ -127,7 +133,7 @@
                                     {% translate "Cancel" %}
                                 </button>
                                 <a href="" class="btn btn-success"
-                                        onclick="addToCartAjax()" id="add-to-cart">
+                                   onclick="addToCartAjax()" id="add-to-cart">
                                     {% translate "Add" %}
                                 </a>
                             </div>
