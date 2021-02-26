@@ -52,9 +52,10 @@ function addProductToList(products) {
     productsUl.html("");
     if (products.length !== 0) {
         for (const product of products) {
+            console.log(product)
             productsUl.append(`
             <li> 
-                <a href="/shop/product/${product.slug}">
+                <a href="/fa/shop/product/${product.slug}/${product.shop_product[0].id}">
                     ${product.name}
                 </a>
                  <p class="text-muted px-2 mx-1">${product.detail.slice(0, 100)}...</p>  
@@ -75,7 +76,7 @@ function addCategoryToList(categories) {
         for (const category of categories) {
             categoriesUl.append(`
             <li> 
-                <a href="/shop/product/${category.slug}">
+                <a href="/fa/shop/category/${category.slug}">
                     ${category.name}
                 </a>
                  <p class="text-muted px-2 mx-1">${category.detail.slice(0, 100)}...</p>  

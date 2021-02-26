@@ -50,7 +50,7 @@ class SignUpView(CreateView):
         email = EmailMessage(
             mail_subject, message, to=[to_email]
         )
-        email.send()
+        # email.send()
         return render(self.request, 'account/auth/email-confirm/email_response.html')
 
 

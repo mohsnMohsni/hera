@@ -271,15 +271,7 @@ class Shop(AbstractDetail):
         Count user's, who add a product to like product
         and that product related to this shop.
         """
-        num = self.shop_product.all().aggregate(
-            models.Sum('product__likes__condition')
-        ).get('product__likes__condition__sum')
-        if num is not None:
-            return num
-        elif num is True:
-            return 1
-        else:
-            return 0
+        return Like.objects.filter(products__shop_product__shop=self).count()
 
     @property
     def buyers_count(self):
