@@ -28,6 +28,8 @@ services:
       - POSTGRES_USER=postgres_heraIroot
       - POSTGRES_PASSWORD=postgres_heraIroot
       - POSTGRES_DB=postgres_heraIroot
+    ports:
+      - 5432:5432
   nginx:
     build: ./nginx
     ports:
