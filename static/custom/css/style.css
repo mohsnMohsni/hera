@@ -2729,3 +2729,9 @@ form textarea {
     left: -5px;
     top: 8px;
 }
+
+
+.dropdown-item-header {
+    text-align: center;
+    padding: 10px 30px 10px 30px !important;
+}

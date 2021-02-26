@@ -1,5 +1,11 @@
-from app_product.models import Product, Category, ShopProduct
+from app_product.models import Product, Category, ShopProduct, Shop
 from rest_framework import serializers
+
+
+class ShopSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = ('slug', 'name')
 
 
 class ShopProductSerializer(serializers.ModelSerializer):

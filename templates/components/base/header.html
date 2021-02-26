@@ -5,7 +5,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 <!-- Current language: {{ LANGUAGE_CODE }} -->
 
-<section>
+<section style="position: sticky; top: 0; z-index: 6 !important;  background-color: rgb(255,255,255);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -19,6 +19,32 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        {% if LANGUAGE_CODE == 'fa' %}
+                            <ul class="navbar-nav mr-auto main-nav">
+                        {% else %}
+                            <ul class="navbar-nav ml-auto main-nav">
+                        {% endif %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'siteview:home' %}">
+                                {% translate 'Home' %}
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown dropdown-slide">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
+                                {% translate 'Categories' %}
+                                <span><i class="fa fa-angle-down"></i></span>
+                            </a>
+                            <div class="dropdown-menu" id="header-categories"></div>
+                        </li>
+                        <li class="nav-item dropdown dropdown-slide">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                {% translate 'Shops' %}
+                                <span><i class="fa fa-angle-down"></i></span>
+                            </a>
+                            <div class="dropdown-menu" id="header-shops"></div>
+                        </li>
+                        </ul>
                         {% if LANGUAGE_CODE == 'fa' %}
                             <ul class="navbar-nav mr-auto mt-10">
                         {% else %}

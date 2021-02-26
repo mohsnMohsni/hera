@@ -1,5 +1,5 @@
-from .serializers import ProductSearchSerializer, CategorySearchSerializer
-from app_product.models import Product, Category, ShopProduct
+from .serializers import ProductSearchSerializer, CategorySearchSerializer, ShopSerializer
+from app_product.models import Product, Category, ShopProduct, Shop
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 from app_order.models import CartItem
@@ -73,3 +73,15 @@ def handle_cart(request):
         else:
             redis_server.rpush(f'{request.user.ip_address}', request.POST.get('id'))
             return HttpResponse(status=201)
+
+
+def get_shops(request):
+    shops = Shop.objects.all()
+    shops = ShopSerializer(shops, many=True)
+    return JsonResponse({'shops': shops.data}, safe=False)
+
+
+def get_categories(request):
+    categories = Category.objects.filter(parent=None)
+    categories = CategorySearchSerializer(categories, many=True)
+    return JsonResponse({'categories': categories.data}, safe=False)
