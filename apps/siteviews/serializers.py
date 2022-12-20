@@ -1,4 +1,4 @@
-from app_product.models import Product, Category, ShopProduct, Shop
+from apps.products.models import Product, Category, ShopProduct, Shop
 from rest_framework import serializers
 
 

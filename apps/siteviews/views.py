@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, RedirectView
-from app_product.models import Category
+from apps.products.models import Category
 from django.shortcuts import reverse
 from .models import SlideShowImage
 

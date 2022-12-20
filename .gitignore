@@ -150,3 +150,5 @@ dmypy.json
 .vscode/
 .idea/
 __pycach__/
+.env.development
+.env.production

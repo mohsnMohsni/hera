@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Comment, Like
-from app_account.serializers import UserSerializer
+from apps.accounts.serializers import UserSerializer
 
 
 class CommentSerializer(serializers.ModelSerializer):

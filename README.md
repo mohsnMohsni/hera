@@ -6,8 +6,8 @@ Buy or sell and enjoy. Develop online marketing with Django base backend and js/
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 # core based on:
-  - Python 3.8 version
-  - Django 3.1 version
+  - Python 3.10 version
+  - Django 3.2 version
 
 
 ## Technologies

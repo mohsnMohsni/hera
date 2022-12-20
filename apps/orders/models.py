@@ -54,7 +54,7 @@ class CartMetaManager(models.Manager):
 class CartMeta(models.Model):
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, verbose_name=_('cart'),
                              related_name='cart_meta', related_query_name='cart_meta')
-    shop_product = models.ForeignKey('app_product.ShopProduct', on_delete=models.CASCADE,
+    shop_product = models.ForeignKey('products.ShopProduct', on_delete=models.CASCADE,
                                      verbose_name=_('shop_product'),
                                      related_name='cart_meta', related_query_name='cart_meta')
     label = models.CharField(_('Label'), max_length=100)
@@ -96,7 +96,7 @@ class CartItemManager(models.Manager):
 class CartItem(models.Model):
     cart = models.ForeignKey("Cart", verbose_name=_('Cart'), on_delete=models.CASCADE,
                              related_name='cart_item', related_query_name='cart_item')
-    shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
+    shop_product = models.ForeignKey('products.ShopProduct', verbose_name=_('Shop Product'),
                                      on_delete=models.CASCADE,
                                      related_name='cart_item', related_query_name='cart_item')
 
@@ -156,7 +156,7 @@ class Order(models.Model):
 class OrderMeta(models.Model):
     order = models.ForeignKey('Order', on_delete=models.CASCADE, verbose_name=_('cart'),
                               related_name='order_meta', related_query_name='order_meta')
-    shop_product = models.ForeignKey('app_product.ShopProduct', on_delete=models.CASCADE,
+    shop_product = models.ForeignKey('products.ShopProduct', on_delete=models.CASCADE,
                                      verbose_name=_('shop_product'),
                                      related_name='order_meta', related_query_name='order_meta')
     label = models.CharField(_('Label'), max_length=100)
@@ -169,7 +169,7 @@ class OrderMeta(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey("Order", verbose_name=_('Order'), on_delete=models.CASCADE,
                               related_name='order_item', related_query_name='order_item')
-    shop_product = models.ForeignKey('app_product.ShopProduct', verbose_name=_('Shop Product'),
+    shop_product = models.ForeignKey('products.ShopProduct', verbose_name=_('Shop Product'),
                                      on_delete=models.CASCADE,
                                      related_name='order_item', related_query_name='order_item')
     count = models.IntegerField(_('Count'))

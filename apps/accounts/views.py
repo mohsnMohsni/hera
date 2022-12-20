@@ -12,7 +12,7 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth import login
 from django.http import HttpResponse
-from app_order.models import Cart
+from apps.orders.models import Cart
 from .models import User
 
 

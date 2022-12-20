@@ -1,8 +1,8 @@
 from .serializers import ProductSearchSerializer, CategorySearchSerializer, ShopSerializer
-from app_product.models import Product, Category, ShopProduct, Shop
+from apps.products.models import Product, Category, ShopProduct, Shop
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
-from app_order.models import CartItem
+from apps.orders.models import CartItem
 from django.db.models import Q
 import redis
 
