@@ -1,6 +1,14 @@
 # CLASSIMAX Shop
+Buy or sell and enjoy. Develop online marketing with Django base backend and js/jquery base front.
 
-Buy or sell and enjoy. Develope online markting with Django base backend and js/jquery base front.
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+
+# core based on:
+  - Python 3.8 version
+  - Django 3.1 version
+
 
 ## Technologies
 
@@ -37,11 +45,11 @@ sudo apt install -y python3-venv && python3 -m venv venv; source venv/bin/activa
 
 Install requirements.txt
 
-```
+```bash
 pip3 install -r requirements.txt
 ```
 
-Run manage.py migrate 
+Run manage.py migrate
 
 ```bash
 python3 manage.py migrate
@@ -71,7 +79,7 @@ Run `docker-compose build` to build images
 docker-compose build
 ```
 
-Run `docker-compose up` to run project 
+Run `docker-compose up` to run project
 
 ```bash
 docker-compose up -d
